@@ -31,6 +31,7 @@
 (require 'apple-kit)
 (require 'org-kit)
 (require 'erlang-kit)
+(require 'anton)
 
 ;;;;; Tramp settings
 ;; Sudo via SSH
