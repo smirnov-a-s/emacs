@@ -32,5 +32,8 @@
 
 ;; Autosave at compile
 (setq compilation-ask-about-save nil)
- 
+
+;;Set comments color
+(set-face-foreground 'font-lock-comment-face "HotPink1") 
+
 (provide 'anton)
