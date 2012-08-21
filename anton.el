@@ -6,8 +6,8 @@
 (setq ac-auto-start 4)
 
 ;; Switch between buffers with S-arrow
-(windmove-default-keybindings 'shift)
-(setq windmove-wrap-around t)
+;;(windmove-default-keybindings 'shift)
+;;(setq windmove-wrap-around t)
 
 ;; Create TAGS
 (defun create-tags (dir-name)
@@ -35,5 +35,9 @@
 
 ;;Set comments color
 (set-face-foreground 'font-lock-comment-face "HotPink1") 
+
+;;Debian changelog
+(setq debian-changelog-mailing-address '"a.smirnov@i-free.com")
+(setq debian-changelog-full-name '"Anton Smirnov")
 
 (provide 'anton)
