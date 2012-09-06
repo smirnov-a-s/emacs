@@ -3,7 +3,7 @@
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/dict")
 (ac-config-default)
 
-(setq ac-auto-start 4)
+(setq ac-auto-start 3)
 
 ;; Switch between buffers with S-arrow
 ;;(windmove-default-keybindings 'shift)
@@ -18,7 +18,6 @@
 
 ;; Maximize at startup
 (defun toggle-fullscreen ()
-;;  (interactive)
   (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
 	    		 '(2 "_NET_WM_STATE_MAXIMIZED_VERT" 0))
   (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
@@ -39,5 +38,8 @@
 ;;Debian changelog
 (setq debian-changelog-mailing-address '"a.smirnov@i-free.com")
 (setq debian-changelog-full-name '"Anton Smirnov")
+
+;;Save previous session
+(desktop-save-mode 1)
 
 (provide 'anton)

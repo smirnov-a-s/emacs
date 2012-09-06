@@ -6,3 +6,6 @@ el-get
 org
 .org-id-locations
 ac-comphist.dat
+.emacs.desktop
+eshell/
+srecode-map.el
