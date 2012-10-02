@@ -1,10 +1,3 @@
-(require 'auto-complete)
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/dict")
-(ac-config-default)
-
-(setq ac-auto-start 3)
-
 ;; Switch between buffers with S-arrow
 ;;(windmove-default-keybindings 'shift)
 ;;(setq windmove-wrap-around t)
@@ -17,7 +10,8 @@
   (format "find %s -type f -name \"*.[ch]\" | etags -" dir-name)))
 
 ;; Maximize at startup
-(defun toggle-fullscreen ()
+(defun toggle-fullscreen (&optional f)
+  (interactive)
   (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
 	    		 '(2 "_NET_WM_STATE_MAXIMIZED_VERT" 0))
   (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
@@ -41,5 +35,21 @@
 
 ;;Save previous session
 (desktop-save-mode 1)
+
+(delete-selection-mode 1)
+
+;;Kill all buffers
+(defun close-all-buffers ()
+  (interactive)
+  (mapc 'kill-buffer (buffer-list)))
+
+;; Turn on C++ mode for plain-c files
+(add-to-list 'auto-mode-alist '("\\.c$" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.h$" . c++-mode))
+
+;;Offsets
+;;(setq-default c-basic-offset 2
+;;                  tab-width 4
+;;                  indent-tabs-mode t)
 
 (provide 'anton)
