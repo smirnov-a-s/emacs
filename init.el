@@ -1,3 +1,4 @@
+
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
@@ -30,13 +31,15 @@
 (require 'essentials-kit)
 (require 'ruby-kit)
 (require 'apple-kit)
-;;(require 'org-kit)
+(require 'org-kit)
 (require 'erlang-kit)
 (require 'debian-kit)
 (require 'russian-kit)
 (require 'browser-kit)
 
 (require 'anton)
+(require 'cedet-config)
+(require 'sr-speedbar-conf)
 
 ;;;;; Tramp settings
 ;; Sudo via SSH

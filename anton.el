@@ -19,10 +19,6 @@
 ;;Set comments color
 (set-face-foreground 'font-lock-comment-face "HotPink1")
 
-;;Debian changelog
-(setq debian-changelog-mailing-address '"a.smirnov@i-free.com")
-(setq debian-changelog-full-name '"Anton Smirnov")
-
 ;;Delete selection
 (delete-selection-mode 1)
 
@@ -32,7 +28,11 @@
   (mapc 'kill-buffer (buffer-list)))
 
 ;; Turn on C++ mode for plain-c files
-(add-to-list 'auto-mode-alist '("\\.c$" . c++-mode))
-(add-to-list 'auto-mode-alist '("\\.h$" . c++-mode))
+;; (add-to-list 'auto-mode-alist '("\\.c$" . c++-mode))
+;; (add-to-list 'auto-mode-alist '("\\.h$" . c++-mode))
+
+;;Debian changelog
+(setq debian-changelog-mailing-address '"a.smirnov@i-free.com")
+(setq debian-changelog-full-name '"Anton Smirnov")
 
 (provide 'anton)
