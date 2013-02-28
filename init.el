@@ -1,4 +1,3 @@
-
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
@@ -9,6 +8,7 @@
 (line-number-mode 1)	; have line numbers and
 (column-number-mode 1)	; column numbers in the mode line
 (delete-selection-mode 1) ; delete selected block when start typing
+
 
 (add-to-list 'load-path "~/.emacs.d")
 (add-to-list 'load-path "~/.emacs.d/vendor")
@@ -29,20 +29,53 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 (require 'essentials-kit)
-(require 'ruby-kit)
 (require 'apple-kit)
 (require 'org-kit)
-(require 'erlang-kit)
 (require 'debian-kit)
 (require 'russian-kit)
-(require 'browser-kit)
 
 (require 'anton)
+(require 'complete-conf)
 (require 'cedet-config)
-(require 'sr-speedbar-conf)
 
 ;;;;; Tramp settings
 ;; Sudo via SSH
 (set-default 'tramp-default-proxies-alist (quote ((".*" "\\`root\\'" "/ssh:%h:"))))
 
 (server-start)
+(put 'set-goal-column 'disabled nil)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(compilation-window-height nil)
+ '(ecb-auto-activate t)
+ '(ecb-auto-expand-tag-tree nil)
+ '(ecb-auto-update-methods-after-save t)
+ '(ecb-display-image-icons-for-semantic-tags t)
+ '(ecb-font-lock-tags t)
+ '(ecb-highlight-tag-with-point nil)
+ '(ecb-highlight-tag-with-point-delay 0.25)
+ '(ecb-layout-name "left9")
+ '(ecb-methods-filter-replace-existing (quote never))
+ '(ecb-methods-menu-sorter (quote identity))
+ '(ecb-methods-separate-prototypes nil)
+ '(ecb-options-version "2.40")
+ '(ecb-process-non-semantic-files nil)
+ '(ecb-show-only-positioned-tags t)
+ '(ecb-tip-of-the-day nil)
+ '(ecb-toggle-layout-sequence (quote ("left9" "leftsrc")))
+ '(ecb-tree-buffer-style (quote ascii-guides))
+ '(ecb-tree-do-not-leave-window-after-select nil)
+ '(ecb-use-speedbar-instead-native-tree-buffer nil)
+ '(ecb-windows-width 0.25))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
+(ecb-activate)

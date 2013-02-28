@@ -8,11 +8,6 @@
 
 ;; Do checkout of fresh CEDET, and use this config (don't forget to change path below)
 
-(setq cedet-root-path (file-name-as-directory "~/work/cedet-bzr/trunk/"))
-
-(load-file (concat cedet-root-path "cedet-devel-load.el"))
-(add-to-list 'load-path (concat cedet-root-path "contrib"))
-
 ;; select which submodes we want to activate
 (add-to-list 'semantic-default-submodes 'global-semantic-mru-bookmark-mode)
 (add-to-list 'semantic-default-submodes 'global-semanticdb-minor-mode)
@@ -25,23 +20,15 @@
 ;; Activate semantic
 (semantic-mode 1)
 
-;; load contrib library
-(require 'eassist)
-
-;; My
-;;names and functions
 (require 'semantic/ia)
-;;GCC stuff
 (require 'semantic/bovine/gcc)
 
 (defun my-semantic-hook ()
   (imenu-add-to-menubar "TAGS"))
 (add-hook 'semantic-init-hooks 'my-semantic-hook)
 
-(defun my-c-mode-cedet-hook ()
- (local-set-key "." 'semantic-complete-self-insert)
- (local-set-key ">" 'semantic-complete-self-insert))
-(add-hook 'c-mode-common-hook 'my-c-mode-cedet-hook)
+;; load contrib library
+(require 'eassist)
 
 ;; customisation of modes
 (defun alexott/cedet-hook ()
@@ -81,13 +68,11 @@
 
 ;; EDE
 (global-ede-mode 1)
-;; Enable prototype help and smart completion
-(semantic-load-enable-code-helpers)
 (ede-enable-generic-projects)
 
 ;; Setup JAVA....
-;;(require 'cedet-java)
-
-;;; minimial-cedet-config.el ends here
+(require 'cedet-java)
 
 (provide 'cedet-config)
+
+;;; minimial-cedet-config.el ends here

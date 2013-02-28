@@ -13,7 +13,7 @@
 ;; whenever an external process changes a file underneath emacs, and there
 ;; was no unsaved changes in the corresponding buffer, just revert its
 ;; content to reflect what's on-disk.
-(global-auto-revert-mode 1)
+;;(global-auto-revert-mode 1)
 
 ;; Use readable buffer designations when names are the same
 (require 'uniquify)
@@ -21,6 +21,7 @@
 
 (setq exec-path (quote ("/usr/local/bin" "/usr/local/sbin" "/usr/bin" "/bin" "/usr/sbin" "/sbin" "/Applications/Emacs.app/Contents/MacOS/bin")))
 
+;;??
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (setq require-final-newline t)
 
