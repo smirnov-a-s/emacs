@@ -32,7 +32,9 @@
 
 ;; customisation of modes
 (defun alexott/cedet-hook ()
-  (local-set-key [(control return)] 'semantic-ia-complete-symbol-menu)
+  ;;(local-set-key [(control return)] 'semantic-ia-complete-symbol-menu)
+  ;; open ac popup instead of cedet's
+  (local-set-key [(control return)] 'complete)
   (local-set-key "\C-c?" 'semantic-ia-complete-symbol)
   ;;
   (local-set-key "\C-c>" 'semantic-complete-analyze-inline)
