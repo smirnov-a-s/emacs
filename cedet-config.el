@@ -61,7 +61,4 @@
 (global-ede-mode 1)
 (ede-enable-generic-projects)
 
-;; Setup JAVA....
-;;(require 'cedet-java)
-
 (provide 'cedet-config)
