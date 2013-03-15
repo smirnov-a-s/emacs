@@ -1,13 +1,3 @@
-;;; minimial-cedet-config.el --- Working configuration for CEDET from bzr
-
-;; Copyright (C) Alex Ott
-;;
-;; Author: Alex Ott <alexott@gmail.com>
-;; Keywords: cedet, C++, Java
-;; Requirements: CEDET from bzr (http://cedet.sourceforge.net/bzr-repo.shtml)
-
-;; Do checkout of fresh CEDET, and use this config (don't forget to change path below)
-
 ;; select which submodes we want to activate
 (add-to-list 'semantic-default-submodes 'global-semantic-mru-bookmark-mode)
 (add-to-list 'semantic-default-submodes 'global-semanticdb-minor-mode)
@@ -23,15 +13,15 @@
 (require 'semantic/ia)
 (require 'semantic/bovine/gcc)
 
-(defun my-semantic-hook ()
-  (imenu-add-to-menubar "TAGS"))
-(add-hook 'semantic-init-hooks 'my-semantic-hook)
+;; (defun my-semantic-hook ()
+;;   (imenu-add-to-menubar "TAGS"))
+;; (add-hook 'semantic-init-hooks 'my-semantic-hook)
 
 ;; load contrib library
 (require 'eassist)
 
 ;; customisation of modes
-(defun alexott/cedet-hook ()
+(defun cedet-hook ()
   ;;(local-set-key [(control return)] 'semantic-ia-complete-symbol-menu)
   ;; open ac popup instead of cedet's
   (local-set-key [(control return)] 'complete)
@@ -45,19 +35,18 @@
   (local-set-key "\C-cs" 'semantic-ia-show-summary)
   (local-set-key "\C-cp" 'semantic-analyze-proto-impl-toggle)
   )
-(add-hook 'c-mode-common-hook 'alexott/cedet-hook)
-(add-hook 'lisp-mode-hook 'alexott/cedet-hook)
-(add-hook 'scheme-mode-hook 'alexott/cedet-hook)
-(add-hook 'emacs-lisp-mode-hook 'alexott/cedet-hook)
-(add-hook 'erlang-mode-hook 'alexott/cedet-hook)
+(add-hook 'c-mode-common-hook 'cedet-hook)
+(add-hook 'lisp-mode-hook 'cedet-hook)
+(add-hook 'scheme-mode-hook 'cedet-hook)
+(add-hook 'emacs-lisp-mode-hook 'cedet-hook)
+(add-hook 'erlang-mode-hook 'cedet-hook)
 
-(defun alexott/c-mode-cedet-hook ()
+(defun c-mode-cedet-hook ()
   (local-set-key "\C-ct" 'eassist-switch-h-cpp)
   (local-set-key "\C-xt" 'eassist-switch-h-cpp)
-  (local-set-key "\C-ce" 'eassist-list-methods)
   (local-set-key "\C-c\C-r" 'semantic-symref)
   )
-(add-hook 'c-mode-common-hook 'alexott/c-mode-cedet-hook)
+(add-hook 'c-mode-common-hook 'c-mode-cedet-hook)
 
 (semanticdb-enable-gnu-global-databases 'c-mode t)
 (semanticdb-enable-gnu-global-databases 'c++-mode t)
@@ -73,8 +62,6 @@
 (ede-enable-generic-projects)
 
 ;; Setup JAVA....
-(require 'cedet-java)
+;;(require 'cedet-java)
 
 (provide 'cedet-config)
-
-;;; minimial-cedet-config.el ends here
