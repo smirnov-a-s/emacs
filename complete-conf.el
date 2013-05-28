@@ -5,8 +5,9 @@
 
 (setq ac-auto-start nil)
 (setq ac-auto-show-menu nil)
-(setq ac-ignore-case 'smart)
-(setq ac-quick-help-delay 0)
+;; (setq ac-ignore-case 'smart)
+(setq ac-ignore-case nil)
+;;(setq ac-quick-help-delay 0)
 
 ;; No history please
 (setq ac-use-comphist nil)
@@ -35,7 +36,7 @@
 
 ;; Add semantic sources
 (defun my-c-mode-cedet-hook ()
-  (add-to-list 'ac-sources 'ac-source-gtags)
+  ;; (add-to-list 'ac-sources 'ac-source-gtags)
   (add-to-list 'ac-sources 'ac-source-semantic)
 )
 (add-hook 'c-mode-common-hook 'my-c-mode-cedet-hook)

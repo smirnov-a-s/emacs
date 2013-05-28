@@ -10,3 +10,6 @@ ac-comphist.dat
 eshell/
 srecode-map.el
 semanticdb/*
+bookmarks
+*.elc
+elpa/

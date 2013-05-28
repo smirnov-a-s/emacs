@@ -1,6 +1,4 @@
-;; Some basics for c programming
-
-;;Debian changelog
+;; Debian changelog
 (setq debian-changelog-mailing-address '"a.smirnov@i-free.com")
 (setq debian-changelog-full-name '"Anton Smirnov")
 
@@ -10,57 +8,39 @@
 ;; Autosave at compile
 (setq compilation-ask-about-save nil)
 
-;;Set comments color
+;; No fringes
+(set-fringe-mode 0)
+
+;; Set comments color
 (set-face-foreground 'font-lock-comment-face "HotPink1")
 
-;;Delete selection
+;; Set delimiter color
+(set-face-foreground 'font-lock-comment-delimiter-face "HotPink1")
+
+;; Set basic text color
+(set-face-attribute 'default nil :foreground "grey")
+
+;; Delete selection
 (delete-selection-mode 1)
 
-;; From CC-Mode
-;; Make a non-standard key binding.  We can put this in
-;; c-mode-base-map because c-mode-map, c++-mode-map, and so on,
-;; inherit from it.
-(defun my-c-initialization-hook ()
-  (define-key c-mode-base-map "\C-m" 'c-context-line-break))
-(add-hook 'c-initialization-hook 'my-c-initialization-hook)
+;; Enable CUA selection mode without the C-z/C-x/C-c/C-v bindings.
+(cua-selection-mode 1)
 
-;; offset customizations not in my-c-style
-;; This will take precedence over any setting of the syntactic symbol
-;; made by a style.
-(setq c-offsets-alist '((member-init-intro . ++)))
+;; stop creating those backup~ files
+(setq make-backup-files nil)
 
-;; Create my personal style.
-(defconst my-c-style
-  '((c-tab-always-indent        . t)
-    (c-comment-only-line-offset . 2)
-    (c-hanging-braces-alist     . ((substatement-open after)
-                                   (brace-list-open)))
-    (c-hanging-colons-alist     . ((member-init-intro before)
-                                   (inher-intro)
-                                   (case-label after)
-                                   (label after)
-                                   (access-label after)))
-    (c-cleanup-list             . (scope-operator
-                                   empty-defun-braces
-                                   defun-close-semi))
-    (c-offsets-alist            . ((arglist-close . c-lineup-arglist)
-                                   (substatement-open . 0)
-                                   (case-label        . 4)
-                                   (block-open        . 0)
-                                   (knr-argdecl-intro . -))))
-  "My C Programming Style")
-(c-add-style "PERSONAL" my-c-style)
+;; stop creating those #autosave# files
+(setq auto-save-default nil)
 
-;; Customizations for all modes in CC Mode.
-(defun my-c-mode-common-hook ()
-  ;; set my personal style for the current buffer
-  (c-set-style "PERSONAL")
-  ;; other customizations
-  (setq tab-width 8
-        ;; this will make sure spaces are used instead of tabs
-        indent-tabs-mode nil))
-(add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
+;; Choose cc-mode
+(add-hook 'c-mode-hook
+	  '(lambda ()
+	     (c-set-style "cc-mode")))
 
+;; Use spaces when indenting
+(setq-default indent-tabs-mode nil)
+
+;; Split window to show compilation results
 (defun my-compilation-hook ()
   (when (not (get-buffer-window "*compilation*"))
     (save-selected-window
@@ -71,5 +51,11 @@
           (switch-to-buffer "*compilation*")
           (shrink-window (- h 15)))))))
 (add-hook 'compilation-mode-hook 'my-compilation-hook)
+
+;; From CC-Mode
+;; New line and indent with Enter
+(defun my-c-initialization-hook ()
+  (define-key c-mode-base-map "\C-m" 'c-context-line-break))
+(add-hook 'c-initialization-hook 'my-c-initialization-hook)
 
 (provide 'anton)

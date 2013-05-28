@@ -9,10 +9,12 @@
 (column-number-mode 1)	; column numbers in the mode line
 (delete-selection-mode 1) ; delete selected block when start typing
 
-
 (add-to-list 'load-path "~/.emacs.d")
 (add-to-list 'load-path "~/.emacs.d/vendor")
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+
+;; add cc-mode (cc-mode not updated with the latest version)
+(add-to-list 'load-path "~/.emacs.d/cc-mode")
 
 (unless (require 'el-get nil t)
   (setq el-get-install-branch "master")
@@ -24,6 +26,7 @@
 
 (el-get 'sync)
 
+;; Set color theme
 (color-theme-twilight)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -35,6 +38,7 @@
 (require 'russian-kit)
 
 (require 'anton)
+(require 'cc-mode)
 (require 'complete-conf)
 (require 'cedet-config)
 
@@ -63,19 +67,15 @@
  '(ecb-methods-menu-sorter (quote identity))
  '(ecb-methods-separate-prototypes nil)
  '(ecb-options-version "2.40")
- '(ecb-process-non-semantic-files nil)
+ '(ecb-process-non-semantic-files t)
  '(ecb-show-only-positioned-tags t)
+ ;; set just to get rid of the startup ecb buffer
+ '(ecb-source-path (quote ("~/work/mystuff/utils/src/")))
  '(ecb-tip-of-the-day nil)
  '(ecb-toggle-layout-sequence (quote ("left9" "leftsrc")))
  '(ecb-tree-buffer-style (quote ascii-guides))
  '(ecb-tree-do-not-leave-window-after-select nil)
  '(ecb-use-speedbar-instead-native-tree-buffer nil)
  '(ecb-windows-width 0.25))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
 
 (ecb-activate)
