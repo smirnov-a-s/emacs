@@ -79,3 +79,4 @@
  '(ecb-windows-width 0.25))
 
 (ecb-activate)
+(ecb-hide-ecb-windows)
