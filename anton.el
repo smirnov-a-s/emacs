@@ -5,11 +5,30 @@
 ;; Compile program using <F5>
 (global-set-key [f5] 'compile)
 
+;; Set f6 to jump to next frame
+(global-set-key [f6] 'next-multiframe-window)
+
+;; Hide/show ecb-window
+(global-set-key [f7] 'ecb-hide-ecb-windows)
+(global-set-key [f8] 'ecb-show-ecb-windows)
+
+;; Split window to show compilation results
+(defun my-compilation-hook ()
+  (when (not (get-buffer-window "*compilation*"))
+    (save-selected-window
+      (save-excursion
+        (let* ((w (split-window-vertically))
+               (h (window-height w)))
+          (select-window w)
+          (switch-to-buffer "*compilation*")
+          (shrink-window (- h 15)))))))
+(add-hook 'compilation-mode-hook 'my-compilation-hook)
+
+;; Use undo-tree
+(global-undo-tree-mode 1)
+
 ;; Autosave at compile
 (setq compilation-ask-about-save nil)
-
-;; No fringes
-(set-fringe-mode 0)
 
 ;; Set comments color
 (set-face-foreground 'font-lock-comment-face "HotPink1")
@@ -39,18 +58,6 @@
 
 ;; Use spaces when indenting
 (setq-default indent-tabs-mode nil)
-
-;; Split window to show compilation results
-(defun my-compilation-hook ()
-  (when (not (get-buffer-window "*compilation*"))
-    (save-selected-window
-      (save-excursion
-        (let* ((w (split-window-vertically))
-               (h (window-height w)))
-          (select-window w)
-          (switch-to-buffer "*compilation*")
-          (shrink-window (- h 15)))))))
-(add-hook 'compilation-mode-hook 'my-compilation-hook)
 
 ;; From CC-Mode
 ;; New line and indent with Enter

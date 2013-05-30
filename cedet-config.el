@@ -6,18 +6,23 @@
 (add-to-list 'semantic-default-submodes 'global-cedet-m3-minor-mode)
 (add-to-list 'semantic-default-submodes 'global-semantic-highlight-func-mode)
 (add-to-list 'semantic-default-submodes 'global-semanticdb-minor-mode)
+;; (add-to-list 'semantic-default-submodes 'global-semantic-decoration-mode)
+
+;; Tag folding
+;; Load tag folding
+(load-file "~/.emacs.d/el-get/cedet/contrib/semantic-tag-folding.el")
+(require 'semantic-tag-folding)
 
 ;; Activate semantic
 (semantic-mode 1)
 
-(global-semantic-highlight-func-mode -1)
-
 (require 'semantic/ia)
 (require 'semantic/bovine/gcc)
 
-;; (defun my-semantic-hook ()
-;;   (imenu-add-to-menubar "TAGS"))
-;; (add-hook 'semantic-init-hooks 'my-semantic-hook)
+;; Can't set it global, so...
+(defun my-semantic-hook ()
+  (semantic-tag-folding-mode 1))
+(add-hook 'semantic-init-hooks 'my-semantic-hook)
 
 ;; load contrib library
 (require 'eassist)
@@ -36,6 +41,9 @@
   (local-set-key "\C-cq" 'semantic-ia-show-doc)
   (local-set-key "\C-cs" 'semantic-ia-show-summary)
   (local-set-key "\C-cp" 'semantic-analyze-proto-impl-toggle)
+  ;; tag folding key bindings
+  (local-set-key (kbd "C-c <left>") 'semantic-tag-folding-fold-block)
+  (local-set-key (kbd "C-c <right>") 'semantic-tag-folding-show-block)
   )
 (add-hook 'c-mode-common-hook 'cedet-hook)
 (add-hook 'lisp-mode-hook 'cedet-hook)
@@ -62,5 +70,8 @@
 ;; EDE
 (global-ede-mode 1)
 (ede-enable-generic-projects)
+
+;; Turn off tag highlighting
+(global-semantic-highlight-func-mode -1)
 
 (provide 'cedet-config)
