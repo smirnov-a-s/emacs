@@ -12,6 +12,9 @@
 (global-set-key [f7] 'ecb-hide-ecb-windows)
 (global-set-key [f8] 'ecb-show-ecb-windows)
 
+;; Pop mark
+(global-set-key "\C-xp" 'pop-to-mark-command)
+
 ;; Split window to show compilation results
 (defun my-compilation-hook ()
   (when (not (get-buffer-window "*compilation*"))
@@ -37,7 +40,7 @@
 (set-face-foreground 'font-lock-comment-delimiter-face "HotPink1")
 
 ;; Set basic text color
-(set-face-attribute 'default nil :foreground "grey")
+(set-face-attribute 'default nil :foreground "white")
 
 ;; Delete selection
 (delete-selection-mode 1)

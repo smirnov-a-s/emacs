@@ -34,11 +34,26 @@
 (define-key ac-completing-map "\t" 'ac-complete)
 (define-key ac-completing-map "\r" nil)
 
-;; Add semantic sources
-(defun my-c-mode-cedet-hook ()
-  ;; (add-to-list 'ac-sources 'ac-source-gtags)
-  (add-to-list 'ac-sources 'ac-source-semantic)
+;; emacs-clang-complete-async
+(require 'auto-complete-clang-async)
+
+(defun ac-cc-mode-setup ()
+  (setq ac-clang-complete-executable "~/.emacs.d/clang-complete")
+  (setq ac-sources '(ac-source-clang-async))
+  (ac-clang-launch-completion-process)
 )
-(add-hook 'c-mode-common-hook 'my-c-mode-cedet-hook)
+
+(defun my-ac-config ()
+  (add-hook 'c-mode-common-hook 'ac-cc-mode-setup)
+  (add-hook 'auto-complete-mode-hook 'ac-common-setup)
+  (global-auto-complete-mode t))
+
+(my-ac-config)
+
+;; Add semantic sources
+;; (defun my-c-mode-cedet-hook ()
+;;   (add-to-list 'ac-sources 'ac-source-semantic)
+;; )
+;; (add-hook 'c-mode-common-hook 'my-c-mode-cedet-hook)
 
 (provide 'complete-conf)

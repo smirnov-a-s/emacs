@@ -1,4 +1,4 @@
-(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+;; (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
@@ -27,7 +27,8 @@
 (el-get 'sync)
 
 ;; Set color theme
-(color-theme-twilight)
+;; (color-theme-twilight)
+(color-theme-midnight)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
@@ -41,6 +42,7 @@
 (require 'cc-mode)
 (require 'complete-conf)
 (require 'cedet-config)
+(require 'octave-conf)
 
 ;;;;; Tramp settings
 ;; Sudo via SSH
@@ -69,14 +71,21 @@
  '(ecb-options-version "2.40")
  '(ecb-process-non-semantic-files t)
  '(ecb-show-only-positioned-tags t)
- ;; set just to get rid of the startup ecb buffer
  '(ecb-source-path (quote ("~/work/mystuff/utils/src/")))
  '(ecb-tip-of-the-day nil)
  '(ecb-toggle-layout-sequence (quote ("left9" "leftsrc")))
  '(ecb-tree-buffer-style (quote ascii-guides))
  '(ecb-tree-do-not-leave-window-after-select nil)
  '(ecb-use-speedbar-instead-native-tree-buffer nil)
- '(ecb-windows-width 0.25))
+ '(ecb-windows-width 0.25)
+ '(octave-send-echo-input nil))
 
 (ecb-activate)
+(ecb-show-ecb-windows)
 (ecb-hide-ecb-windows)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(region ((t (:background "gray25")))))
