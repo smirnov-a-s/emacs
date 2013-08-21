@@ -78,11 +78,12 @@
  '(ecb-tree-do-not-leave-window-after-select nil)
  '(ecb-use-speedbar-instead-native-tree-buffer nil)
  '(ecb-windows-width 0.25)
- '(octave-send-echo-input nil))
+ '(yas-snippet-dirs (quote ("~/.emacs.d/el-get/yasnippet/snippets")) nil (yasnippet)))
 
-(ecb-activate)
-(ecb-show-ecb-windows)
-(ecb-hide-ecb-windows)
+;; (ecb-activate)
+;; (ecb-show-ecb-windows)
+;; (ecb-hide-ecb-windows)
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

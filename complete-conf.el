@@ -1,18 +1,22 @@
 (require 'auto-complete-config)
-(ac-config-default)
+;; (require 'auto-complete-clang)
+
+;; emacs-clang-complete-async
+(require 'auto-complete-clang-async)
 
 (global-auto-complete-mode t)
 
 (setq ac-auto-start nil)
-(setq ac-auto-show-menu nil)
-;; (setq ac-ignore-case 'smart)
-(setq ac-ignore-case nil)
-;;(setq ac-quick-help-delay 0)
+;; (setq ac-auto-show-menu t)
+(setq ac-ignore-case 'smart)
+;; (setq ac-ignore-case nil)
+(setq ac-quick-help-delay 0.5)
 
-;; No history please
-(setq ac-use-comphist nil)
-;;
-(setq ac-show-menu-immediately-on-auto-complete t)
+;; (setq ac-use-comphist nil)
+
+;; (setq ac-show-menu-immediately-on-auto-complete t)
+
+;; (define-key ac-mode-map  [(control tab)] 'auto-complete)
 
 (defun complete ()
   (interactive)
@@ -21,7 +25,6 @@
 )
 
 ;; Show menu
-;;(define-key ac-mode-map "\M-/" 'complete)
 (define-key ac-mode-map "\M-/" 'complete)
 
 ;; Close menu
@@ -30,16 +33,14 @@
 ;; Trigger key
 (ac-set-trigger-key "TAB")
 
-;; Give me RET please
-(define-key ac-completing-map "\t" 'ac-complete)
-(define-key ac-completing-map "\r" nil)
-
-;; emacs-clang-complete-async
-(require 'auto-complete-clang-async)
+;; (define-key ac-completing-map "\t" 'ac-complete)
+;; (define-key ac-completing-map "\r" nil)
 
 (defun ac-cc-mode-setup ()
   (setq ac-clang-complete-executable "~/.emacs.d/clang-complete")
-  (setq ac-sources '(ac-source-clang-async))
+  ;; Add sources
+  (setq ac-sources '(ac-source-clang-async
+                     ac-source-semantic))
   (ac-clang-launch-completion-process)
 )
 
@@ -49,11 +50,5 @@
   (global-auto-complete-mode t))
 
 (my-ac-config)
-
-;; Add semantic sources
-;; (defun my-c-mode-cedet-hook ()
-;;   (add-to-list 'ac-sources 'ac-source-semantic)
-;; )
-;; (add-hook 'c-mode-common-hook 'my-c-mode-cedet-hook)
 
 (provide 'complete-conf)

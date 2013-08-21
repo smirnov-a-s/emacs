@@ -1,3 +1,7 @@
+;; Yasnippets
+(require 'yasnippet)
+(yas-global-mode 1)
+
 ;; Debian changelog
 (setq debian-changelog-mailing-address '"a.smirnov@i-free.com")
 (setq debian-changelog-full-name '"Anton Smirnov")
