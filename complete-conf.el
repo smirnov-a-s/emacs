@@ -44,6 +44,8 @@
   (ac-clang-launch-completion-process)
 )
 
+(setq ac-source-yasnippet nil)
+
 (defun my-ac-config ()
   (add-hook 'c-mode-common-hook 'ac-cc-mode-setup)
   (add-hook 'auto-complete-mode-hook 'ac-common-setup)
