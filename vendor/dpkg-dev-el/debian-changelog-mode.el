@@ -1217,7 +1217,7 @@ Use UTC if `debian-changelog-date-utc-flag' is non-nil."
 	      (setq process-environment
 		    (delete tz process-environment))
 	      (push "TZ=UTC" process-environment))
-	    (call-process "gdate" nil t nil "-R")))
+	    (call-process "date" nil t nil "-R")))
 	 (np (point))
 	 (out nil))
     (cond ((not (or (eq ret nil) (eq ret 0)))

@@ -38,11 +38,11 @@
 (require 'debian-kit)
 (require 'russian-kit)
 
-(require 'anton)
 (require 'cc-mode)
 (require 'complete-conf)
 (require 'cedet-config)
 (require 'octave-conf)
+(require 'anton)
 
 ;;;;; Tramp settings
 ;; Sudo via SSH
@@ -57,7 +57,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(compilation-window-height nil)
- '(ecb-auto-activate t)
+ '(ecb-auto-activate nil)
  '(ecb-auto-expand-tag-tree nil)
  '(ecb-auto-update-methods-after-save t)
  '(ecb-display-image-icons-for-semantic-tags t)
@@ -81,8 +81,6 @@
  '(yas-snippet-dirs (quote ("~/.emacs.d/el-get/yasnippet/snippets")) nil (yasnippet)))
 
 ;; (ecb-activate)
-;; (ecb-show-ecb-windows)
-;; (ecb-hide-ecb-windows)
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

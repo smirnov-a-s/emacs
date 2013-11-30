@@ -10,8 +10,8 @@
 
 ;; Tag folding
 ;; Load tag folding
-(load-file "~/.emacs.d/el-get/cedet/contrib/semantic-tag-folding.el")
-(require 'semantic-tag-folding)
+;; (load-file "~/.emacs.d/el-get/cedet/contrib/semantic-tag-folding.el")
+;; (require 'semantic-tag-folding)
 
 ;; Activate semantic
 (semantic-mode 1)
@@ -20,16 +20,16 @@
 (require 'semantic/bovine/gcc)
 
 ;; Can't set it global, so...
-(defun my-semantic-hook ()
-  (semantic-tag-folding-mode 1))
-(add-hook 'semantic-init-hooks 'my-semantic-hook)
+;; (defun my-semantic-hook ()
+;;   (semantic-tag-folding-mode 1))
+;; (add-hook 'semantic-init-hooks 'my-semantic-hook)
 
 ;; load contrib library
 (require 'eassist)
 
 ;; customisation of modes
 (defun cedet-hook ()
-  ;;(local-set-key [(control return)] 'semantic-ia-complete-symbol-menu)
+  ;; (local-set-key [(control return)] 'semantic-ia-complete-symbol-menu)
   ;; open ac popup instead of cedet's
   (local-set-key [(control return)] 'complete)
   (local-set-key "\C-c?" 'semantic-ia-complete-symbol)
@@ -42,8 +42,8 @@
   (local-set-key "\C-cs" 'semantic-ia-show-summary)
   (local-set-key "\C-cp" 'semantic-analyze-proto-impl-toggle)
   ;; tag folding key bindings
-  (local-set-key (kbd "C-c <left>") 'semantic-tag-folding-fold-block)
-  (local-set-key (kbd "C-c <right>") 'semantic-tag-folding-show-block)
+  ;; (local-set-key (kbd "C-c <left>") 'semantic-tag-folding-fold-block)
+  ;; (local-set-key (kbd "C-c <right>") 'semantic-tag-folding-show-block)
   )
 (add-hook 'c-mode-common-hook 'cedet-hook)
 (add-hook 'lisp-mode-hook 'cedet-hook)

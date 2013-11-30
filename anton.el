@@ -58,18 +58,20 @@
 ;; stop creating those #autosave# files
 (setq auto-save-default nil)
 
-;; Choose cc-mode
-(add-hook 'c-mode-hook
-	  '(lambda ()
-	     (c-set-style "cc-mode")))
-
 ;; Use spaces when indenting
 (setq-default indent-tabs-mode nil)
 
-;; From CC-Mode
-;; New line and indent with Enter
+;; cc-mode
 (defun my-c-initialization-hook ()
   (define-key c-mode-base-map "\C-m" 'c-context-line-break))
 (add-hook 'c-initialization-hook 'my-c-initialization-hook)
+
+;; Customizations for all modes in CC Mode.
+(defun my-c-mode-common-hook ()
+  (c-set-style "linux")
+  ;; (c-toggle-auto-newline 1)
+  (setq c-echo-syntactic-information-p t)
+  )
+(add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
 
 (provide 'anton)
