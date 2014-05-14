@@ -16,14 +16,16 @@
 ;; add cc-mode (cc-mode not updated with the latest version)
 (add-to-list 'load-path "~/.emacs.d/cc-mode")
 
-(unless (require 'el-get nil t)
-  (setq el-get-install-branch "master")
+(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+
+(unless (require 'el-get nil 'noerror)
   (with-current-buffer
       (url-retrieve-synchronously
        "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
     (goto-char (point-max))
     (eval-print-last-sexp)))
 
+(add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
 (el-get 'sync)
 
 ;; Set color theme
@@ -41,7 +43,6 @@
 (require 'cc-mode)
 (require 'complete-conf)
 (require 'cedet-config)
-(require 'octave-conf)
 (require 'anton)
 
 ;;;;; Tramp settings
@@ -78,13 +79,8 @@
  '(ecb-tree-do-not-leave-window-after-select nil)
  '(ecb-use-speedbar-instead-native-tree-buffer nil)
  '(ecb-windows-width 0.25)
- '(yas-snippet-dirs (quote ("~/.emacs.d/el-get/yasnippet/snippets")) nil (yasnippet)))
+ '(ede-project-directories (quote ("/Users/asmirnov/work/mystuff/resample/src" "/Users/asmirnov" "/Users/asmirnov/work/mystuff/tmp_proj" "/Users/asmirnov/work/mystuff")))
+ '(yas-snippet-dirs (quote ("~/.emacs.d/el-get/yasnippet/snippets")) nil (yasnippet))
+)
 
 ;; (ecb-activate)
-
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(region ((t (:background "gray25")))))

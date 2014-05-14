@@ -8,23 +8,14 @@
 (add-to-list 'semantic-default-submodes 'global-semanticdb-minor-mode)
 ;; (add-to-list 'semantic-default-submodes 'global-semantic-decoration-mode)
 
-;; Tag folding
-;; Load tag folding
-;; (load-file "~/.emacs.d/el-get/cedet/contrib/semantic-tag-folding.el")
-;; (require 'semantic-tag-folding)
-
 ;; Activate semantic
 (semantic-mode 1)
 
 (require 'semantic/ia)
 (require 'semantic/bovine/gcc)
 
-;; Can't set it global, so...
-;; (defun my-semantic-hook ()
-;;   (semantic-tag-folding-mode 1))
-;; (add-hook 'semantic-init-hooks 'my-semantic-hook)
-
 ;; load contrib library
+(add-to-list 'load-path "~/.emacs.d/el-get/cedet/contrib/")
 (require 'eassist)
 
 ;; customisation of modes
@@ -40,11 +31,7 @@
   (local-set-key "\C-cj" 'semantic-ia-fast-jump)
   (local-set-key "\C-cq" 'semantic-ia-show-doc)
   (local-set-key "\C-cs" 'semantic-ia-show-summary)
-  (local-set-key "\C-cp" 'semantic-analyze-proto-impl-toggle)
-  ;; tag folding key bindings
-  ;; (local-set-key (kbd "C-c <left>") 'semantic-tag-folding-fold-block)
-  ;; (local-set-key (kbd "C-c <right>") 'semantic-tag-folding-show-block)
-  )
+  (local-set-key "\C-cp" 'semantic-analyze-proto-impl-toggle))
 (add-hook 'c-mode-common-hook 'cedet-hook)
 (add-hook 'lisp-mode-hook 'cedet-hook)
 (add-hook 'scheme-mode-hook 'cedet-hook)
@@ -54,6 +41,7 @@
 (defun c-mode-cedet-hook ()
   (local-set-key "\C-ct" 'eassist-switch-h-cpp)
   (local-set-key "\C-xt" 'eassist-switch-h-cpp)
+  (local-set-key "\C-ce" 'eassist-list-methods)
   (local-set-key "\C-c\C-r" 'semantic-symref)
   )
 (add-hook 'c-mode-common-hook 'c-mode-cedet-hook)

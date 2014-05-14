@@ -44,7 +44,7 @@
 (set-face-foreground 'font-lock-comment-delimiter-face "HotPink1")
 
 ;; Set basic text color
-(set-face-attribute 'default nil :foreground "white")
+;; (set-face-attribute 'default nil :foreground "white")
 
 ;; Delete selection
 (delete-selection-mode 1)
@@ -73,5 +73,9 @@
   (setq c-echo-syntactic-information-p t)
   )
 (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
+
+(setq default-directory "~/")
+
+(setq ibuffer-default-sorting-mode 'major-mode)
 
 (provide 'anton)
