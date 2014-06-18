@@ -16,7 +16,9 @@
 ;; add cc-mode (cc-mode not updated with the latest version)
 (add-to-list 'load-path "~/.emacs.d/cc-mode")
 
-(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+(require 'package)
+(add-to-list 'package-archives
+  '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
 (unless (require 'el-get nil 'noerror)
   (with-current-buffer
@@ -30,7 +32,13 @@
 
 ;; Set color theme
 ;; (color-theme-twilight)
-(color-theme-midnight)
+;; (color-theme-midnight)
+;; (color-theme-solarized-dark)
+;; (custom-set-variables '(solarized-contrast (quote high)))
+(color-theme-solarized-light)
+;; (color-theme-zenburn)
+
+;; (load-theme 'zenburn t)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
@@ -40,10 +48,14 @@
 (require 'debian-kit)
 (require 'russian-kit)
 
+;; my
 (require 'cc-mode)
-(require 'complete-conf)
-(require 'cedet-config)
-(require 'anton)
+(require 'my-conf)
+
+(require 'cedet-conf)
+;; (require 'complete-conf)
+;; (require 'cedet-conf)
+;; (require 'my-conf)
 
 ;;;;; Tramp settings
 ;; Sudo via SSH
@@ -58,6 +70,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(compilation-window-height nil)
+ '(custom-safe-themes (quote ("dc2ae53baca6dabf168ddc038e3c5add1a34a1947087e778e9d14f0e2d4b89a2" default)))
  '(ecb-auto-activate nil)
  '(ecb-auto-expand-tag-tree nil)
  '(ecb-auto-update-methods-after-save t)
@@ -80,7 +93,12 @@
  '(ecb-use-speedbar-instead-native-tree-buffer nil)
  '(ecb-windows-width 0.25)
  '(ede-project-directories (quote ("/Users/asmirnov/work/mystuff/resample/src" "/Users/asmirnov" "/Users/asmirnov/work/mystuff/tmp_proj" "/Users/asmirnov/work/mystuff")))
- '(yas-snippet-dirs (quote ("~/.emacs.d/el-get/yasnippet/snippets")) nil (yasnippet))
-)
+ '(yas-snippet-dirs (quote ("~/.emacs.d/el-get/yasnippet/snippets/")) nil (yasnippet)))
 
 ;; (ecb-activate)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(font-lock-comment-face ((t (:foreground "#81908f" :inverse-video nil :underline nil :slant normal :weight normal)))))

@@ -1,7 +1,3 @@
-;; Yasnippets
-(require 'yasnippet)
-(yas-global-mode 1)
-
 ;; Debian changelog
 (setq debian-changelog-mailing-address '"a.smirnov@i-free.com")
 (setq debian-changelog-full-name '"Anton Smirnov")
@@ -18,6 +14,9 @@
 
 ;; Pop mark
 (global-set-key "\C-xp" 'pop-to-mark-command)
+
+;; iedit
+(define-key global-map (kbd "C-c ;") 'iedit-mode)
 
 ;; Split window to show compilation results
 (defun my-compilation-hook ()
@@ -38,10 +37,12 @@
 (setq compilation-ask-about-save nil)
 
 ;; Set comments color
-(set-face-foreground 'font-lock-comment-face "HotPink1")
+;; (set-face-foreground 'font-lock-comment-face "dark green")
+;; (set-face-foreground 'font-lock-comment-face "HotPink1")
 
 ;; Set delimiter color
-(set-face-foreground 'font-lock-comment-delimiter-face "HotPink1")
+;; (set-face-foreground 'font-lock-comment-delimiter-face "dark green")
+;; (set-face-foreground 'font-lock-comment-delimiter-face "HotPink1")
 
 ;; Set basic text color
 ;; (set-face-attribute 'default nil :foreground "white")
@@ -61,6 +62,15 @@
 ;; Use spaces when indenting
 (setq-default indent-tabs-mode nil)
 
+;; Treat .h files as c++ files
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+
+(add-to-list 'auto-mode-alist '("\\.vert\\'" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.frag\\'" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.shader\\'" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.vertexshader\\'" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.fragmentshader\\'" . c++-mode))
+
 ;; cc-mode
 (defun my-c-initialization-hook ()
   (define-key c-mode-base-map "\C-m" 'c-context-line-break))
@@ -78,4 +88,4 @@
 
 (setq ibuffer-default-sorting-mode 'major-mode)
 
-(provide 'anton)
+(provide 'my-conf)
