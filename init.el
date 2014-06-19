@@ -16,6 +16,10 @@
 ;; add cc-mode (cc-mode not updated with the latest version)
 (add-to-list 'load-path "~/.emacs.d/cc-mode")
 
+;; (setenv "LD_LIBRARY_PATH" "/usr/local/opt/llvm/lib/")
+;; (add-to-list 'load-path "~/.emacs.d/irony-mode")
+;; (add-to-list 'load-path "~/.emacs.d/ac-irony")
+
 (require 'package)
 (add-to-list 'package-archives
   '("melpa" . "http://melpa.milkbox.net/packages/") t)
@@ -51,6 +55,10 @@
 ;; my
 (require 'cc-mode)
 (require 'my-conf)
+
+;; (require 'irony)
+;; (require 'ac-irony)
+
 
 (require 'cedet-conf)
 ;; (require 'complete-conf)
@@ -93,6 +101,8 @@
  '(ecb-use-speedbar-instead-native-tree-buffer nil)
  '(ecb-windows-width 0.25)
  '(ede-project-directories (quote ("/Users/asmirnov/work/mystuff/resample/src" "/Users/asmirnov" "/Users/asmirnov/work/mystuff/tmp_proj" "/Users/asmirnov/work/mystuff")))
+ '(irony-server-build-dir "~/.emacs.d/irony-mode/server/build/")
+ '(irony-server-install-prefix "/usr/local/bin/irony-server")
  '(yas-snippet-dirs (quote ("~/.emacs.d/el-get/yasnippet/snippets/")) nil (yasnippet)))
 
 ;; (ecb-activate)
