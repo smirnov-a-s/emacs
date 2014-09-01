@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *~
 tags
 tramp
@@ -13,3 +14,8 @@ semanticdb/*
 bookmarks
 *.elc
 elpa/
+=======
+/local-data/
+/build/
+/bin/
+>>>>>>> 3d038be071a5c00b736546d11436d295c17de4ed

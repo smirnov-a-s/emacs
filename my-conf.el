@@ -60,32 +60,8 @@
 (setq auto-save-default nil)
 
 ;; Use spaces when indenting
-(setq-default indent-tabs-mode nil)
-
-;; Treat .h files as c++ files
-(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
-
-(add-to-list 'auto-mode-alist '("\\.vert\\'" . c++-mode))
-(add-to-list 'auto-mode-alist '("\\.frag\\'" . c++-mode))
-(add-to-list 'auto-mode-alist '("\\.shader\\'" . c++-mode))
-(add-to-list 'auto-mode-alist '("\\.vertexshader\\'" . c++-mode))
-(add-to-list 'auto-mode-alist '("\\.fragmentshader\\'" . c++-mode))
-
-;; cc-mode
-(defun my-c-initialization-hook ()
-  (define-key c-mode-base-map "\C-m" 'c-context-line-break))
-(add-hook 'c-initialization-hook 'my-c-initialization-hook)
-
-;; Customizations for all modes in CC Mode.
-(defun my-c-mode-common-hook ()
-  (c-set-style "linux")
-  ;; (c-toggle-auto-newline 1)
-  (setq c-echo-syntactic-information-p t)
-  )
-(add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
+;; (setq-default indent-tabs-mode nil)
 
 (setq default-directory "~/")
-
-(setq ibuffer-default-sorting-mode 'major-mode)
 
 (provide 'my-conf)

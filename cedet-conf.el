@@ -1,12 +1,42 @@
 ;; auto-complete
 (require 'yasnippet)
 (yas-global-mode 1)
+(electric-indent-mode 1)
 
 (require 'auto-complete-config)
 (require 'auto-complete-c-headers)
 (require 'auto-complete-clang)
 
-;; CEDET
+;; cc-mode
+(defun my-c-initialization-hook ()
+  (define-key c-mode-base-map "\C-m" 'c-context-line-break))
+(add-hook 'c-initialization-hook 'my-c-initialization-hook)
+
+;; Customizations for all modes in CC Mode.
+(defun my-c-mode-common-hook ()
+  (c-set-style "linux")
+  (setq c-echo-syntactic-information-p t)
+  )
+(add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
+
+;; (defun my-c++-mode-hook ()
+;;   (c-set-style "stroustrup")
+;;   (c-set-offset 'substatement-open 0)
+;;   (setq c-echo-syntactic-information-p t)
+;; )
+;; (add-hook 'c++-mode-hook 'my-c++-mode-hook)
+
+(add-hook 'c++-mode-hook 'google-set-c-style)
+(add-hook 'c++-mode-hook 'google-make-newline-indent)
+
+;; Treat some files as c++ files
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.vert\\'" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.frag\\'" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.geom\\'" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.glsl\\'" . c++-mode))
+
+;; CEDET config
 ;; select which submodes we want to activate
 (add-to-list 'semantic-default-submodes 'global-semantic-mru-bookmark-mode)
 (add-to-list 'semantic-default-submodes 'global-semanticdb-minor-mode)
@@ -67,15 +97,32 @@
 
 (ac-set-trigger-key "TAB")
 
-(define-key ac-mode-map  "\M-/" 'auto-complete)
+;; (define-key ac-mode-map  "\M-/" 'auto-complete)
+(define-key ac-mode-map  "\M-/" 'ac-complete-clang)
+
+;; setting the ac-clang-flags to include these default include pathes
+(setq ac-clang-flags
+      (mapcar (lambda (item)(concat "-I" item))
+              (split-string
+               "
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/c++/v1
+/usr/local/include
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/5.1/include
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include
+/usr/include
+/usr/local/Cellar/glew/1.10.0/include/GL
+/usr/local/Cellar/glfw3/3.0.4/include/GLFW
+/System/Library/Frameworks/OpenGL.framework/Headers
+/opt/local/include/SOIL
+"
+               )))
 
 ;; auto-complete sources
 (defun my-c-mode-ac-sources-hook ()
-
-  (add-to-list 'ac-sources 'ac-source-gtags)
+  ;; (add-to-list 'ac-sources 'ac-source-gtags)
   (add-to-list 'ac-sources 'ac-source-semantic)
-  (add-to-list 'ac-sources 'ac-source-yasnippet)
   (add-to-list 'ac-sources 'ac-source-clang)
+  (add-to-list 'ac-sources 'ac-source-yasnippet)
 )
 (add-hook 'c-mode-common-hook 'my-c-mode-ac-sources-hook)
 
@@ -88,7 +135,12 @@
 (global-ede-mode 1)
 ;; (ede-enable-generic-projects)
 
+;; provide some additional include path for semantic
 (semantic-add-system-include "/Users/asmirnov/work/mystuff/cplusplus/demos/my_inc" 'c-mode)
 (semantic-add-system-include "/Users/asmirnov/work/mystuff/cplusplus/demos/my_inc" 'c++-mode)
+(semantic-add-system-include "/usr/local/Cellar/glew/1.10.0/include/GL" 'c++-mode)
+(semantic-add-system-include "/usr/local/Cellar/glfw3/3.0.4/include/GLFW" 'c++-mode)
+(semantic-add-system-include "/System/Library/Frameworks/OpenGL.framework/Headers" 'c++-mode)
+(semantic-add-system-include "/opt/local/include/SOIL" 'c++-mode)
 
 (provide 'cedet-conf)

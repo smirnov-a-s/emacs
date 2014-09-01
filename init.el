@@ -15,10 +15,7 @@
 
 ;; add cc-mode (cc-mode not updated with the latest version)
 (add-to-list 'load-path "~/.emacs.d/cc-mode")
-
-;; (setenv "LD_LIBRARY_PATH" "/usr/local/opt/llvm/lib/")
-;; (add-to-list 'load-path "~/.emacs.d/irony-mode")
-;; (add-to-list 'load-path "~/.emacs.d/ac-irony")
+(add-to-list 'load-path "~/.emacs.d/glsl-mode")
 
 (require 'package)
 (add-to-list 'package-archives
@@ -36,13 +33,8 @@
 
 ;; Set color theme
 ;; (color-theme-twilight)
-;; (color-theme-midnight)
 ;; (color-theme-solarized-dark)
-;; (custom-set-variables '(solarized-contrast (quote high)))
 (color-theme-solarized-light)
-;; (color-theme-zenburn)
-
-;; (load-theme 'zenburn t)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
@@ -54,16 +46,10 @@
 
 ;; my
 (require 'cc-mode)
+(require 'glsl-mode)
 (require 'my-conf)
 
-;; (require 'irony)
-;; (require 'ac-irony)
-
-
 (require 'cedet-conf)
-;; (require 'complete-conf)
-;; (require 'cedet-conf)
-;; (require 'my-conf)
 
 ;;;;; Tramp settings
 ;; Sudo via SSH
