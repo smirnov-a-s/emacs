@@ -7,6 +7,18 @@
 (require 'auto-complete-c-headers)
 (require 'auto-complete-clang)
 
+;; irony
+(add-hook 'c++-mode-hook 'irony-mode)
+(add-hook 'c-mode-hook 'irony-mode)
+(add-hook 'objc-mode-hook 'irony-mode)
+
+(defun my-irony-mode-hook ()
+  (define-key irony-mode-map [remap completion-at-point]
+    'irony-completion-at-point-async)
+  (define-key irony-mode-map [remap complete-symbol]
+    'irony-completion-at-point-async))
+(add-hook 'irony-mode-hook 'my-irony-mode-hook)
+
 ;; cc-mode
 (defun my-c-initialization-hook ()
   (define-key c-mode-base-map "\C-m" 'c-context-line-break))
@@ -100,6 +112,8 @@
 ;; (define-key ac-mode-map  "\M-/" 'auto-complete)
 (define-key ac-mode-map  "\M-/" 'ac-complete-clang)
 
+(define-key ac-mode-map  (kbd "M-RET") 'ac-complete-irony-async)
+
 ;; setting the ac-clang-flags to include these default include pathes
 (setq ac-clang-flags
       (mapcar (lambda (item)(concat "-I" item))
@@ -117,14 +131,29 @@
 "
                )))
 
+;; irony
+
+
 ;; auto-complete sources
 (defun my-c-mode-ac-sources-hook ()
   ;; (add-to-list 'ac-sources 'ac-source-gtags)
   (add-to-list 'ac-sources 'ac-source-semantic)
-  (add-to-list 'ac-sources 'ac-source-clang)
-  (add-to-list 'ac-sources 'ac-source-yasnippet)
+
+  ;; (add-to-list 'ac-sources 'ac-source-clang)
+
+  ;; (add-to-list 'ac-sources 'ac-source-yasnippet)
 )
 (add-hook 'c-mode-common-hook 'my-c-mode-ac-sources-hook)
+
+;; (defun my-ac-irony-setup ()
+  ;; be cautious, if yas is not enabled before (auto-complete-mode 1), overlays
+  ;; *may* persist after an expansion.
+  ;; (yas-minor-mode 1)
+  ;; (auto-complete-mode 1)
+
+  ;; (add-to-list 'ac-sources 'ac-source-irony)
+  ;; (define-key irony-mode-map (kbd "M-RET") 'ac-complete-irony-async))
+;; (add-hook 'irony-mode-hook 'my-ac-irony-setup)
 
 (global-auto-complete-mode t)
 

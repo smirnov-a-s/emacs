@@ -2,8 +2,8 @@
 (yas-global-mode 1)
 
 (require 'auto-complete-config)
-(require 'auto-complete-c-headers)
-(require 'auto-complete-clang)
+;; (require 'auto-complete-c-headers)
+;; (require 'auto-complete-clang)
 
 ;; default auto-complete config
 (ac-config-default)

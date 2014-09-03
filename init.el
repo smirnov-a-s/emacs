@@ -17,6 +17,9 @@
 (add-to-list 'load-path "~/.emacs.d/cc-mode")
 (add-to-list 'load-path "~/.emacs.d/glsl-mode")
 
+;; ???
+(setenv "LD_LIBRARY_PATH" "/usr/local/Cellar/llvm/3.4.2/lib/")
+
 (require 'package)
 (add-to-list 'package-archives
   '("melpa" . "http://melpa.milkbox.net/packages/") t)
