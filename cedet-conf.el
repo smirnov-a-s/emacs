@@ -1,23 +1,23 @@
-;; auto-complete
 (require 'yasnippet)
 (yas-global-mode 1)
+
 (electric-indent-mode 1)
 
-(require 'auto-complete-config)
-(require 'auto-complete-c-headers)
-(require 'auto-complete-clang)
+;; (require 'auto-complete-config)
+;; (require 'auto-complete-c-headers)
+;; (require 'auto-complete-clang)
 
 ;; irony
 (add-hook 'c++-mode-hook 'irony-mode)
 (add-hook 'c-mode-hook 'irony-mode)
 (add-hook 'objc-mode-hook 'irony-mode)
 
-(defun my-irony-mode-hook ()
-  (define-key irony-mode-map [remap completion-at-point]
-    'irony-completion-at-point-async)
-  (define-key irony-mode-map [remap complete-symbol]
-    'irony-completion-at-point-async))
-(add-hook 'irony-mode-hook 'my-irony-mode-hook)
+;; (defun my-irony-mode-hook ()
+;;   (define-key irony-mode-map [remap completion-at-point]
+;;     'irony-completion-at-point-async)
+;;   (define-key irony-mode-map [remap complete-symbol]
+;;     'irony-completion-at-point-async))
+;; (add-hook 'irony-mode-hook 'my-irony-mode-hook)
 
 ;; cc-mode
 (defun my-c-initialization-hook ()
@@ -40,6 +40,13 @@
 
 (add-hook 'c++-mode-hook 'google-set-c-style)
 (add-hook 'c++-mode-hook 'google-make-newline-indent)
+
+;; (add-to-list 'c-mode-hook
+;;              (lambda () (setq c-syntactic-indentation nil)))
+
+;; (add-to-list 'c++-mode-hook
+;;              (lambda () (setq c-syntactic-indentation nil)))
+
 
 ;; Treat some files as c++ files
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
@@ -102,48 +109,49 @@
   (semantic-load-enable-primary-ectags-support))
 
 ;; default auto-complete config
-(ac-config-default)
+;; (ac-config-default)
 
-(setq ac-auto-start nil)
-(setq ac-quick-help-delay 0.5)
+;; (setq ac-auto-start nil)
+;; (setq ac-quick-help-delay 0.5)
 
-(ac-set-trigger-key "TAB")
+;; (ac-set-trigger-key "TAB")
 
 ;; (define-key ac-mode-map  "\M-/" 'auto-complete)
-(define-key ac-mode-map  "\M-/" 'ac-complete-clang)
+;; (define-key ac-mode-map  "\M-/" 'ac-complete-clang)
 
-(define-key ac-mode-map  (kbd "M-RET") 'ac-complete-irony-async)
+;; (define-key ac-mode-map  "\M-/" 'company-complete)
+;; (global-set-key (kbd "M-/") 'company-complete)
+(global-set-key (kbd "M-/") 'company-complete-common)
+;; (define-key ac-mode-map  (kbd "M-RET") 'ac-complete-irony-async)
 
 ;; setting the ac-clang-flags to include these default include pathes
-(setq ac-clang-flags
-      (mapcar (lambda (item)(concat "-I" item))
-              (split-string
-               "
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/c++/v1
-/usr/local/include
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/5.1/include
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include
-/usr/include
-/usr/local/Cellar/glew/1.10.0/include/GL
-/usr/local/Cellar/glfw3/3.0.4/include/GLFW
-/System/Library/Frameworks/OpenGL.framework/Headers
-/opt/local/include/SOIL
-"
-               )))
+;; (setq ac-clang-flags
+;;       (mapcar (lambda (item)(concat "-I" item))
+;;               (split-string
+;;                "
+;; /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/c++/v1
+;; /usr/local/include
+;; /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/5.1/include
+;; /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include
+;; /usr/include
+;; /usr/local/Cellar/glew/1.10.0/include/GL
+;; /usr/local/Cellar/glfw3/3.0.4/include/GLFW
+;; /System/Library/Frameworks/OpenGL.framework/Headers
+;; /opt/local/include/SOIL
+;; "
+;;                )))
 
 ;; irony
-
-
 ;; auto-complete sources
-(defun my-c-mode-ac-sources-hook ()
+;; (defun my-c-mode-ac-sources-hook ()
   ;; (add-to-list 'ac-sources 'ac-source-gtags)
-  (add-to-list 'ac-sources 'ac-source-semantic)
+  ;; (add-to-list 'ac-sources 'ac-source-semantic)
 
   ;; (add-to-list 'ac-sources 'ac-source-clang)
 
   ;; (add-to-list 'ac-sources 'ac-source-yasnippet)
-)
-(add-hook 'c-mode-common-hook 'my-c-mode-ac-sources-hook)
+;; )
+;; (add-hook 'c-mode-common-hook 'my-c-mode-ac-sources-hook)
 
 ;; (defun my-ac-irony-setup ()
   ;; be cautious, if yas is not enabled before (auto-complete-mode 1), overlays
@@ -155,7 +163,17 @@
   ;; (define-key irony-mode-map (kbd "M-RET") 'ac-complete-irony-async))
 ;; (add-hook 'irony-mode-hook 'my-ac-irony-setup)
 
-(global-auto-complete-mode t)
+;; (global-auto-complete-mode t)
+
+;; company
+(add-hook 'after-init-hook 'global-company-mode)
+(eval-after-load 'company
+  '(add-to-list 'company-backends 'company-irony))
+
+;; (optional) adds CC special commands to `company-begin-commands' in order to
+;; trigger completion at interesting places, such as after scope operator
+;;     std::|
+(add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
 
 ;; SRecode
 (global-srecode-minor-mode 1)
