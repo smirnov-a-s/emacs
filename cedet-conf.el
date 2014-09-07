@@ -1,3 +1,6 @@
+;; set this env for irony mode
+(setenv "LD_LIBRARY_PATH" "/usr/local/Cellar/llvm/3.4.2/lib/")
+
 (require 'yasnippet)
 (yas-global-mode 1)
 
@@ -9,6 +12,7 @@
 
 ;; irony
 (add-hook 'c++-mode-hook 'irony-mode)
+(add-hook 'c++-mode-hook 'linum-mode)
 (add-hook 'c-mode-hook 'irony-mode)
 (add-hook 'objc-mode-hook 'irony-mode)
 

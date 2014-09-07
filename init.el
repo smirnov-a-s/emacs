@@ -12,13 +12,9 @@
 (add-to-list 'load-path "~/.emacs.d")
 (add-to-list 'load-path "~/.emacs.d/vendor")
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
-
-;; add cc-mode (cc-mode not updated with the latest version)
 (add-to-list 'load-path "~/.emacs.d/cc-mode")
 (add-to-list 'load-path "~/.emacs.d/glsl-mode")
 
-;; ???
-(setenv "LD_LIBRARY_PATH" "/usr/local/Cellar/llvm/3.4.2/lib/")
 
 (require 'package)
 (add-to-list 'package-archives
@@ -37,6 +33,7 @@
 ;; Set color theme
 ;; (color-theme-twilight)
 ;; (color-theme-solarized-dark)
+
 (color-theme-solarized-light)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -92,6 +89,7 @@
  '(ede-project-directories (quote ("/Users/asmirnov/work/mystuff/resample/src" "/Users/asmirnov" "/Users/asmirnov/work/mystuff/tmp_proj" "/Users/asmirnov/work/mystuff")))
  '(irony-server-build-dir "~/.emacs.d/irony-mode/server/build/")
  '(irony-server-install-prefix "/usr/local/bin/irony-server")
+ '(linum-format (quote dynamic))
  '(yas-snippet-dirs (quote ("~/.emacs.d/el-get/yasnippet/snippets/")) nil (yasnippet)))
 
 ;; (ecb-activate)
