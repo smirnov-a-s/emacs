@@ -15,7 +15,6 @@
 (add-to-list 'load-path "~/.emacs.d/cc-mode")
 (add-to-list 'load-path "~/.emacs.d/glsl-mode")
 
-
 (require 'package)
 (add-to-list 'package-archives
   '("melpa" . "http://melpa.milkbox.net/packages/") t)
@@ -33,7 +32,6 @@
 ;; Set color theme
 ;; (color-theme-twilight)
 ;; (color-theme-solarized-dark)
-
 (color-theme-solarized-light)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -44,14 +42,12 @@
 (require 'debian-kit)
 (require 'russian-kit)
 
-;; my
 (require 'cc-mode)
 (require 'glsl-mode)
 (require 'my-conf)
-
 (require 'cedet-conf)
 
-;;;;; Tramp settings
+;; Tramp settings
 ;; Sudo via SSH
 (set-default 'tramp-default-proxies-alist (quote ((".*" "\\`root\\'" "/ssh:%h:"))))
 

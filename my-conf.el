@@ -59,9 +59,6 @@
 ;; stop creating those #autosave# files
 (setq auto-save-default nil)
 
-;; Use spaces when indenting
-;; (setq-default indent-tabs-mode nil)
-
 (setq default-directory "~/")
 
 (provide 'my-conf)
