@@ -31,8 +31,8 @@
 
 ;; Set color theme
 ;; (color-theme-twilight)
-;; (color-theme-solarized-dark)
-(color-theme-solarized-light)
+(color-theme-solarized-dark)
+;; (color-theme-solarized-light)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
