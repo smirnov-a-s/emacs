@@ -6,25 +6,34 @@ src/CMakeFiles/irony-server.dir/Command.cpp.o: /Users/asmirnov/.emacs.d/el-get/i
 src/CMakeFiles/irony-server.dir/Command.cpp.o: /Users/asmirnov/.emacs.d/el-get/irony-mode/server/src/Commands.def
 src/CMakeFiles/irony-server.dir/Command.cpp.o: /Users/asmirnov/.emacs.d/el-get/irony-mode/server/src/support/CommandLineParser.h
 src/CMakeFiles/irony-server.dir/Command.cpp.o: /Users/asmirnov/.emacs.d/el-get/irony-mode/server/src/support/TemporaryFile.h
-src/CMakeFiles/irony-server.dir/Command.cpp.o: /usr/local/Cellar/llvm/3.4.2/include/clang-c/CXString.h
-src/CMakeFiles/irony-server.dir/Command.cpp.o: /usr/local/Cellar/llvm/3.4.2/include/clang-c/Index.h
-src/CMakeFiles/irony-server.dir/Command.cpp.o: /usr/local/Cellar/llvm/3.4.2/include/clang-c/Platform.h
+src/CMakeFiles/irony-server.dir/Command.cpp.o: /usr/local/Cellar/llvm/3.5.0/include/clang-c/BuildSystem.h
+src/CMakeFiles/irony-server.dir/Command.cpp.o: /usr/local/Cellar/llvm/3.5.0/include/clang-c/CXErrorCode.h
+src/CMakeFiles/irony-server.dir/Command.cpp.o: /usr/local/Cellar/llvm/3.5.0/include/clang-c/CXString.h
+src/CMakeFiles/irony-server.dir/Command.cpp.o: /usr/local/Cellar/llvm/3.5.0/include/clang-c/Documentation.h
+src/CMakeFiles/irony-server.dir/Command.cpp.o: /usr/local/Cellar/llvm/3.5.0/include/clang-c/Index.h
+src/CMakeFiles/irony-server.dir/Command.cpp.o: /usr/local/Cellar/llvm/3.5.0/include/clang-c/Platform.h
 
 src/CMakeFiles/irony-server.dir/Irony.cpp.o: /Users/asmirnov/.emacs.d/el-get/irony-mode/server/src/Irony.cpp
 src/CMakeFiles/irony-server.dir/Irony.cpp.o: /Users/asmirnov/.emacs.d/el-get/irony-mode/server/src/Irony.h
 src/CMakeFiles/irony-server.dir/Irony.cpp.o: /Users/asmirnov/.emacs.d/el-get/irony-mode/server/src/TUManager.h
 src/CMakeFiles/irony-server.dir/Irony.cpp.o: /Users/asmirnov/.emacs.d/el-get/irony-mode/server/src/support/NonCopyable.h
 src/CMakeFiles/irony-server.dir/Irony.cpp.o: /Users/asmirnov/.emacs.d/el-get/irony-mode/server/src/support/iomanip_quoted.h
-src/CMakeFiles/irony-server.dir/Irony.cpp.o: /usr/local/Cellar/llvm/3.4.2/include/clang-c/CXString.h
-src/CMakeFiles/irony-server.dir/Irony.cpp.o: /usr/local/Cellar/llvm/3.4.2/include/clang-c/Index.h
-src/CMakeFiles/irony-server.dir/Irony.cpp.o: /usr/local/Cellar/llvm/3.4.2/include/clang-c/Platform.h
+src/CMakeFiles/irony-server.dir/Irony.cpp.o: /usr/local/Cellar/llvm/3.5.0/include/clang-c/BuildSystem.h
+src/CMakeFiles/irony-server.dir/Irony.cpp.o: /usr/local/Cellar/llvm/3.5.0/include/clang-c/CXErrorCode.h
+src/CMakeFiles/irony-server.dir/Irony.cpp.o: /usr/local/Cellar/llvm/3.5.0/include/clang-c/CXString.h
+src/CMakeFiles/irony-server.dir/Irony.cpp.o: /usr/local/Cellar/llvm/3.5.0/include/clang-c/Documentation.h
+src/CMakeFiles/irony-server.dir/Irony.cpp.o: /usr/local/Cellar/llvm/3.5.0/include/clang-c/Index.h
+src/CMakeFiles/irony-server.dir/Irony.cpp.o: /usr/local/Cellar/llvm/3.5.0/include/clang-c/Platform.h
 
 src/CMakeFiles/irony-server.dir/TUManager.cpp.o: /Users/asmirnov/.emacs.d/el-get/irony-mode/server/src/TUManager.cpp
 src/CMakeFiles/irony-server.dir/TUManager.cpp.o: /Users/asmirnov/.emacs.d/el-get/irony-mode/server/src/TUManager.h
 src/CMakeFiles/irony-server.dir/TUManager.cpp.o: /Users/asmirnov/.emacs.d/el-get/irony-mode/server/src/support/NonCopyable.h
-src/CMakeFiles/irony-server.dir/TUManager.cpp.o: /usr/local/Cellar/llvm/3.4.2/include/clang-c/CXString.h
-src/CMakeFiles/irony-server.dir/TUManager.cpp.o: /usr/local/Cellar/llvm/3.4.2/include/clang-c/Index.h
-src/CMakeFiles/irony-server.dir/TUManager.cpp.o: /usr/local/Cellar/llvm/3.4.2/include/clang-c/Platform.h
+src/CMakeFiles/irony-server.dir/TUManager.cpp.o: /usr/local/Cellar/llvm/3.5.0/include/clang-c/BuildSystem.h
+src/CMakeFiles/irony-server.dir/TUManager.cpp.o: /usr/local/Cellar/llvm/3.5.0/include/clang-c/CXErrorCode.h
+src/CMakeFiles/irony-server.dir/TUManager.cpp.o: /usr/local/Cellar/llvm/3.5.0/include/clang-c/CXString.h
+src/CMakeFiles/irony-server.dir/TUManager.cpp.o: /usr/local/Cellar/llvm/3.5.0/include/clang-c/Documentation.h
+src/CMakeFiles/irony-server.dir/TUManager.cpp.o: /usr/local/Cellar/llvm/3.5.0/include/clang-c/Index.h
+src/CMakeFiles/irony-server.dir/TUManager.cpp.o: /usr/local/Cellar/llvm/3.5.0/include/clang-c/Platform.h
 
 src/CMakeFiles/irony-server.dir/main.cpp.o: /Users/asmirnov/.emacs.d/el-get/irony-mode/server/src/Command.h
 src/CMakeFiles/irony-server.dir/main.cpp.o: /Users/asmirnov/.emacs.d/el-get/irony-mode/server/src/Commands.def
@@ -34,9 +43,12 @@ src/CMakeFiles/irony-server.dir/main.cpp.o: /Users/asmirnov/.emacs.d/el-get/iron
 src/CMakeFiles/irony-server.dir/main.cpp.o: /Users/asmirnov/.emacs.d/el-get/irony-mode/server/src/support/CommandLineParser.h
 src/CMakeFiles/irony-server.dir/main.cpp.o: /Users/asmirnov/.emacs.d/el-get/irony-mode/server/src/support/NonCopyable.h
 src/CMakeFiles/irony-server.dir/main.cpp.o: /Users/asmirnov/.emacs.d/el-get/irony-mode/server/src/support/TemporaryFile.h
-src/CMakeFiles/irony-server.dir/main.cpp.o: /usr/local/Cellar/llvm/3.4.2/include/clang-c/CXString.h
-src/CMakeFiles/irony-server.dir/main.cpp.o: /usr/local/Cellar/llvm/3.4.2/include/clang-c/Index.h
-src/CMakeFiles/irony-server.dir/main.cpp.o: /usr/local/Cellar/llvm/3.4.2/include/clang-c/Platform.h
+src/CMakeFiles/irony-server.dir/main.cpp.o: /usr/local/Cellar/llvm/3.5.0/include/clang-c/BuildSystem.h
+src/CMakeFiles/irony-server.dir/main.cpp.o: /usr/local/Cellar/llvm/3.5.0/include/clang-c/CXErrorCode.h
+src/CMakeFiles/irony-server.dir/main.cpp.o: /usr/local/Cellar/llvm/3.5.0/include/clang-c/CXString.h
+src/CMakeFiles/irony-server.dir/main.cpp.o: /usr/local/Cellar/llvm/3.5.0/include/clang-c/Documentation.h
+src/CMakeFiles/irony-server.dir/main.cpp.o: /usr/local/Cellar/llvm/3.5.0/include/clang-c/Index.h
+src/CMakeFiles/irony-server.dir/main.cpp.o: /usr/local/Cellar/llvm/3.5.0/include/clang-c/Platform.h
 
 src/CMakeFiles/irony-server.dir/support/CommandLineParser.cpp.o: /Users/asmirnov/.emacs.d/el-get/irony-mode/server/src/support/CommandLineParser.cpp
 src/CMakeFiles/irony-server.dir/support/CommandLineParser.cpp.o: /Users/asmirnov/.emacs.d/el-get/irony-mode/server/src/support/CommandLineParser.h

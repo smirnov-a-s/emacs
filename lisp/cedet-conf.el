@@ -1,5 +1,9 @@
 ;; set this env for irony mode
-(setenv "LD_LIBRARY_PATH" "/usr/local/Cellar/llvm/3.4.2/lib/")
+
+;; (setenv "LD_LIBRARY_PATH" "/usr/local/Cellar/llvm34/3.4.2/lib/llvm-3.4/lib/")
+(setenv "LD_LIBRARY_PATH" "/usr/local/Cellar/llvm/3.5.0/lib")
+(setenv "C_INCLUDE_PATH" "/usr/local/Cellar/llvm/3.5.0/include/")
+(setenv "CPLUS_INCLUDE_PATH" "/usr/local/Cellar/llvm/3.5.0/include/")
 
 ;; Treat some files as C++ files
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
@@ -11,7 +15,7 @@
 (require 'yasnippet)
 (yas-global-mode 1)
 
-(electric-indent-mode 1)
+;; (electric-indent-mode 1)
 
 ;; linum mode for c++
 (add-hook 'c++-mode-hook 'linum-mode)
@@ -21,11 +25,6 @@
 (add-hook 'c-mode-hook 'irony-mode)
 (add-hook 'objc-mode-hook 'irony-mode)
 
-;; (optional) adds CC special commands to `company-begin-commands' in order to
-;; trigger completion at interesting places, such as after scope operator
-;;     std::|
-(add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
-
 ;; company mode
 (add-hook 'after-init-hook 'global-company-mode)
 
@@ -33,6 +32,11 @@
   '(progn
      (add-to-list 'company-backends 'company-irony)
      (add-to-list 'company-backends 'company-c-headers)))
+
+;; (optional) adds CC special commands to `company-begin-commands' in order to
+;; trigger completion at interesting places, such as after scope operator
+;;     std::|
+(add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
 
 (global-set-key (kbd "M-/") 'company-complete-common)
 
@@ -52,7 +56,8 @@
 (add-to-list 'semantic-default-submodes 'global-semanticdb-minor-mode)
 (add-to-list 'semantic-default-submodes 'global-semantic-idle-scheduler-mode)
 ;; (add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
-(add-to-list 'semantic-default-submodes 'global-cedet-m3-minor-mode)
+;; (add-to-list 'semantic-default-submodes 'global-cedet-m3-minor-mode)
+;; (add-to-list 'semantic-default-submodes 'global-cedet-m3-minor-mode)
 (add-to-list 'semantic-default-submodes 'global-semantic-highlight-func-mode)
 (add-to-list 'semantic-default-submodes 'global-semanticdb-minor-mode)
 ;; (add-to-list 'semantic-default-submodes 'global-semantic-decoration-mode)
@@ -87,11 +92,11 @@
 (semanticdb-enable-gnu-global-databases 'c-mode t)
 (semanticdb-enable-gnu-global-databases 'c++-mode t)
 
-(when (cedet-ectag-version-check t)
-  (semantic-load-enable-primary-ectags-support))
+;; (when (cedet-ectag-version-check t)
+;;   (semantic-load-enable-primary-ectags-support))
 
 ;; SRecode
-(global-srecode-minor-mode 1)
+;; (global-srecode-minor-mode 1)
 
 ;; EDE
 (global-ede-mode 1)

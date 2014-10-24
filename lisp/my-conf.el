@@ -31,7 +31,7 @@
 (add-hook 'compilation-mode-hook 'my-compilation-hook)
 
 ;; Use undo-tree
-(global-undo-tree-mode 1)
+;; (global-undo-tree-mode 1)
 
 ;; Autosave at compile
 (setq compilation-ask-about-save nil)

@@ -26,10 +26,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/local/Cellar/cmake/3.0.1/bin/cmake
+CMAKE_COMMAND = /usr/local/Cellar/cmake/3.0.2/bin/cmake
 
 # The command to remove a file.
-RM = /usr/local/Cellar/cmake/3.0.1/bin/cmake -E remove -f
+RM = /usr/local/Cellar/cmake/3.0.2/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -168,15 +168,15 @@ src/CMakeFiles/irony-server.dir/main.cpp.o: src/CMakeFiles/irony-server.dir/flag
 src/CMakeFiles/irony-server.dir/main.cpp.o: /Users/asmirnov/.emacs.d/el-get/irony-mode/server/src/main.cpp
 	$(CMAKE_COMMAND) -E cmake_progress_report /Users/asmirnov/.emacs.d/irony-mode/server/build/CMakeFiles $(CMAKE_PROGRESS_6)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/irony-server.dir/main.cpp.o"
-	cd /Users/asmirnov/.emacs.d/irony-mode/server/build/src && /usr/bin/c++   $(CXX_DEFINES) -DIRONY_PACKAGE_VERSION=\"0.1.1-cvs\" $(CXX_FLAGS) -o CMakeFiles/irony-server.dir/main.cpp.o -c /Users/asmirnov/.emacs.d/el-get/irony-mode/server/src/main.cpp
+	cd /Users/asmirnov/.emacs.d/irony-mode/server/build/src && /usr/bin/c++   $(CXX_DEFINES) -DIRONY_PACKAGE_VERSION=\"0.1.1\" $(CXX_FLAGS) -o CMakeFiles/irony-server.dir/main.cpp.o -c /Users/asmirnov/.emacs.d/el-get/irony-mode/server/src/main.cpp
 
 src/CMakeFiles/irony-server.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/irony-server.dir/main.cpp.i"
-	cd /Users/asmirnov/.emacs.d/irony-mode/server/build/src && /usr/bin/c++  $(CXX_DEFINES) -DIRONY_PACKAGE_VERSION=\"0.1.1-cvs\" $(CXX_FLAGS) -E /Users/asmirnov/.emacs.d/el-get/irony-mode/server/src/main.cpp > CMakeFiles/irony-server.dir/main.cpp.i
+	cd /Users/asmirnov/.emacs.d/irony-mode/server/build/src && /usr/bin/c++  $(CXX_DEFINES) -DIRONY_PACKAGE_VERSION=\"0.1.1\" $(CXX_FLAGS) -E /Users/asmirnov/.emacs.d/el-get/irony-mode/server/src/main.cpp > CMakeFiles/irony-server.dir/main.cpp.i
 
 src/CMakeFiles/irony-server.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/irony-server.dir/main.cpp.s"
-	cd /Users/asmirnov/.emacs.d/irony-mode/server/build/src && /usr/bin/c++  $(CXX_DEFINES) -DIRONY_PACKAGE_VERSION=\"0.1.1-cvs\" $(CXX_FLAGS) -S /Users/asmirnov/.emacs.d/el-get/irony-mode/server/src/main.cpp -o CMakeFiles/irony-server.dir/main.cpp.s
+	cd /Users/asmirnov/.emacs.d/irony-mode/server/build/src && /usr/bin/c++  $(CXX_DEFINES) -DIRONY_PACKAGE_VERSION=\"0.1.1\" $(CXX_FLAGS) -S /Users/asmirnov/.emacs.d/el-get/irony-mode/server/src/main.cpp -o CMakeFiles/irony-server.dir/main.cpp.s
 
 src/CMakeFiles/irony-server.dir/main.cpp.o.requires:
 .PHONY : src/CMakeFiles/irony-server.dir/main.cpp.o.requires
@@ -206,8 +206,7 @@ bin/irony-server: src/CMakeFiles/irony-server.dir/Irony.cpp.o
 bin/irony-server: src/CMakeFiles/irony-server.dir/TUManager.cpp.o
 bin/irony-server: src/CMakeFiles/irony-server.dir/main.cpp.o
 bin/irony-server: src/CMakeFiles/irony-server.dir/build.make
-bin/irony-server: /usr/local/Cellar/llvm/3.4.2/lib/libclang.dylib
-bin/irony-server: /Users/asmirnov/.emacs.d/el-get/irony-mode/server/src/Commands.def
+bin/irony-server: /usr/local/Cellar/llvm/3.5.0/lib/libclang.dylib
 bin/irony-server: src/CMakeFiles/irony-server.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable ../bin/irony-server"
 	cd /Users/asmirnov/.emacs.d/irony-mode/server/build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/irony-server.dir/link.txt --verbose=$(VERBOSE)
