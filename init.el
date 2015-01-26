@@ -65,7 +65,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(compilation-window-height nil)
- '(custom-safe-themes (quote ("dc2ae53baca6dabf168ddc038e3c5add1a34a1947087e778e9d14f0e2d4b89a2" default)))
+ '(custom-safe-themes
+   (quote
+    ("dc2ae53baca6dabf168ddc038e3c5add1a34a1947087e778e9d14f0e2d4b89a2" default)))
  '(ecb-auto-activate nil)
  '(ecb-auto-expand-tag-tree nil)
  '(ecb-auto-update-methods-after-save t)
@@ -87,10 +89,23 @@
  '(ecb-tree-do-not-leave-window-after-select nil)
  '(ecb-use-speedbar-instead-native-tree-buffer nil)
  '(ecb-windows-width 0.25)
- '(ede-project-directories (quote ("/Users/asmirnov/work/mystuff/resample/src" "/Users/asmirnov" "/Users/asmirnov/work/mystuff/tmp_proj" "/Users/asmirnov/work/mystuff")))
+ '(ede-project-directories
+   (quote
+    ("/Users/asmirnov/work/mystuff/resample/src" "/Users/asmirnov" "/Users/asmirnov/work/mystuff/tmp_proj" "/Users/asmirnov/work/mystuff")))
  '(irony-server-build-dir "~/.emacs.d/irony-mode/server/build/")
  '(irony-server-install-prefix "/usr/local/bin/irony-server")
  '(linum-format (quote dynamic))
+ '(lua-comment-start "--")
+ '(lua-comment-start-skip
+   "--\\\\[\\\\[\\\\([^][]+\\\\)\\\\]\\\\(\\\\[\\\\([^][]+\\\\)\\\\]\\\\)?\\\\]")
+ '(lua-default-command-switches (quote ("-i")))
+ '(lua-indent-level 4)
  '(solarized-broken-srgb t)
  '(solarized-contrast (quote normal))
  '(yas-snippet-dirs (quote ("~/.emacs.d/el-get/yasnippet/snippets/")) nil (yasnippet)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

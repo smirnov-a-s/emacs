@@ -13,3 +13,5 @@ semanticdb/*
 bookmarks
 *.elc
 elpa/
+irony/
+irony-mode/

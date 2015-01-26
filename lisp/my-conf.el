@@ -61,4 +61,14 @@
 
 (setq default-directory "~/")
 
+;; (require 'lua-mode)
+
+(defun my-lua-hook ()
+  (setq tab-width 4)
+  (setq indent-tabs-mode t)
+  )
+(add-hook 'lua-mode-hook 'my-lua-hook)
+
+
+
 (provide 'my-conf)

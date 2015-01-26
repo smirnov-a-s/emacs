@@ -1,10 +1,3 @@
-;; set this env for irony mode
-
-;; (setenv "LD_LIBRARY_PATH" "/usr/local/Cellar/llvm34/3.4.2/lib/llvm-3.4/lib/")
-(setenv "LD_LIBRARY_PATH" "/usr/local/Cellar/llvm/3.5.0/lib")
-(setenv "C_INCLUDE_PATH" "/usr/local/Cellar/llvm/3.5.0/include/")
-(setenv "CPLUS_INCLUDE_PATH" "/usr/local/Cellar/llvm/3.5.0/include/")
-
 ;; Treat some files as C++ files
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.vert\\'" . c++-mode))
@@ -19,6 +12,8 @@
 
 ;; linum mode for c++
 (add-hook 'c++-mode-hook 'linum-mode)
+(add-hook 'c++-mode-hook 'electric-pair-mode)
+
 
 ;; init irony mode
 (add-hook 'c++-mode-hook 'irony-mode)
@@ -31,7 +26,13 @@
 (eval-after-load 'company
   '(progn
      (add-to-list 'company-backends 'company-irony)
-     (add-to-list 'company-backends 'company-c-headers)))
+     (add-to-list 'company-backends 'company-c-headers)
+     ))
+
+;; (eval-after-load 'company
+;;   '(progn
+;;      (add-to-list 'company-backends 'company-irony)))
+
 
 ;; (optional) adds CC special commands to `company-begin-commands' in order to
 ;; trigger completion at interesting places, such as after scope operator
@@ -39,6 +40,7 @@
 (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
 
 (global-set-key (kbd "M-/") 'company-complete-common)
+;; (global-set-key (kbd "M-/") 'company-complete)
 
 ;; Set style for C
 (defun my-c-mode-common-hook ()

@@ -13,18 +13,13 @@ set(CMAKE_DEPENDS_CHECK_CXX
   )
 set(CMAKE_CXX_COMPILER_ID "Clang")
 
-# Preprocessor definitions for this target.
-set(CMAKE_TARGET_DEFINITIONS
-  "CLANG_BUILTIN_HEADERS_DIR=\"/usr/local/Cellar/llvm/3.5.0/lib/clang/3.5.0/include\""
-  )
-
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
   )
 
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
-  "/usr/local/Cellar/llvm/3.5.0/include"
+  "/usr/local/opt/llvm/include"
   "/Users/asmirnov/.emacs.d/el-get/irony-mode/server/src"
   )
 set(CMAKE_CXX_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})
