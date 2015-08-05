@@ -29,7 +29,7 @@
 (el-get 'sync)
 
 ;; Set color theme
-(add-to-list 'load-path "~/.emacs.d/emacs24-inkpot")
+(add-to-list 'load-path "~/.emacs.d/vendor/emacs24-inkpot")
 (require 'inkpot-theme)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -39,8 +39,10 @@
 (require 'org-kit)
 (require 'debian-kit)
 (require 'russian-kit)
-(require 'my-conf)
-(require 'cedet-conf)
+(require 'c-kit)
+;; (require 'my-conf)
+;; (require 'cedet-conf)
+
 
 ;; Tramp settings
 ;; Sudo via SSH

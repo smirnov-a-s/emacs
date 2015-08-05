@@ -49,4 +49,29 @@
 
 (add-to-list 'auto-mode-alist '("\\rfc\\[0-9\\]+.txt$" . irfc-mode))
 
+;;
+;; Set f6 to jump to next frame
+(global-set-key [f6] 'next-multiframe-window)
+(global-set-key (kbd "M-<left>") 'previous-buffer)
+(global-set-key (kbd "M-<right>") 'next-buffer)
+
+;; Pop mark
+(global-set-key "\C-xp" 'pop-to-mark-command)
+
+;; Delete selection
+(delete-selection-mode 1)
+
+;; Enable CUA selection mode without the C-z/C-x/C-c/C-v bindings.
+(cua-selection-mode 1)
+
+;; stop creating those backup~ files
+(setq make-backup-files nil)
+
+;; stop creating those #autosave# files
+(setq auto-save-default nil)
+
+(setq default-directory "~/")
+
+(add-to-list 'auto-mode-alist '("\\.m\\'" . octave-mode))
+
 (provide 'essentials-kit)
