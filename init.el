@@ -40,9 +40,6 @@
 (require 'debian-kit)
 (require 'russian-kit)
 (require 'c-kit)
-;; (require 'my-conf)
-;; (require 'cedet-conf)
-
 
 ;; Tramp settings
 ;; Sudo via SSH
