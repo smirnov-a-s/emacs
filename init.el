@@ -13,12 +13,6 @@
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (add-to-list 'load-path "~/.emacs.d/vendor")
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
-;; (add-to-list 'load-path "~/.emacs.d/cc-mode")
-;; (add-to-list 'load-path "~/.emacs.d/ecb")
-
-;; (require 'ecb)
-
-;; (add-to-list 'load-path "~/.emacs.d/glsl-mode")
 
 (require 'package)
 (add-to-list 'package-archives
@@ -35,11 +29,8 @@
 (el-get 'sync)
 
 ;; Set color theme
-;; (color-theme-twilight)
 (add-to-list 'load-path "~/.emacs.d/emacs24-inkpot")
 (require 'inkpot-theme)
-;; (color-theme-solarized-dark)
-;; (color-theme-solarized-light)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
@@ -48,9 +39,6 @@
 (require 'org-kit)
 (require 'debian-kit)
 (require 'russian-kit)
-
-;; (require 'cc-mode)
-;; (require 'glsl-mode)
 (require 'my-conf)
 (require 'cedet-conf)
 
@@ -66,16 +54,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(c-basic-offset 4)
  '(compilation-window-height nil)
  '(custom-safe-themes
    (quote
     ("dc2ae53baca6dabf168ddc038e3c5add1a34a1947087e778e9d14f0e2d4b89a2" default)))
- '(ede-project-directories
-   (quote
-    ("/Users/asmirnov/work/mystuff/resample/src" "/Users/asmirnov" "/Users/asmirnov/work/mystuff/tmp_proj" "/Users/asmirnov/work/mystuff")))
- '(irony-server-build-dir "~/.emacs.d/irony-mode/server/build/")
- '(irony-server-install-prefix "/usr/local/bin/irony-server")
  '(linum-format (quote dynamic))
  '(yas-snippet-dirs (quote ("~/.emacs.d/el-get/yasnippet/snippets/")) nil (yasnippet)))
 (custom-set-faces
