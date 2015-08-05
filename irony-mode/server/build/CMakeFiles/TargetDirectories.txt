@@ -1,1 +1,0 @@
-/Users/asmirnov/.emacs.d/irony-mode/server/build/src/CMakeFiles/irony-server.dir

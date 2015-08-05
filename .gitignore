@@ -15,3 +15,8 @@ bookmarks
 elpa/
 irony/
 irony-mode/
+projectile.cache
+projectile-bookmarks.eld
+recentf
+ido.last
+smex-items

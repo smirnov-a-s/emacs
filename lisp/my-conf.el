@@ -7,16 +7,13 @@
 
 ;; Set f6 to jump to next frame
 (global-set-key [f6] 'next-multiframe-window)
+(local-set-key "\C-ce" 'moo-jump-local)
 
-;; Hide/show ecb-window
-(global-set-key [f7] 'ecb-hide-ecb-windows)
-(global-set-key [f8] 'ecb-show-ecb-windows)
+(global-set-key (kbd "M-<left>") 'previous-buffer)
+(global-set-key (kbd "M-<right>") 'next-buffer)
 
 ;; Pop mark
 (global-set-key "\C-xp" 'pop-to-mark-command)
-
-;; iedit
-(define-key global-map (kbd "C-c ;") 'iedit-mode)
 
 ;; Split window to show compilation results
 (defun my-compilation-hook ()
@@ -60,15 +57,5 @@
 (setq auto-save-default nil)
 
 (setq default-directory "~/")
-
-;; (require 'lua-mode)
-
-(defun my-lua-hook ()
-  (setq tab-width 4)
-  (setq indent-tabs-mode t)
-  )
-(add-hook 'lua-mode-hook 'my-lua-hook)
-
-
 
 (provide 'my-conf)
