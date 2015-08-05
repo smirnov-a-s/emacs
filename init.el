@@ -36,7 +36,9 @@
 
 ;; Set color theme
 ;; (color-theme-twilight)
-(color-theme-solarized-dark)
+(add-to-list 'load-path "~/.emacs.d/emacs24-inkpot")
+(require 'inkpot-theme)
+;; (color-theme-solarized-dark)
 ;; (color-theme-solarized-light)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -64,6 +66,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(c-basic-offset 4)
  '(compilation-window-height nil)
  '(custom-safe-themes
    (quote
@@ -95,17 +98,11 @@
  '(irony-server-build-dir "~/.emacs.d/irony-mode/server/build/")
  '(irony-server-install-prefix "/usr/local/bin/irony-server")
  '(linum-format (quote dynamic))
- '(lua-comment-start "--")
- '(lua-comment-start-skip
-   "--\\\\[\\\\[\\\\([^][]+\\\\)\\\\]\\\\(\\\\[\\\\([^][]+\\\\)\\\\]\\\\)?\\\\]")
- '(lua-default-command-switches (quote ("-i")))
- '(lua-indent-level 4)
- '(solarized-broken-srgb t)
- '(solarized-contrast (quote normal))
  '(yas-snippet-dirs (quote ("~/.emacs.d/el-get/yasnippet/snippets/")) nil (yasnippet)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(font-lock-constant-face ((t (:foreground "dark cyan"))))
+ '(font-lock-string-face ((t (:background "gray25" :foreground "#ffcd8b")))))

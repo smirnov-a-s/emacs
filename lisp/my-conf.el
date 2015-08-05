@@ -15,9 +15,6 @@
 ;; Pop mark
 (global-set-key "\C-xp" 'pop-to-mark-command)
 
-;; iedit
-(define-key global-map (kbd "C-c ;") 'iedit-mode)
-
 ;; Split window to show compilation results
 (defun my-compilation-hook ()
   (when (not (get-buffer-window "*compilation*"))
