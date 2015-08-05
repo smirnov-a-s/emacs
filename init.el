@@ -13,12 +13,6 @@
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (add-to-list 'load-path "~/.emacs.d/vendor")
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
-;; (add-to-list 'load-path "~/.emacs.d/cc-mode")
-(add-to-list 'load-path "~/.emacs.d/ecb")
-
-(require 'ecb)
-
-;; (add-to-list 'load-path "~/.emacs.d/glsl-mode")
 
 (require 'package)
 (add-to-list 'package-archives
@@ -35,11 +29,8 @@
 (el-get 'sync)
 
 ;; Set color theme
-;; (color-theme-twilight)
-(add-to-list 'load-path "~/.emacs.d/emacs24-inkpot")
+(add-to-list 'load-path "~/.emacs.d/vendor/emacs24-inkpot")
 (require 'inkpot-theme)
-;; (color-theme-solarized-dark)
-;; (color-theme-solarized-light)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
@@ -48,11 +39,7 @@
 (require 'org-kit)
 (require 'debian-kit)
 (require 'russian-kit)
-
-;; (require 'cc-mode)
-;; (require 'glsl-mode)
-(require 'my-conf)
-(require 'cedet-conf)
+(require 'c-kit)
 
 ;; Tramp settings
 ;; Sudo via SSH
@@ -71,32 +58,6 @@
  '(custom-safe-themes
    (quote
     ("dc2ae53baca6dabf168ddc038e3c5add1a34a1947087e778e9d14f0e2d4b89a2" default)))
- '(ecb-auto-activate nil)
- '(ecb-auto-expand-tag-tree nil)
- '(ecb-auto-update-methods-after-save t)
- '(ecb-display-image-icons-for-semantic-tags t)
- '(ecb-font-lock-tags t)
- '(ecb-highlight-tag-with-point nil)
- '(ecb-highlight-tag-with-point-delay 0.25)
- '(ecb-layout-name "left9")
- '(ecb-methods-filter-replace-existing (quote never))
- '(ecb-methods-menu-sorter (quote identity))
- '(ecb-methods-separate-prototypes t)
- '(ecb-options-version "2.40")
- '(ecb-process-non-semantic-files t)
- '(ecb-show-only-positioned-tags t)
- '(ecb-source-path (quote ("~/work/mystuff/utils/src/")))
- '(ecb-tip-of-the-day nil)
- '(ecb-toggle-layout-sequence (quote ("left9" "leftsrc")))
- '(ecb-tree-buffer-style (quote ascii-guides))
- '(ecb-tree-do-not-leave-window-after-select nil)
- '(ecb-use-speedbar-instead-native-tree-buffer nil)
- '(ecb-windows-width 0.25)
- '(ede-project-directories
-   (quote
-    ("/Users/asmirnov/work/mystuff/resample/src" "/Users/asmirnov" "/Users/asmirnov/work/mystuff/tmp_proj" "/Users/asmirnov/work/mystuff")))
- '(irony-server-build-dir "~/.emacs.d/irony-mode/server/build/")
- '(irony-server-install-prefix "/usr/local/bin/irony-server")
  '(linum-format (quote dynamic))
  '(yas-snippet-dirs (quote ("~/.emacs.d/el-get/yasnippet/snippets/")) nil (yasnippet)))
 (custom-set-faces
@@ -105,4 +66,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(font-lock-constant-face ((t (:foreground "dark cyan"))))
- '(font-lock-string-face ((t (:background "gray25" :foreground "#ffcd8b")))))
+ '(font-lock-string-face ((t (:background "gray16" :foreground "#ffcd8b")))))

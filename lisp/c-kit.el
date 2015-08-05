@@ -1,20 +1,10 @@
 ;; Treat some files as C++ files
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
-(add-to-list 'auto-mode-alist '("\\.m\\'" . octave-mode))
-
-;; iedit
-(define-key global-map (kbd "C-c ;") 'iedit-mode)
+(add-to-list 'auto-mode-alist '("\\.cpp\\'" . c++-mode))
 
 ;; helm
 (require 'helm-config)
 (helm-mode 1)
-
-(global-set-key "\C-xb" 'helm-mini)
-(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "M-y") 'helm-show-kill-ring)
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
-(global-set-key (kbd "C-c h o") 'helm-occur)
-(global-set-key (kbd "C-h SPC") 'helm-all-mark-rings)
 
 (setq helm-M-x-fuzzy-match t)
 (setq helm-buffers-fuzzy-matching t)
@@ -25,45 +15,62 @@
 (helm-projectile-on)
 (setq projectile-enable-caching t)
 
+(local-set-key "\C-ce" 'moo-jump-local)
+(global-set-key "\C-xb" 'helm-mini)
+(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "M-y") 'helm-show-kill-ring)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
+(global-set-key (kbd "C-c h o") 'helm-occur)
+(global-set-key (kbd "C-h SPC") 'helm-all-mark-rings)
+
 ;; function args
 (fa-config-default)
 
 (require 'yasnippet)
 (yas-global-mode 1)
 
-(electric-indent-mode 1)
-(electric-pair-mode 1)
-
-;; linum mode for c++
-(add-hook 'c++-mode-hook 'linum-mode)
-
-;; init irony mode
-;; (add-hook 'c++-mode-hook 'irony-mode)
-;; (add-hook 'c-mode-hook 'irony-mode)
-;; (add-hook 'objc-mode-hook 'irony-mode)
-
 ;; company mode
 (add-hook 'after-init-hook 'global-company-mode)
 
 (eval-after-load 'company
   '(progn
-     ;; (add-to-list 'company-backends 'company-irony)
-     ;; (add-to-list 'company-backends 'company-semantic)
      (add-to-list 'company-backends 'company-c-headers)
      ))
-
-;; (optional) adds CC special commands to `company-begin-commands' in order to
-;; trigger completion at interesting places, such as after scope operator
-;;     std::|
-;; (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
 
 ;; (global-set-key (kbd "M-/") 'company-complete-common)
 (global-set-key (kbd "M-/") 'company-complete)
 
+(electric-indent-mode 1)
+(electric-pair-mode 1)
+
+;; iedit
+(define-key global-map (kbd "C-c ;") 'iedit-mode)
+
+;; Autosave at compile
+(setq compilation-ask-about-save nil)
+
+(global-set-key [f5] 'compile)
+
+;; Split window to show compilation results
+(defun my-compilation-hook ()
+  (when (not (get-buffer-window "*compilation*"))
+    (save-selected-window
+      (save-excursion
+        (let* ((w (split-window-vertically))
+               (h (window-height w)))
+          (select-window w)
+          (switch-to-buffer "*compilation*")
+          (shrink-window (- h 15)))))))
+(add-hook 'compilation-mode-hook 'my-compilation-hook)
+
 ;; Set style for C
 (defun my-c-mode-common-hook ()
-  (c-set-style "k&r")
+  ;; (c-set-style "k&r")
   ;; (setq c-echo-syntactic-information-p t)
+  (add-hook 'c-mode-hook 'google-set-c-style)
+  (add-hook 'c-mode-hook 'google-make-newline-indent)
+  (setq c-basic-offset 4)
+  (setq tab-width 4)
   )
 (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
 
@@ -71,7 +78,10 @@
   (add-hook 'c++-mode-hook 'google-set-c-style)
   (add-hook 'c++-mode-hook 'google-make-newline-indent)
   (setq c-basic-offset 4)
-  (setq c-echo-syntactic-information-p nil)
+  (setq tab-width 4)
+  (linum-mode)
+  ;; (setq c-echo-syntactic-information-p t)
+  ;; (c-tab-always-indent t)
   )
 (add-hook 'c++-mode-hook 'my-c++-mode-hook)
 
@@ -88,8 +98,6 @@
 ;; (add-to-list 'semantic-default-submodes 'global-semantic-highlight-func-mode)
 (add-to-list 'semantic-default-submodes 'global-semanticdb-minor-mode)
 
-;; (setq semantic-idle-scheduler-idle-time 0.1)
-
 ;; (add-to-list 'semantic-default-submodes 'global-semantic-decoration-mode)
 
 ;; Activate semantic
@@ -104,12 +112,13 @@
 
 ;; load contrib library
 (add-to-list 'load-path "~/.emacs.d/el-get/cedet/contrib/")
-;; (require 'eassist)
+(require 'eassist)
 
 ;; customisation of modes
 (defun my-cedet-hook ()
-  (local-set-key [f2] 'semantic-ia-fast-jump)
   ;; (local-set-key "\C-cj" 'semantic-ia-fast-jump)
+  (local-set-key [f2] 'semantic-ia-fast-jump)
+  ;; (local-set-key "\C-ct" 'helm-projectile-find-other-file)
   (local-set-key [f4] 'helm-projectile-find-other-file)
   (local-set-key "\C-ce" 'moo-jump-local)
   (local-set-key "\C-ci" 'semantic-ia-show-summary)
@@ -124,14 +133,4 @@
 (semanticdb-enable-gnu-global-databases 'c-mode t)
 (semanticdb-enable-gnu-global-databases 'c++-mode t)
 
-;; (when (cedet-ectag-version-check t)
-;;   (semantic-load-enable-primary-ectags-support))
-
-;; SRecode
-;; (global-srecode-minor-mode 1)
-
-;; EDE
-;; (global-ede-mode 1)
-;; (ede-enable-generic-projects)
-
-(provide 'cedet-conf)
+(provide 'c-kit)
