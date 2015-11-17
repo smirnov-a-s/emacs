@@ -120,8 +120,8 @@
 ;; (global-set-key (kbd "M-/") 'company-complete-common)
 ;; (global-set-key (kbd "M-/") 'company-complete)
 
-(electric-indent-mode 1)
-(electric-pair-mode 1)
+(electric-indent-mode t)
+(electric-pair-mode t)
 
 ;; iedit
 (define-key global-map (kbd "C-c ;") 'iedit-mode)

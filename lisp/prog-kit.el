@@ -78,6 +78,7 @@
   (local-set-key "\C-ce" 'moo-jump-local)
   (local-set-key "\C-ci" 'semantic-ia-show-summary)
   (local-set-key "\C-c\C-r" 'semantic-symref-symbol)
+  (idle-highlight-mode t)
   )
 (add-hook 'c-mode-common-hook 'my-cedet-hook)
 (add-hook 'lisp-mode-hook 'my-cedet-hook)
@@ -88,4 +89,10 @@
 (semanticdb-enable-gnu-global-databases 'c-mode t)
 (semanticdb-enable-gnu-global-databases 'c++-mode t)
 
-(provide 'c-kit)
+(defun my-octave-mode-hook ()
+  (idle-highlight-mode t)
+  (highlight-symbol-mode t)
+  )
+(add-hook 'octave-mode-hook 'my-octave-mode-hook)
+
+(provide 'prog-kit)

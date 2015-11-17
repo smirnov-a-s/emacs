@@ -39,7 +39,8 @@
 (require 'org-kit)
 (require 'debian-kit)
 (require 'russian-kit)
-(require 'c-kit)
+;; (require 'c-kit)
+(require 'prog-kit)
 
 ;; Tramp settings
 ;; Sudo via SSH
