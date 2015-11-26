@@ -101,14 +101,6 @@
 (require 'yasnippet)
 (yas-global-mode 1)
 
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
-(ac-config-default)
-(ac-set-trigger-key "TAB")
-(setq ac-auto-start nil)
-(add-to-list 'ac-modes 'octave-mode)
-(global-auto-complete-mode 1)
-
 ;; company mode
 ;; (add-hook 'after-init-hook 'global-company-mode)
 
