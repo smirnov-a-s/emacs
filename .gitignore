@@ -21,3 +21,4 @@ recentf
 ido.last
 smex-items
 .python-environments/
+.mc-lists.el
