@@ -113,19 +113,6 @@
 (semantic-add-system-include "usr/include/i386-linux-gnu")
 (semantic-add-system-include "usr/include")
 
-(semantic-add-system-include "/home/anton/buildroot/home/user/repos/git_project/signal/signal/")
-
-;;
-(global-ede-mode t)
-
-(ede-cpp-root-project "Signal"
-                :name "Signal Project"
-                :file "/home/anton/buildroot/home/user/repos/git_project/signal/signal/.projectile"
-                :include-path '("/"
-                               )
-                :system-include-path '("~/exp/include"))
-;;
-
 (add-hook 'python-mode-hook 'jedi:setup)
 (setq jedi:complete-on-dot t)                 ; optional
 

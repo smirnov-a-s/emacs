@@ -41,6 +41,7 @@
 (require 'russian-kit)
 ;; (require 'c-kit)
 (require 'prog-kit)
+(require 'ede-kit)
 
 ;; Tramp settings
 ;; Sudo via SSH
