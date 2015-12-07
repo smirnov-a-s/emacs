@@ -1,50 +1,5 @@
-;; Treat some files as C++ files
-(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
-(add-to-list 'auto-mode-alist '("\\.cpp\\'" . c++-mode))
-
-;; helm
-(require 'helm-config)
-(helm-mode 1)
-
-(setq helm-M-x-fuzzy-match t)
-(setq helm-buffers-fuzzy-matching t)
-(setq helm-recentf-fuzzy-match t)
-
-(projectile-global-mode)
-(setq projectile-completion-system 'helm)
-(helm-projectile-on)
-(setq projectile-enable-caching t)
-
-(local-set-key "\C-ce" 'moo-jump-local)
-(global-set-key "\C-xb" 'helm-mini)
-(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "M-y") 'helm-show-kill-ring)
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
-(global-set-key (kbd "C-c h o") 'helm-occur)
-(global-set-key (kbd "C-h SPC") 'helm-all-mark-rings)
-
 ;; function args
 (fa-config-default)
-
-(require 'yasnippet)
-(yas-global-mode 1)
-
-;; company mode
-(add-hook 'after-init-hook 'global-company-mode)
-
-(eval-after-load 'company
-  '(progn
-     (add-to-list 'company-backends 'company-c-headers)
-     ))
-
-;; (global-set-key (kbd "M-/") 'company-complete-common)
-(global-set-key (kbd "M-/") 'company-complete)
-
-(electric-indent-mode 1)
-(electric-pair-mode 1)
-
-;; iedit
-(define-key global-map (kbd "C-c ;") 'iedit-mode)
 
 ;; Autosave at compile
 (setq compilation-ask-about-save nil)
@@ -64,7 +19,7 @@
 (add-hook 'compilation-mode-hook 'my-compilation-hook)
 
 ;; Set style for C
-(defun my-c-mode-common-hook ()
+(defun my-c-mode-hook ()
   ;; (c-set-style "k&r")
   ;; (setq c-echo-syntactic-information-p t)
   (add-hook 'c-mode-hook 'google-set-c-style)
@@ -72,7 +27,7 @@
   (setq c-basic-offset 4)
   (setq tab-width 4)
   )
-(add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
+(add-hook 'c-mode-hook 'my-c-mode-hook)
 
 (defun my-c++-mode-hook ()
   (add-hook 'c++-mode-hook 'google-set-c-style)
