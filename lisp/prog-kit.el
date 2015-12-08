@@ -15,23 +15,45 @@
           (shrink-window (- h 15)))))))
 (add-hook 'compilation-mode-hook 'my-compilation-hook)
 
-;; Set style for C
+;; style
+(c-add-style "mycodingstyle"
+	     '((c-basic-offset . 4)
+	       (tab-width . 4)
+	       (c-comment-only-line-offset . 0)
+	       (c-hanging-braces-alist . ((substatement-open before after)))
+	       (c-offsets-alist . ((topmost-intro        . 0)
+				   (topmost-intro-cont   . 0)
+				   ;; (substatement         . 3)
+				   ;; (substatement-open    . 0)
+				   ;; (statement-case-open  . 3)
+				   ;; (statement-cont       . 3)
+				   ;; (access-label         . -3)
+				   ;; (inclass              . 3)
+				   ;; (inline-open          . 3)
+				   (innamespace          . 0)
+				   ))))
+
+
+;; Set style for C/C++
 (defun my-c-mode-hook ()
   ;; (c-set-style "k&r")
   ;; (setq c-echo-syntactic-information-p t)
-  (setq c-basic-offset 4)
-  (setq tab-width 4)
+  ;; (setq c-basic-offset 4)
+  ;; (setq tab-width 4)
+  (linum-mode)
+  (c-set-style "mycodingstyle")
   )
 (add-hook 'c-mode-hook 'my-c-mode-hook)
+(add-hook 'c++-mode-hook 'my-c-mode-hook)
 
-(defun my-c++-mode-hook ()
-  (setq c-basic-offset 4)
-  (setq tab-width 4)
-  (linum-mode)
-  ;; (setq c-echo-syntactic-information-p t)
-  ;; (c-tab-always-indent t)
-  )
-(add-hook 'c++-mode-hook 'my-c++-mode-hook)
+;; (defun my-c++-mode-hook ()
+;;   (setq c-basic-offset 4)
+;;   (setq tab-width 4)
+;;   (linum-mode)
+;;   ;; (setq c-echo-syntactic-information-p t)
+;;   ;; (c-tab-always-indent t)
+;;   )
+;; (add-hook 'c++-mode-hook 'my-c++-mode-hook)
 
 ;; CEDET config
 ;; select which submodes we want to activate
