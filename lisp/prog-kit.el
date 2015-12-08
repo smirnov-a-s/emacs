@@ -97,13 +97,21 @@
   )
 (add-hook 'octave-mode-hook 'my-octave-mode-hook)
 
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
-(ac-config-default)
-(ac-set-trigger-key "TAB")
-(setq ac-auto-start nil)
-(add-to-list 'ac-modes 'octave-mode)
-(add-to-list 'ac-sources 'ac-source-irony)
+;; autocomplete
+;; (require 'auto-complete-config)
+;; (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+;; (ac-config-default)
+;; (ac-set-trigger-key "TAB")
+;; (setq ac-auto-start nil)
+;; (setq ac-use-quick-help nil)
+;; (add-to-list 'ac-modes 'octave-mode)
+;; (add-to-list 'ac-sources '(ac-source-semantic ac-source-irony))
+;; (global-auto-complete-mode 1)
+
+(add-hook 'after-init-hook 'global-company-mode)
+
+(eval-after-load 'company
+  '(add-to-list 'company-backends 'company-irony))
 
 ;; customisation of modes
 (defun my-cedet-hook ()
@@ -115,7 +123,10 @@
   (local-set-key "\C-ce" 'helm-semantic-or-imenu)
   (local-set-key "\C-ci" 'semantic-ia-show-summary)
   (local-set-key "\C-c\C-r" 'semantic-symref-symbol)
-  (local-set-key "\M-\r" 'ac-complete-irony-async)
+  ;; (local-set-key "\M-\r" 'ac-complete-irony-async)
+  ;; (local-set-key "\M-\r" 'irony-completion-at-point-async)
+  ;; (local-set-key "\M-\r" 'ac-complete-semantic)
+  (local-set-key "\M-\r" 'company-semantic)
   ;; (idle-highlight-mode t)
   )
 (add-hook 'c-mode-common-hook 'my-cedet-hook)
@@ -124,16 +135,15 @@
 ;; (add-hook 'scheme-mode-hook 'my-cedet-hook)
 ;; (add-hook 'erlang-mode-hook 'my-cedet-hook)
 
-(global-auto-complete-mode 1)
 
 (semantic-add-system-include "/usr/include/c++/5")
-(semantic-add-system-include "usr/include/i386-linux-gnu/c++/5")
-(semantic-add-system-include "usr/include/c++/5/backward")
-(semantic-add-system-include "usr/lib/gcc/i686-linux-gnu/5/include")
-(semantic-add-system-include "usr/local/include")
-(semantic-add-system-include "usr/lib/gcc/i686-linux-gnu/5/include-fixed")
-(semantic-add-system-include "usr/include/i386-linux-gnu")
-(semantic-add-system-include "usr/include")
+;; (semantic-add-system-include "usr/include/i386-linux-gnu/c++/5")
+;; (semantic-add-system-include "usr/include/c++/5/backward")
+;; (semantic-add-system-include "usr/lib/gcc/i686-linux-gnu/5/include")
+;; (semantic-add-system-include "usr/local/include")
+;; (semantic-add-system-include "usr/lib/gcc/i686-linux-gnu/5/include-fixed")
+;; (semantic-add-system-include "usr/include/i386-linux-gnu")
+;; (semantic-add-system-include "usr/include")
 
 (add-hook 'python-mode-hook 'jedi:setup)
 (setq jedi:complete-on-dot t)                 ; optional
