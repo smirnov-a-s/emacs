@@ -115,6 +115,8 @@
 (eval-after-load 'company
   '(add-to-list 'company-backends 'company-irony))
 
+(setq company-async-timeout 50)
+
 ;; customisation of modes
 (defun my-cedet-hook ()
   ;; (local-set-key "\C-cj" 'semantic-ia-fast-jump)
@@ -146,6 +148,8 @@
 (semantic-add-system-include "usr/lib/gcc/i686-linux-gnu/5/include-fixed")
 (semantic-add-system-include "usr/include/i386-linux-gnu")
 (semantic-add-system-include "usr/include")
+
+;; Compile Options:   -Wall -Wextra -std=c++11 -Wno-mismatched-tags -Qunused-arguments -stdlib=libc++ -g -DDREAL_DEBUG -DDREAL_TRACE -fno-inline -Iinclude -Iinclude/ibex -I/Users/soonhok/work/dReal3/src -I/Users/soonhok/work/dReal3/src/opensmt -I.
 
 ;; (add-hook 'python-mode-hook 'jedi:setup)
 ;; (setq jedi:complete-on-dot t)                 ; optional
