@@ -56,6 +56,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(column-number-mode t)
+ '(company-idle-delay nil)
  '(compilation-window-height nil)
  '(cua-mode t nil (cua-base))
  '(custom-safe-themes

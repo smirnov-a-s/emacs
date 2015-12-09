@@ -42,6 +42,7 @@
   ;; (setq tab-width 4)
   (linum-mode)
   (c-set-style "mycodingstyle")
+  (irony-mode)
   )
 (add-hook 'c-mode-hook 'my-c-mode-hook)
 (add-hook 'c++-mode-hook 'my-c-mode-hook)
@@ -126,7 +127,8 @@
   ;; (local-set-key "\M-\r" 'ac-complete-irony-async)
   ;; (local-set-key "\M-\r" 'irony-completion-at-point-async)
   ;; (local-set-key "\M-\r" 'ac-complete-semantic)
-  (local-set-key "\M-\r" 'company-semantic)
+  ;; (local-set-key "\M-\r" 'company-semantic)
+  (local-set-key "\M-\r" 'company-irony)
   ;; (idle-highlight-mode t)
   )
 (add-hook 'c-mode-common-hook 'my-cedet-hook)
@@ -135,17 +137,16 @@
 ;; (add-hook 'scheme-mode-hook 'my-cedet-hook)
 ;; (add-hook 'erlang-mode-hook 'my-cedet-hook)
 
-
 (semantic-add-system-include "/usr/include/c++/5")
-;; (semantic-add-system-include "usr/include/i386-linux-gnu/c++/5")
-;; (semantic-add-system-include "usr/include/c++/5/backward")
-;; (semantic-add-system-include "usr/lib/gcc/i686-linux-gnu/5/include")
-;; (semantic-add-system-include "usr/local/include")
-;; (semantic-add-system-include "usr/lib/gcc/i686-linux-gnu/5/include-fixed")
-;; (semantic-add-system-include "usr/include/i386-linux-gnu")
-;; (semantic-add-system-include "usr/include")
+(semantic-add-system-include "usr/include/i386-linux-gnu/c++/5")
+(semantic-add-system-include "usr/include/c++/5/backward")
+(semantic-add-system-include "usr/lib/gcc/i686-linux-gnu/5/include")
+(semantic-add-system-include "usr/local/include")
+(semantic-add-system-include "usr/lib/gcc/i686-linux-gnu/5/include-fixed")
+(semantic-add-system-include "usr/include/i386-linux-gnu")
+(semantic-add-system-include "usr/include")
 
-(add-hook 'python-mode-hook 'jedi:setup)
-(setq jedi:complete-on-dot t)                 ; optional
+;; (add-hook 'python-mode-hook 'jedi:setup)
+;; (setq jedi:complete-on-dot t)                 ; optional
 
 (provide 'prog-kit)
