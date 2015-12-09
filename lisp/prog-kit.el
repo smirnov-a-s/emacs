@@ -46,6 +46,7 @@
   )
 (add-hook 'c-mode-hook 'my-c-mode-hook)
 (add-hook 'c++-mode-hook 'my-c-mode-hook)
+(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
 
 ;; (defun my-c++-mode-hook ()
 ;;   (setq c-basic-offset 4)
