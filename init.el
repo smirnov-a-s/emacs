@@ -35,11 +35,14 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 (require 'essentials-kit)
+(require 'helm-kit)
 (require 'apple-kit)
 (require 'org-kit)
 (require 'debian-kit)
 (require 'russian-kit)
-(require 'c-kit)
+;; (require 'c-kit)
+(require 'prog-kit)
+(require 'ede-kit)
 
 ;; Tramp settings
 ;; Sudo via SSH
@@ -48,22 +51,21 @@
 (server-start)
 (put 'set-goal-column 'disabled nil)
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(c-basic-offset 4)
- '(compilation-window-height nil)
- '(custom-safe-themes
-   (quote
-    ("dc2ae53baca6dabf168ddc038e3c5add1a34a1947087e778e9d14f0e2d4b89a2" default)))
- '(linum-format (quote dynamic))
- '(yas-snippet-dirs (quote ("~/.emacs.d/el-get/yasnippet/snippets/")) nil (yasnippet)))
+;;
+(when (string-match "i686-pc-linux-gnu" system-configuration)
+(set-face-attribute 'default nil
+		    :family "Inconsolata"
+		    :foundry "unknown"
+		    :slant 'normal
+		    :weight 'normal
+		    :height 158
+		    :width 'normal))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ ;; '(default ((t (:family "Inconsolata" :foundry "unknown" :slant normal :weight normal :height 158 :width normal))))
  '(font-lock-constant-face ((t (:foreground "dark cyan"))))
  '(font-lock-string-face ((t (:background "gray16" :foreground "#ffcd8b")))))

@@ -52,8 +52,6 @@
 ;;
 ;; Set f6 to jump to next frame
 (global-set-key [f6] 'next-multiframe-window)
-(global-set-key (kbd "M-<left>") 'previous-buffer)
-(global-set-key (kbd "M-<right>") 'next-buffer)
 
 ;; Pop mark
 (global-set-key "\C-xp" 'pop-to-mark-command)
@@ -62,7 +60,7 @@
 (delete-selection-mode 1)
 
 ;; Enable CUA selection mode without the C-z/C-x/C-c/C-v bindings.
-(cua-selection-mode 1)
+;; (cua-selection-mode 1)
 
 ;; stop creating those backup~ files
 (setq make-backup-files nil)
@@ -72,56 +70,9 @@
 
 (setq default-directory "~/")
 
-;; file-specific mode
-(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
-(add-to-list 'auto-mode-alist '("\\.cpp\\'" . c++-mode))
-(add-to-list 'auto-mode-alist '("\\.m\\'" . octave-mode))
 
-;; helm
-(require 'helm-config)
-(helm-mode 1)
-
-(setq helm-M-x-fuzzy-match t)
-(setq helm-buffers-fuzzy-matching t)
-(setq helm-recentf-fuzzy-match t)
-
-(projectile-global-mode)
-(setq projectile-completion-system 'helm)
-(helm-projectile-on)
-(setq projectile-enable-caching t)
-
-(local-set-key "\C-ce" 'moo-jump-local)
-(global-set-key "\C-xb" 'helm-mini)
-(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "M-y") 'helm-show-kill-ring)
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
-(global-set-key (kbd "C-c h o") 'helm-occur)
-(global-set-key (kbd "C-h SPC") 'helm-all-mark-rings)
-
-(require 'yasnippet)
-(yas-global-mode 1)
-
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
-(ac-config-default)
-(ac-set-trigger-key "TAB")
-(setq ac-auto-start nil)
-(add-to-list 'ac-modes 'octave-mode)
-(global-auto-complete-mode 1)
-
-;; company mode
-;; (add-hook 'after-init-hook 'global-company-mode)
-
-;; (eval-after-load 'company
-;;   '(progn
-;;      (add-to-list 'company-backends 'company-c-headers 'company-anaconda)
-;;      ))
-
-;; (global-set-key (kbd "M-/") 'company-complete-common)
-;; (global-set-key (kbd "M-/") 'company-complete)
-
-(electric-indent-mode 1)
-(electric-pair-mode 1)
+(electric-indent-mode t)
+(electric-pair-mode t)
 
 ;; iedit
 (define-key global-map (kbd "C-c ;") 'iedit-mode)
