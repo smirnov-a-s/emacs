@@ -70,45 +70,6 @@
 
 (setq default-directory "~/")
 
-;; file-specific mode
-(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
-(add-to-list 'auto-mode-alist '("\\.cpp\\'" . c++-mode))
-(add-to-list 'auto-mode-alist '("\\.m\\'" . octave-mode))
-
-;; helm
-(require 'helm-config)
-(helm-mode 1)
-
-(setq helm-M-x-fuzzy-match t)
-(setq helm-buffers-fuzzy-matching t)
-(setq helm-recentf-fuzzy-match t)
-
-(projectile-global-mode)
-(setq projectile-completion-system 'helm)
-(helm-projectile-on)
-(setq projectile-enable-caching t)
-
-(local-set-key "\C-ce" 'moo-jump-local)
-(global-set-key "\C-xb" 'helm-mini)
-(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "M-y") 'helm-show-kill-ring)
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
-(global-set-key (kbd "C-c h o") 'helm-occur)
-(global-set-key (kbd "C-h SPC") 'helm-all-mark-rings)
-
-(require 'yasnippet)
-(yas-global-mode 1)
-
-;; company mode
-;; (add-hook 'after-init-hook 'global-company-mode)
-
-;; (eval-after-load 'company
-;;   '(progn
-;;      (add-to-list 'company-backends 'company-c-headers 'company-anaconda)
-;;      ))
-
-;; (global-set-key (kbd "M-/") 'company-complete-common)
-;; (global-set-key (kbd "M-/") 'company-complete)
 
 (electric-indent-mode t)
 (electric-pair-mode t)

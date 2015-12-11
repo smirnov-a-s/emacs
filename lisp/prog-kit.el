@@ -1,3 +1,13 @@
+;; file-specific mode
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.cpp\\'" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.m\\'" . octave-mode))
+
+;; '(compilation-window-height nil)
+;; '(column-number-mode t)
+
+(show-paren-mode t)
+
 ;; Autosave at compile
 (setq compilation-ask-about-save nil)
 
@@ -32,7 +42,6 @@
 				   ;; (inline-open          . 3)
 				   (innamespace          . 0)
 				   ))))
-
 
 ;; Set style for C/C++
 (defun my-c-mode-hook ()
@@ -99,6 +108,11 @@
   )
 (add-hook 'octave-mode-hook 'my-octave-mode-hook)
 
+(require 'yasnippet)
+(yas-global-mode 1)
+
+(setq yas-snippet-dirs "~/.emacs.d/el-get/yasnippet/snippets/")
+
 ;; autocomplete
 ;; (require 'auto-complete-config)
 ;; (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
@@ -116,6 +130,15 @@
   '(add-to-list 'company-backends 'company-irony))
 
 (setq company-async-timeout 50)
+(setq company-idle-delay nil)
+
+;; company mode
+;; (add-hook 'after-init-hook 'global-company-mode)
+
+;; (eval-after-load 'company
+;;   '(progn
+;;      (add-to-list 'company-backends 'company-c-headers 'company-anaconda)
+;;      ))
 
 ;; customisation of modes
 (defun my-cedet-hook ()
@@ -140,6 +163,7 @@
 ;; (add-hook 'scheme-mode-hook 'my-cedet-hook)
 ;; (add-hook 'erlang-mode-hook 'my-cedet-hook)
 
+(when (string-match "i686-pc-linux-gnu" system-configuration)
 (semantic-add-system-include "/usr/include/c++/5")
 (semantic-add-system-include "usr/include/i386-linux-gnu/c++/5")
 (semantic-add-system-include "usr/include/c++/5/backward")
@@ -147,9 +171,9 @@
 (semantic-add-system-include "usr/local/include")
 (semantic-add-system-include "usr/lib/gcc/i686-linux-gnu/5/include-fixed")
 (semantic-add-system-include "usr/include/i386-linux-gnu")
-(semantic-add-system-include "usr/include")
+(semantic-add-system-include "usr/include"))
 
-;; Compile Options:   -Wall -Wextra -std=c++11 -Wno-mismatched-tags -Qunused-arguments -stdlib=libc++ -g -DDREAL_DEBUG -DDREAL_TRACE -fno-inline -Iinclude -Iinclude/ibex -I/Users/soonhok/work/dReal3/src -I/Users/soonhok/work/dReal3/src/opensmt -I.
+;; specify path for mac!!!
 
 ;; (add-hook 'python-mode-hook 'jedi:setup)
 ;; (setq jedi:complete-on-dot t)                 ; optional
