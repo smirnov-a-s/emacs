@@ -52,8 +52,6 @@
 ;;
 ;; Set f6 to jump to next frame
 (global-set-key [f6] 'next-multiframe-window)
-(global-set-key (kbd "M-<left>") 'previous-buffer)
-(global-set-key (kbd "M-<right>") 'next-buffer)
 
 ;; Pop mark
 (global-set-key "\C-xp" 'pop-to-mark-command)
@@ -62,7 +60,7 @@
 (delete-selection-mode 1)
 
 ;; Enable CUA selection mode without the C-z/C-x/C-c/C-v bindings.
-(cua-selection-mode 1)
+;; (cua-selection-mode 1)
 
 ;; stop creating those backup~ files
 (setq make-backup-files nil)
