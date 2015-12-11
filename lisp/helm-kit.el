@@ -11,7 +11,7 @@
 (helm-projectile-on)
 (setq projectile-enable-caching t)
 
-(local-set-key "\C-ce" 'moo-jump-local)
+;; (local-set-key "\C-ce" 'moo-jump-local)
 (global-set-key "\C-xb" 'helm-mini)
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
