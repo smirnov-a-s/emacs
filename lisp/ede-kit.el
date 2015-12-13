@@ -13,4 +13,11 @@
                 :include-path '("./"
 				)))
 
+(when (string-match "apple-darwin" system-configuration)
+(ede-cpp-root-project "Demos"
+                :name "Demos Project"
+                :file "/Users/asmirnov/work/mystuff/c++/demos/.projectile"
+                :include-path '("./"
+				)))
+
 (provide 'ede-kit)

@@ -49,7 +49,7 @@
   ;; (setq c-echo-syntactic-information-p t)
   ;; (setq c-basic-offset 4)
   ;; (setq tab-width 4)
-  (linum-mode)
+  ;; (linum-mode)
   (c-set-style "mycodingstyle")
   (irony-mode)
   )
@@ -173,7 +173,12 @@
 (semantic-add-system-include "usr/include/i386-linux-gnu")
 (semantic-add-system-include "usr/include"))
 
-;; specify path for mac!!!
+(when (string-match "apple-darwin" system-configuration)
+(semantic-add-system-include "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1")
+(semantic-add-system-include "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.0.2/include")
+(semantic-add-system-include "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include")
+(semantic-add-system-include "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/usr/include")
+(semantic-add-system-include "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks (framework directory)"))
 
 ;; (add-hook 'python-mode-hook 'jedi:setup)
 ;; (setq jedi:complete-on-dot t)                 ; optional
