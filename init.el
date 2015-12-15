@@ -43,6 +43,7 @@
 ;; (require 'c-kit)
 (require 'prog-kit)
 (require 'ede-kit)
+(require 'gud)
 
 ;; Tramp settings
 ;; Sudo via SSH
