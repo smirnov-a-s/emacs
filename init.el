@@ -41,8 +41,11 @@
 (require 'org-kit)
 (require 'debian-kit)
 (require 'russian-kit)
-;; (require 'c-kit)
-(require 'prog-kit)
+(require 'cpp-kit)
+(require 'auto-complete-kit)
+(require 'company-kit)
+(require 'python-kit)
+(require 'octave-kit)
 (require 'ede-kit)
 (require 'gud)
 
@@ -56,11 +59,11 @@
 ;;
 (when (string-match "i686-pc-linux-gnu" system-configuration)
 (set-face-attribute 'default nil
-		    :family "Inconsolata"
+		    :family "Inconsolata LGC"
 		    :foundry "unknown"
 		    :slant 'normal
 		    :weight 'normal
-		    :height 158
+		    :height 143
 		    :width 'normal))
 
 (custom-set-faces
@@ -68,7 +71,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Inconsolata LGC" :foundry "unknown" :slant normal :weight normal :height 143 :width normal))))
  '(font-lock-constant-face ((t (:foreground "dark cyan"))))
  '(font-lock-string-face ((t (:background "gray16" :foreground "#ffcd8b")))))
 (custom-set-variables

@@ -1,10 +1,6 @@
 ;; file-specific mode
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.cpp\\'" . c++-mode))
-(add-to-list 'auto-mode-alist '("\\.m\\'" . octave-mode))
-
-;; '(compilation-window-height nil)
-;; '(column-number-mode t)
 
 (show-paren-mode t)
 
@@ -102,60 +98,11 @@
 (fa-config-default)
 (set-default 'semantic-case-fold t)
 
-(defun my-octave-mode-hook ()
-  ;; (idle-highlight-mode t)
-  ;; (highlight-symbol-mode t)
-  )
-(add-hook 'octave-mode-hook 'my-octave-mode-hook)
-
+;; yasnippet
 (require 'yasnippet)
 (yas-global-mode 1)
 
 (setq yas-snippet-dirs "~/.emacs.d/el-get/yasnippet/snippets/")
-
-;; autocomplete
-(require 'auto-complete-config)
-
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
-;; (ac-config-default)
-(ac-set-trigger-key "TAB")
-;; (setq ac-auto-start nil)
-(setq ac-use-quick-help nil)
-;; (add-to-list 'ac-modes 'octave-mode)
-;; (add-to-list 'ac-sources '(ac-source-clang-async))
-
-(defun ac-cc-mode-setup ()
-  ;; (setq ac-clang-complete-executable "~/.emacs.d/clang-complete")
-  (setq ac-sources '(ac-source-clang-async))
-  (ac-clang-launch-completion-process)
-)
-
-(defun my-ac-config ()
-  (add-hook 'c-mode-common-hook 'ac-cc-mode-setup)
-  (add-hook 'auto-complete-mode-hook 'ac-common-setup)
-  (global-auto-complete-mode t))
-
-(define-key ac-mode-map (kbd "M-RET") 'auto-complete)
-
-(my-ac-config)
-
-;; (global-auto-complete-mode 1)
-
-;; (add-hook 'after-init-hook 'global-company-mode)
-
-;; (eval-after-load 'company
-;;   '(add-to-list 'company-backends 'company-irony))
-
-;; (setq company-async-timeout 50)
-;; (setq company-idle-delay nil)
-
-;; company mode
-;; (add-hook 'after-init-hook 'global-company-mode)
-
-;; (eval-after-load 'company
-;;   '(progn
-;;      (add-to-list 'company-backends 'company-c-headers 'company-anaconda)
-;;      ))
 
 ;; customisation of modes
 (defun my-cedet-hook ()
@@ -180,6 +127,7 @@
 ;; (add-hook 'scheme-mode-hook 'my-cedet-hook)
 ;; (add-hook 'erlang-mode-hook 'my-cedet-hook)
 
+;; include dirs
 (when (string-match "i686-pc-linux-gnu" system-configuration)
 (semantic-add-system-include "/usr/include/c++/5")
 (semantic-add-system-include "usr/include/i386-linux-gnu/c++/5")
@@ -197,11 +145,4 @@
 (semantic-add-system-include "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/usr/include")
 (semantic-add-system-include "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks (framework directory)"))
 
-;; (add-hook 'python-mode-hook 'jedi:setup)
-;; (setq jedi:complete-on-dot t)                 ; optional
-
-(defun my-python-mode-hook ()
-  (add-to-list 'company-backends 'company-jedi))
-(add-hook 'python-mode-hook 'my-python-mode-hook)
-
-(provide 'prog-kit)
+(provide 'cpp-kit)
