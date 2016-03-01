@@ -11,6 +11,7 @@
 
 (defun ac-cc-mode-setup ()
   ;; (setq ac-clang-complete-executable "~/.emacs.d/clang-complete")
+  (setq ac-clang-cflags (append '("-std=c++11") ac-clang-cflags))
   (setq ac-sources '(ac-source-clang-async))
   (ac-clang-launch-completion-process)
 )
