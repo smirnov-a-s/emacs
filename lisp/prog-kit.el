@@ -114,23 +114,38 @@
 (setq yas-snippet-dirs "~/.emacs.d/el-get/yasnippet/snippets/")
 
 ;; autocomplete
-;; (require 'auto-complete-config)
-;; (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+(require 'auto-complete-config)
+
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 ;; (ac-config-default)
-;; (ac-set-trigger-key "TAB")
+(ac-set-trigger-key "TAB")
 ;; (setq ac-auto-start nil)
-;; (setq ac-use-quick-help nil)
+(setq ac-use-quick-help nil)
 ;; (add-to-list 'ac-modes 'octave-mode)
-;; (add-to-list 'ac-sources '(ac-source-semantic ac-source-irony))
+;; (add-to-list 'ac-sources '(ac-source-clang-async))
+
+(defun ac-cc-mode-setup ()
+  ;; (setq ac-clang-complete-executable "~/.emacs.d/clang-complete")
+  (setq ac-sources '(ac-source-clang-async))
+  (ac-clang-launch-completion-process)
+)
+
+(defun my-ac-config ()
+  (add-hook 'c-mode-common-hook 'ac-cc-mode-setup)
+  (add-hook 'auto-complete-mode-hook 'ac-common-setup)
+  (global-auto-complete-mode t))
+
+(my-ac-config)
+
 ;; (global-auto-complete-mode 1)
 
-(add-hook 'after-init-hook 'global-company-mode)
+;; (add-hook 'after-init-hook 'global-company-mode)
 
-(eval-after-load 'company
-  '(add-to-list 'company-backends 'company-irony))
+;; (eval-after-load 'company
+;;   '(add-to-list 'company-backends 'company-irony))
 
-(setq company-async-timeout 50)
-(setq company-idle-delay nil)
+;; (setq company-async-timeout 50)
+;; (setq company-idle-delay nil)
 
 ;; company mode
 ;; (add-hook 'after-init-hook 'global-company-mode)
@@ -182,5 +197,9 @@
 
 ;; (add-hook 'python-mode-hook 'jedi:setup)
 ;; (setq jedi:complete-on-dot t)                 ; optional
+
+(defun my-python-mode-hook ()
+  (add-to-list 'company-backends 'company-jedi))
+(add-hook 'python-mode-hook 'my-python-mode-hook)
 
 (provide 'prog-kit)

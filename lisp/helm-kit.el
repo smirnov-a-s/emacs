@@ -1,4 +1,5 @@
 ;; helm
+(require 'helm-projectile)
 (require 'helm-config)
 (helm-mode 1)
 
