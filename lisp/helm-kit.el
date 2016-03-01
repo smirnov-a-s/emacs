@@ -29,8 +29,10 @@
  helm-gtags-suggested-key-mapping t
  )
 
-(require 'helm-gtags)
+
 ;; Enable helm-gtags-mode
+(require 'helm-gtags)
+
 (add-hook 'dired-mode-hook 'helm-gtags-mode)
 (add-hook 'eshell-mode-hook 'helm-gtags-mode)
 (add-hook 'c-mode-hook 'helm-gtags-mode)

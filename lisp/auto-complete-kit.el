@@ -9,8 +9,12 @@
 ;; (add-to-list 'ac-modes 'octave-mode)
 ;; (add-to-list 'ac-sources '(ac-source-clang-async))
 
+;; (defun my-ac-irony-setup ()
+;;   (setq 'ac-sources 'ac-source-irony)
+;;   (define-key irony-mode-map (kbd "M-RET") 'ac-complete-irony-async))
+;; (add-hook 'irony-mode-hook 'my-ac-irony-setup)
+
 (defun ac-cc-mode-setup ()
-  ;; (setq ac-clang-complete-executable "~/.emacs.d/clang-complete")
   (setq ac-clang-cflags (append '("-std=c++11") ac-clang-cflags))
   (setq ac-sources '(ac-source-clang-async))
   (ac-clang-launch-completion-process)
@@ -19,12 +23,11 @@
 (defun my-ac-config ()
   (add-hook 'c-mode-common-hook 'ac-cc-mode-setup)
   (add-hook 'auto-complete-mode-hook 'ac-common-setup))
-  ;; (global-auto-complete-mode t))
 
 (define-key ac-mode-map (kbd "M-RET") 'auto-complete)
 
 (my-ac-config)
 
-(global-auto-complete-mode 1)
+(global-auto-complete-mode t)
 
 (provide 'auto-complete-kit)
