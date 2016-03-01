@@ -135,6 +135,8 @@
   (add-hook 'auto-complete-mode-hook 'ac-common-setup)
   (global-auto-complete-mode t))
 
+(define-key ac-mode-map (kbd "M-RET") 'auto-complete)
+
 (my-ac-config)
 
 ;; (global-auto-complete-mode 1)
@@ -169,7 +171,7 @@
   ;; (local-set-key "\M-\r" 'irony-completion-at-point-async)
   ;; (local-set-key "\M-\r" 'ac-complete-semantic)
   ;; (local-set-key "\M-\r" 'company-semantic)
-  (local-set-key "\M-\r" 'company-irony)
+  ;; (local-set-key "\M-\r" 'company-irony)
   ;; (idle-highlight-mode t)
   )
 (add-hook 'c-mode-common-hook 'my-cedet-hook)
