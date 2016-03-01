@@ -5,6 +5,7 @@
   (global-set-key [(backtab)] 'hippie-expand)
   (global-set-key [s-right] 'move-end-of-line)
   (global-set-key [s-left] 'move-beginning-of-line)
-  (global-set-key (kbd "M-SPC") 'set-mark-command))
+  (global-set-key (kbd "M-SPC") 'set-mark-command)
+  )
 
 (provide 'apple-kit)

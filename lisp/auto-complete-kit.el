@@ -9,6 +9,12 @@
 ;; (add-to-list 'ac-modes 'octave-mode)
 ;; (add-to-list 'ac-sources '(ac-source-clang-async))
 
+(when (string-match "apple-darwin" system-configuration)
+  (add-to-list 'load-path "~/.emacs.d/vendor/emacs-clang-complete-async")
+  (require 'auto-complete-clang-async)
+  (setq ac-clang-complete-executable "~/.emacs.d/vendor/emacs-clang-complete-async/clang-complete")
+  )
+
 ;; (defun my-ac-irony-setup ()
 ;;   (setq 'ac-sources 'ac-source-irony)
 ;;   (define-key irony-mode-map (kbd "M-RET") 'ac-complete-irony-async))

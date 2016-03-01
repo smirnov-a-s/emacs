@@ -5,7 +5,8 @@
 
 ;; on to the visual settings
 (setq inhibit-splash-screen t)	; no splash screen, thanks
-(setq visible-bell t) ; no beeps please
+(setq visible-bell nil)
+(setq ring-bell-function 'ignore)
 (line-number-mode 1)	; have line numbers and
 (column-number-mode 1)	; column numbers in the mode line
 (delete-selection-mode 1) ; delete selected block when start typing
@@ -64,7 +65,8 @@
 		    :slant 'normal
 		    :weight 'normal
 		    :height 143
-		    :width 'normal))
+		    :width 'normal)
+)
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
