@@ -47,6 +47,7 @@
   ;; (setq tab-width 4)
   ;; (linum-mode)
   (c-set-style "mycodingstyle")
+  ;; (idle-highlight-mode t)
   (irony-mode)
   )
 (add-hook 'c-mode-hook 'my-c-mode-hook)
