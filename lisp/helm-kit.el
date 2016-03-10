@@ -46,7 +46,7 @@
 (define-key helm-gtags-mode-map (kbd "C-c <") 'helm-gtags-previous-history)
 (define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
 
-;; prevent helm from searching in .d files
-(add-to-list 'grep-find-ignored-files "*.d")
+;; prevent helm from searching in some files
+(setq grep-find-ignored-files (append grep-find-ignored-files '("*.d" "*.o" "GPATH" "GRTAGS" "GTAGS" "Makefile" "*.gz")))
 
 (provide 'helm-kit)
