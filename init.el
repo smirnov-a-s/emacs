@@ -57,16 +57,26 @@
 (server-start)
 (put 'set-goal-column 'disabled nil)
 
-;;
 (when (string-match "i686-pc-linux-gnu" system-configuration)
-(set-face-attribute 'default nil
-		    :family "Inconsolata LGC"
-		    :foundry "unknown"
-		    :slant 'normal
-		    :weight 'normal
-		    :height 143
-		    :width 'normal)
-)
+  (set-face-attribute 'default nil
+		      :family "Inconsolata LGC"
+		      :foundry "unknown"
+		      :slant 'normal
+		      :weight 'normal
+		      :height 143
+		      :width 'normal)
+  )
+
+(when (string-match "apple-darwin" system-configuration)
+  (set-face-attribute 'default nil
+		      :family "Inconsolata LGC"
+		      :foundry "unknown"
+		      :slant 'normal
+		      :weight 'normal
+		      :height 163
+		      :width 'normal)
+
+  )
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
