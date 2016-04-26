@@ -23,8 +23,8 @@
 
 ;; style
 (c-add-style "mycodingstyle"
-	     '((c-basic-offset . 4)
-	       (tab-width . 4)
+	     '((c-basic-offset . 2)
+	       (tab-width . 2)
 	       (c-comment-only-line-offset . 0)
 	       (c-hanging-braces-alist . ((substatement-open before after)))
 	       (c-offsets-alist . ((topmost-intro        . 0)
@@ -48,11 +48,11 @@
   ;; (linum-mode)
   (c-set-style "mycodingstyle")
   ;; (idle-highlight-mode t)
-  (irony-mode)
+  ;; (irony-mode)
   )
 (add-hook 'c-mode-hook 'my-c-mode-hook)
 (add-hook 'c++-mode-hook 'my-c-mode-hook)
-(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+;; (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
 
 ;; (defun my-c++-mode-hook ()
 ;;   (setq c-basic-offset 4)
@@ -129,15 +129,16 @@
 ;; (add-hook 'erlang-mode-hook 'my-cedet-hook)
 
 ;; include dirs
-(when (string-match "i686-pc-linux-gnu" system-configuration)
-(semantic-add-system-include "/usr/include/c++/5")
-(semantic-add-system-include "usr/include/i386-linux-gnu/c++/5")
-(semantic-add-system-include "usr/include/c++/5/backward")
-(semantic-add-system-include "usr/lib/gcc/i686-linux-gnu/5/include")
-(semantic-add-system-include "usr/local/include")
-(semantic-add-system-include "usr/lib/gcc/i686-linux-gnu/5/include-fixed")
-(semantic-add-system-include "usr/include/i386-linux-gnu")
-(semantic-add-system-include "usr/include"))
+
+(when (string-match "x86_64-pc-linux-gnu" system-configuration)
+(semantic-add-system-include "/usr/include/c++/4.8")
+(semantic-add-system-include "/usr/include/x86_64-linux-gnu/c++/4.8")
+(semantic-add-system-include "/usr/include/c++/4.8/backward")
+(semantic-add-system-include "/usr/lib/gcc/x86_64-linux-gnu/4.8/include")
+(semantic-add-system-include "/usr/local/include")
+(semantic-add-system-include "/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed")
+(semantic-add-system-include "/usr/include/x86_64-linux-gnu")
+(semantic-add-system-include "/usr/include"))
 
 (when (string-match "apple-darwin" system-configuration)
 (semantic-add-system-include "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1")

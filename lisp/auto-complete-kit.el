@@ -20,11 +20,23 @@
 ;;   (define-key irony-mode-map (kbd "M-RET") 'ac-complete-irony-async))
 ;; (add-hook 'irony-mode-hook 'my-ac-irony-setup)
 
-(defun ac-cc-mode-setup ()
-  (setq ac-clang-cflags (append '("-std=c++11") ac-clang-cflags))
-  (setq ac-sources '(ac-source-clang-async))
-  (ac-clang-launch-completion-process)
-)
+(when (string-match "apple-darwin" system-configuration)
+  (defun ac-cc-mode-setup ()
+    (setq ac-clang-cflags (append '("-std=c++11") ac-clang-cflags))
+    (setq ac-sources '(ac-source-clang-async))
+    (ac-clang-launch-completion-process)))
+
+(when (string-match "x86_64-pc-linux-gnu" system-configuration)
+  (setq my-clang-cflags '(
+			  "-std=c++11"
+			  "-I/home/anton/work/rsdk/libs/radar_sdk/include"
+				))
+  (defun ac-cc-mode-setup ()
+    (setq ac-clang-cflags (append my-clang-cflags ac-clang-cflags))
+    ;; (setq ac-clang-cflags (append '("-std=c++11" "-I/home/anton/work/rsdk/libs/radar_sdk/include") ac-clang-cflags))
+    ;; (setq ac-clang-cflags (append '("-I/home/anton/work/rsdk/libs/radar_sdk/include") ac-clang-cflags))
+    (setq ac-sources '(ac-source-clang-async))
+    (ac-clang-launch-completion-process)))
 
 (defun my-ac-config ()
   (add-hook 'c-mode-common-hook 'ac-cc-mode-setup)
