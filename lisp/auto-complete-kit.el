@@ -39,6 +39,7 @@
     (ac-clang-launch-completion-process)))
 
 (defun my-ac-config ()
+  (add-to-list 'ac-sources 'ac-source-c-headers)
   (add-hook 'c-mode-common-hook 'ac-cc-mode-setup)
   (add-hook 'auto-complete-mode-hook 'ac-common-setup))
 
