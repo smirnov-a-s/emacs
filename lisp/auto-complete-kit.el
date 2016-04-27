@@ -24,19 +24,35 @@
   (defun ac-cc-mode-setup ()
     (setq ac-clang-cflags (append '("-std=c++11") ac-clang-cflags))
     (setq ac-sources '(ac-source-clang-async))
-    (ac-clang-launch-completion-process)))
+    (ac-clang-launch-completion-process))
+  )
 
 (when (string-match "x86_64-pc-linux-gnu" system-configuration)
   (setq my-clang-cflags '(
 			  "-std=c++11"
 			  "-I/home/anton/work/rsdk/libs/radar_sdk/include"
-				))
+			  ))
+
+  (setq achead:include-directories '(
+				     "."
+				     "/usr/include"
+				     "/usr/local/include"
+				     "/usr/include/c++/4.8"
+				     "/usr/include/x86_64-linux-gnu/c++/4.8"
+				     "/usr/include/c++/4.8/backward"
+				     "/usr/lib/gcc/x86_64-linux-gnu/4.8/include"
+				     "/usr/local/include"
+				     "/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed"
+				     "/usr/include/x86_64-linux-gnu"
+				     ))
+
   (defun ac-cc-mode-setup ()
     (setq ac-clang-cflags (append my-clang-cflags ac-clang-cflags))
     ;; (setq ac-clang-cflags (append '("-std=c++11" "-I/home/anton/work/rsdk/libs/radar_sdk/include") ac-clang-cflags))
     ;; (setq ac-clang-cflags (append '("-I/home/anton/work/rsdk/libs/radar_sdk/include") ac-clang-cflags))
     (setq ac-sources '(ac-source-clang-async))
-    (ac-clang-launch-completion-process)))
+    (ac-clang-launch-completion-process))
+  )
 
 (defun my-ac-config ()
   (add-to-list 'ac-sources 'ac-source-c-headers)
