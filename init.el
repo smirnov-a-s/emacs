@@ -30,7 +30,7 @@
 (el-get 'sync)
 
 ;; Set color theme
-(add-to-list 'load-path "~/.emacs.d/vendor/emacs24-inkpot")
+;; (add-to-list 'load-path "~/.emacs.d/vendor/emacs24-inkpot")
 (require 'inkpot-theme)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
