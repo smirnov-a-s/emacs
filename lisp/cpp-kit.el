@@ -9,17 +9,20 @@
 
 (global-set-key [f5] 'compile)
 
+;; to fix compilation window splitting verticaly
+(setq split-width-threshold most-positive-fixnum)
+
 ;; Split window to show compilation results
-(defun my-compilation-hook ()
-  (when (not (get-buffer-window "*compilation*"))
-    (save-selected-window
-      (save-excursion
-        (let* ((w (split-window-vertically))
-               (h (window-height w)))
-          (select-window w)
-          (switch-to-buffer "*compilation*")
-          (shrink-window (- h 15)))))))
-(add-hook 'compilation-mode-hook 'my-compilation-hook)
+;; (defun my-compilation-hook ()
+;;   (when (not (get-buffer-window "*compilation*"))
+;;     (save-selected-window
+;;       (save-excursion
+;;         (let* ((w (split-window-vertically))
+;;                (h (window-height w)))
+;;           (select-window w)
+;;           (switch-to-buffer "*compilation*")
+;;           (shrink-window (- h 15)))))))
+;; (add-hook 'compilation-mode-hook 'my-compilation-hook)
 
 ;; style
 (c-add-style "mycodingstyle"

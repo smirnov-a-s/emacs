@@ -30,6 +30,7 @@
 (when (string-match "x86_64-pc-linux-gnu" system-configuration)
   (setq my-clang-cflags '(
 			  "-std=c++11"
+			  "-I/home/anton/work/rsdk/libs/radar_sdk"
 			  "-I/home/anton/work/rsdk/libs/radar_sdk/include"
 			  ))
 
