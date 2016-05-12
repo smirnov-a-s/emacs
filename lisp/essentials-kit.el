@@ -49,7 +49,6 @@
 
 (add-to-list 'auto-mode-alist '("\\rfc\\[0-9\\]+.txt$" . irfc-mode))
 
-;;
 ;; Set f6 to jump to next frame
 (global-set-key [f6] 'next-multiframe-window)
 
@@ -69,7 +68,6 @@
 (setq auto-save-default nil)
 
 (setq default-directory "~/")
-
 
 (electric-indent-mode t)
 (electric-pair-mode t)

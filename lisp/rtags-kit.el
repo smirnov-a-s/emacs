@@ -1,6 +1,6 @@
 (require 'rtags)
 
-(setq rtags-path "/home/anton/.emacs.d/vendor/rtags/build/bin")
+(setq rtags-path "~/.emacs.d/vendor/rtags/build/bin")
 
 (setq rtags-autostart-diagnostics t)
 (rtags-diagnostics)

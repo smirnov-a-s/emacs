@@ -3,13 +3,17 @@
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
-;; on to the visual settings
-(setq inhibit-splash-screen t)	; no splash screen, thanks
+;; no splash screen, thanks
+(setq inhibit-splash-screen t)
 (setq visible-bell nil)
 (setq ring-bell-function 'ignore)
+
 (line-number-mode 1)	; have line numbers and
 (column-number-mode 1)	; column numbers in the mode line
 (delete-selection-mode 1) ; delete selected block when start typing
+(show-paren-mode t)
+
+(defalias 'yes-or-no-p 'y-or-n-p)
 
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (add-to-list 'load-path "~/.emacs.d/vendor")
@@ -30,12 +34,7 @@
 (add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
 (el-get 'sync)
 
-;; Set color theme
-;; (add-to-list 'load-path "~/.emacs.d/vendor/emacs24-inkpot")
 (require 'inkpot-theme)
-
-(defalias 'yes-or-no-p 'y-or-n-p)
-
 ;; (require 'packages-kit)
 (require 'essentials-kit)
 (require 'helm-kit)
@@ -45,11 +44,9 @@
 (require 'russian-kit)
 (require 'cpp-kit)
 (require 'auto-complete-kit)
-(require 'company-kit)
 (require 'python-kit)
 (require 'octave-kit)
 (require 'ede-kit)
-(require 'rtags-kit)
 (require 'gud)
 
 ;; Tramp settings
@@ -87,14 +84,3 @@
  ;; If there is more than one, they won't work right.
  '(font-lock-constant-face ((t (:foreground "dark cyan"))))
  '(font-lock-string-face ((t (:background "gray16" :foreground "#ffcd8b")))))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(column-number-mode t)
- '(show-paren-mode t)
- '(tool-bar-mode nil))
-
-;; (setq buffer-display-table (make-display-table))
-;; (aset buffer-display-table ?\^M [])

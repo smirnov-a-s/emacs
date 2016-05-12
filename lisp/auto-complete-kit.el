@@ -13,14 +13,6 @@
   (add-to-list 'load-path "~/.emacs.d/vendor/emacs-clang-complete-async")
   (require 'auto-complete-clang-async)
   (setq ac-clang-complete-executable "~/.emacs.d/vendor/emacs-clang-complete-async/clang-complete")
-  )
-
-;; (defun my-ac-irony-setup ()
-;;   (setq 'ac-sources 'ac-source-irony)
-;;   (define-key irony-mode-map (kbd "M-RET") 'ac-complete-irony-async))
-;; (add-hook 'irony-mode-hook 'my-ac-irony-setup)
-
-(when (string-match "apple-darwin" system-configuration)
   (defun ac-cc-mode-setup ()
     (setq ac-clang-cflags (append '("-std=c++11") ac-clang-cflags))
     (setq ac-sources '(ac-source-clang-async))
