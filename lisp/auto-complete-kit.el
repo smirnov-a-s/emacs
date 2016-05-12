@@ -13,10 +13,9 @@
   (add-to-list 'load-path "~/.emacs.d/vendor/emacs-clang-complete-async")
   (require 'auto-complete-clang-async)
   (setq ac-clang-complete-executable "~/.emacs.d/vendor/emacs-clang-complete-async/clang-complete")
-  (defun ac-cc-mode-setup ()
-    (setq ac-clang-cflags (append '("-std=c++11") ac-clang-cflags))
-    (setq ac-sources '(ac-source-clang-async))
-    (ac-clang-launch-completion-process))
+  (setq my-clang-cflags '(
+			  "-std=c++11"
+			  ))
   )
 
 (when (string-match "x86_64-pc-linux-gnu" system-configuration)
@@ -38,23 +37,18 @@
 				     "/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed"
 				     "/usr/include/x86_64-linux-gnu"
 				     ))
-
-  (defun ac-cc-mode-setup ()
-    (setq ac-clang-cflags (append my-clang-cflags ac-clang-cflags))
-    ;; (setq ac-clang-cflags (append '("-std=c++11" "-I/home/anton/work/rsdk/libs/radar_sdk/include") ac-clang-cflags))
-    ;; (setq ac-clang-cflags (append '("-I/home/anton/work/rsdk/libs/radar_sdk/include") ac-clang-cflags))
-    (setq ac-sources '(ac-source-clang-async))
-    (ac-clang-launch-completion-process))
   )
 
-(defun my-ac-config ()
+(defun ac-cc-mode-setup ()
+  (setq ac-clang-cflags (append my-clang-cflags ac-clang-cflags))
+  (setq ac-sources '(ac-source-clang-async))
   (add-to-list 'ac-sources 'ac-source-c-headers)
-  (add-hook 'c-mode-common-hook 'ac-cc-mode-setup)
-  (add-hook 'auto-complete-mode-hook 'ac-common-setup))
+  (ac-clang-launch-completion-process))
+(add-hook 'c-mode-common-hook 'ac-cc-mode-setup)
+(add-hook 'c++-mode-common-hook 'ac-cc-mode-setup)
+(add-hook 'auto-complete-mode-hook 'ac-common-setup)
 
 (define-key ac-mode-map (kbd "M-RET") 'auto-complete)
-
-(my-ac-config)
 
 (global-auto-complete-mode t)
 
