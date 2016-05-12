@@ -1,4 +1,5 @@
 (require 'rtags)
+;; (require 'rtags-ac)
 
 (setq rtags-path "~/.emacs.d/vendor/rtags/build/bin")
 
