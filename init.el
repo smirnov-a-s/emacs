@@ -13,6 +13,7 @@
 
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (add-to-list 'load-path "~/.emacs.d/vendor")
+(add-to-list 'load-path "~/.emacs.d/vendor/rtags/build/src")
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
 (require 'package)
@@ -48,6 +49,7 @@
 (require 'python-kit)
 (require 'octave-kit)
 (require 'ede-kit)
+(require 'rtags-kit)
 (require 'gud)
 
 ;; Tramp settings
@@ -93,3 +95,6 @@
  '(column-number-mode t)
  '(show-paren-mode t)
  '(tool-bar-mode nil))
+
+;; (setq buffer-display-table (make-display-table))
+;; (aset buffer-display-table ?\^M [])

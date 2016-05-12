@@ -7,7 +7,7 @@
 ;; Autosave at compile
 (setq compilation-ask-about-save nil)
 
-(global-set-key [f5] 'compile)
+(global-set-key [f5] 'compile) ;; move to hook!!!
 
 ;; to fix compilation window splitting verticaly
 (setq split-width-threshold most-positive-fixnum)
@@ -111,19 +111,13 @@
 ;; customisation of modes
 (defun my-cedet-hook ()
   ;; (local-set-key "\C-cj" 'semantic-ia-fast-jump)
-  (local-set-key [f2] 'semantic-ia-fast-jump)
+  ;; (local-set-key [f2] 'semantic-ia-fast-jump)
   ;; (local-set-key "\C-ct" 'helm-projectile-find-other-file)
   (local-set-key [f4] 'helm-projectile-find-other-file)
   ;; (local-set-key "\C-ce" 'moo-jump-local)
   (local-set-key "\C-ce" 'helm-semantic-or-imenu)
   (local-set-key "\C-ci" 'semantic-ia-show-summary)
-  (local-set-key "\C-c\C-r" 'semantic-symref-symbol)
-  ;; (local-set-key "\M-\r" 'ac-complete-irony-async)
-  ;; (local-set-key "\M-\r" 'irony-completion-at-point-async)
-  ;; (local-set-key "\M-\r" 'ac-complete-semantic)
-  ;; (local-set-key "\M-\r" 'company-semantic)
-  ;; (local-set-key "\M-\r" 'company-irony)
-  ;; (idle-highlight-mode t)
+  ;; (local-set-key "\C-c\C-r" 'semantic-symref-symbol)
   )
 (add-hook 'c-mode-common-hook 'my-cedet-hook)
 (add-hook 'lisp-mode-hook 'my-cedet-hook)
@@ -132,7 +126,6 @@
 ;; (add-hook 'erlang-mode-hook 'my-cedet-hook)
 
 ;; include dirs
-
 (when (string-match "x86_64-pc-linux-gnu" system-configuration)
 (semantic-add-system-include "/usr/include/c++/4.8")
 (semantic-add-system-include "/usr/include/x86_64-linux-gnu/c++/4.8")

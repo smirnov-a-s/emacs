@@ -24,11 +24,11 @@
  helm-gtags-ignore-case t
  helm-gtags-auto-update t
  helm-gtags-use-input-at-cursor t
- helm-gtags-pulse-at-cursor t
+ helm-gtags-pulse-at-cursor nil
+ ;; helm-gtags-highlight-candidate nil
  helm-gtags-prefix-key "\C-cg"
  helm-gtags-suggested-key-mapping t
  )
-
 
 ;; Enable helm-gtags-mode
 (require 'helm-gtags)
@@ -43,10 +43,10 @@
 (define-key helm-gtags-mode-map (kbd "C-j") 'helm-gtags-select)
 (define-key helm-gtags-mode-map (kbd "M-.") 'helm-gtags-dwim)
 (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
-(define-key helm-gtags-mode-map (kbd "C-c <") 'helm-gtags-previous-history)
-(define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
+;; (define-key helm-gtags-mode-map (kbd "C-c <") 'helm-gtags-previous-history)
+;; (define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
 
 ;; prevent helm from searching in some files
-(setq grep-find-ignored-files (append grep-find-ignored-files '("*.d" "*.o" "GPATH" "GRTAGS" "GTAGS" "Makefile" "*.gz" "*.dia" "*.docx")))
+(setq grep-find-ignored-files (append grep-find-ignored-files '("*.d" "*.o" "GPATH" "GRTAGS" "GTAGS" "Makefile" "*.gz" "*.dia" "*.docx" ".projectile")))
 
 (provide 'helm-kit)
