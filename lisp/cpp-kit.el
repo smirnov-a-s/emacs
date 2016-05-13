@@ -66,10 +66,17 @@
 (setq yas-snippet-dirs "~/.emacs.d/el-get/yasnippet/snippets/")
 
 ;; customisation of modes
+(defun my-compile-hook ()
+  (local-set-key [f5] 'compile)
+  )
+(add-hook 'c-mode-common-hook 'my-compile-hook)
+(add-hook 'c++-mode-common-hook 'my-compile-hook)
+(add-hook 'makefile-mode-hook 'my-compile-hook)
+
 (defun my-cpp-hook ()
   ;; (local-set-key "\C-cj" 'semantic-ia-fast-jump)
   ;; (local-set-key [f2] 'semantic-ia-fast-jump)
-  (local-set-key [f5] 'compile)
+  ;; (local-set-key [f5] 'compile)
   (local-set-key [f4] 'helm-projectile-find-other-file)
   (local-set-key "\C-ce" 'helm-semantic-or-imenu) ; list methods in buffer
   (local-set-key "\C-ci" 'semantic-ia-show-summary) ; show method summary
