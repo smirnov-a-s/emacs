@@ -10,12 +10,22 @@
 ;; (add-to-list 'ac-sources '(ac-source-clang-async))
 
 (when (string-match "apple-darwin" system-configuration)
-  (add-to-list 'load-path "~/.emacs.d/vendor/emacs-clang-complete-async")
-  (require 'auto-complete-clang-async)
-  (setq ac-clang-complete-executable "~/.emacs.d/vendor/emacs-clang-complete-async/clang-complete")
-  (setq my-clang-cflags '(
-			  "-std=c++11"
-			  ))
+  ;; (add-to-list 'load-path "~/.emacs.d/vendor/emacs-clang-complete-async")
+  ;; (require 'auto-complete-clang-async)
+  ;; (setq ac-clang-complete-executable "~/.emacs.d/vendor/emacs-clang-complete-async/clang-complete")
+  ;; (setq my-clang-cflags '(
+  ;; 			  "-std=c++11"
+  ;; 			  ))
+  (setq achead:include-directories '(
+				     "."
+				     "/usr/include"
+				     "/usr/local/include"
+				     "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"
+				     "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.3.0/include"
+				     "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"
+				     "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/usr/include"
+				     "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks (framework directory)"
+				     ))
   )
 
 (when (string-match "x86_64-pc-linux-gnu" system-configuration)
@@ -40,11 +50,11 @@
   )
 
 (defun ac-cc-mode-setup ()
-  (setq ac-clang-cflags (append my-clang-cflags ac-clang-cflags))
-  (setq ac-sources '(ac-source-clang-async))
-  ;; (setq ac-sources '(ac-source-rtags))
+  ;; (setq ac-clang-cflags (append my-clang-cflags ac-clang-cflags))
+  ;; (setq ac-sources '(ac-source-clang-async))
+  (setq ac-sources '(ac-source-rtags))
   (add-to-list 'ac-sources 'ac-source-c-headers)
-  (ac-clang-launch-completion-process)
+  ;; (ac-clang-launch-completion-process)
   )
 (add-hook 'c-mode-common-hook 'ac-cc-mode-setup)
 (add-hook 'c++-mode-common-hook 'ac-cc-mode-setup)

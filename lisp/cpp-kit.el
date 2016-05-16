@@ -32,6 +32,9 @@
 (add-hook 'c-mode-hook 'my-c-style-hook)
 (add-hook 'c++-mode-hook 'my-c-style-hook)
 
+;; (require 'cedet-remove-builtin)
+;; (require 'cedet-devel-load)
+
 ;; CEDET config
 ;; select which submodes we want to activate
 (add-to-list 'semantic-default-submodes 'global-semantic-mru-bookmark-mode)

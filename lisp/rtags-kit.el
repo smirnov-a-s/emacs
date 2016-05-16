@@ -1,5 +1,5 @@
 (require 'rtags)
-;; (require 'rtags-ac)
+(require 'rtags-ac)
 
 (setq rtags-path "~/.emacs.d/vendor/rtags/build/bin")
 
@@ -16,6 +16,13 @@
   (local-set-key (kbd "C-c >") 'rtags-location-stack-forward)
   )
 (add-hook 'c-mode-common-hook 'my-rtags-hook)
-(add-hook 'c++-mode-common-hook 'my-rtags-hook)
+
+;; (require 'flycheck-rtags)
+
+;; (defun my-flycheck-rtags-setup ()
+;;   (flycheck-select-checker 'rtags)
+;;   (setq-local flycheck-highlighting-mode nil) ;; RTags creates more accurate overlays.
+;;   (setq-local flycheck-check-syntax-automatically nil))
+;; (add-hook 'c-mode-common-hook 'my-flycheck-rtags-setup)
 
 (provide 'rtags-kit)
