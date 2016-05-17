@@ -8,3 +8,6 @@ projectile.cache
 semanticdb/
 srecode-map.el
 tramp
+eshell
+recentf
+vendor/rtags
