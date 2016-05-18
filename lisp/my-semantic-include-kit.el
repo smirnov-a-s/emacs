@@ -1,0 +1,10 @@
+(semantic-add-system-include "/usr/include/c++/4.8")
+(semantic-add-system-include "/usr/include/x86_64-linux-gnu/c++/4.8")
+(semantic-add-system-include "/usr/include/c++/4.8/backward")
+(semantic-add-system-include "/usr/lib/gcc/x86_64-linux-gnu/4.8/include")
+(semantic-add-system-include "/usr/local/include")
+(semantic-add-system-include "/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed")
+(semantic-add-system-include "/usr/include/x86_64-linux-gnu")
+(semantic-add-system-include "/usr/include")
+
+(provide 'my-semantic-include-kit)
