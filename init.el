@@ -34,6 +34,7 @@
 (add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
 (el-get 'sync)
 
+;; (color-theme-solarized-dark)
 (require 'inkpot-theme)
 ;; (require 'packages-kit)
 (require 'essentials-kit)
@@ -65,22 +66,3 @@
 ;; 		      :height 143
 ;; 		      :width 'normal)
 ;;   )
-
-(when (string-match "apple-darwin" system-configuration)
-  (set-face-attribute 'default nil
-		      :family "Inconsolata LGC"
-		      :foundry "unknown"
-		      :slant 'normal
-		      :weight 'normal
-		      :height 163
-		      :width 'normal)
-
-  )
-
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(font-lock-constant-face ((t (:foreground "dark cyan"))))
- '(font-lock-string-face ((t (:background "gray16" :foreground "#ffcd8b")))))
