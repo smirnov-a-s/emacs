@@ -48,7 +48,6 @@
 (require 'python-kit)
 (require 'octave-kit)
 (require 'ede-kit)
-;; (require 'gud)
 
 (volatile-highlights-mode t)
 

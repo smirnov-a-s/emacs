@@ -15,6 +15,8 @@
   (global-set-key [s-right] 'move-end-of-line)
   (global-set-key [s-left] 'move-beginning-of-line)
   (global-set-key (kbd "M-SPC") 'set-mark-command)
+
+  (require 'gud)
   )
 
 (provide 'apple-kit)
