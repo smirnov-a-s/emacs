@@ -46,6 +46,16 @@
 ;; (define-key helm-gtags-mode-map (kbd "C-c <") 'helm-gtags-previous-history)
 ;; (define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
 
+(defun my-helm-cpp-hook ()
+  ;; (local-set-key [f2] 'helm-gtags-find-tag)
+  (local-set-key [f4] 'helm-projectile-find-other-file)
+  (local-set-key "\C-ce" 'helm-semantic-or-imenu) ; list methods in buffer
+  ;; (local-set-key "\C-c\C-r" 'helm-gtags-find-rtag) ; find references
+  (local-set-key "\C-c\C-s" 'helm-gtags-find-symbol) ; find symbol
+  (local-set-key "\C-c\C-g" 'helm-projectile-grep) ; grep through project files
+  )
+(add-hook 'c-mode-common-hook 'my-helm-cpp-hook)
+
 ;; prevent helm from searching in some files
 (setq grep-find-ignored-files (append grep-find-ignored-files '("*.d" "*.o" "GPATH" "GRTAGS" "GTAGS" "Makefile" "*.gz" "*.dia" "*.docx" ".projectile")))
 
