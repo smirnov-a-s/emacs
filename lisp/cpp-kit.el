@@ -31,10 +31,19 @@
 ;;   )
 ;; (add-hook 'c-mode-hook 'my-c-style-hook)
 ;; (add-hook 'c++-mode-hook 'my-c-style-hook)
-(require 'google-c-style)
-(add-hook 'c-mode-common-hook 'google-set-c-style)
 
-;; CEDET config
+(require 'google-c-style)
+;; (add-hook 'c-mode-common-hook 'google-set-c-style)
+
+(defun my-c-style-hook ()
+  (setq tab-width 2)
+  )
+(add-hook 'c-mode-common-hook 'google-set-c-style)
+(add-hook 'c-mode-common-hook 'my-c-style-hook)
+
+;; CEDET
+(require 'cedet-devel-load)
+
 ;; select which submodes we want to activate
 (add-to-list 'semantic-default-submodes 'global-semantic-mru-bookmark-mode)
 (add-to-list 'semantic-default-submodes 'global-semanticdb-minor-mode)
@@ -43,16 +52,15 @@
 
 ;; Activate semantic
 (semantic-mode 1)
-
-;; Turn off tag highlighting
-(global-semantic-highlight-func-mode -1)
-
 (require 'semantic/ia)
 (require 'semantic/bovine/gcc)
 
 ;; load contrib library
 (add-to-list 'load-path "~/.emacs.d/el-get/cedet/contrib/")
 (require 'eassist)
+
+;; Turn off tag highlighting
+(global-semantic-highlight-func-mode -1)
 
 (semanticdb-enable-gnu-global-databases 'c-mode t)
 (semanticdb-enable-gnu-global-databases 'c++-mode t)
@@ -81,5 +89,7 @@
 
 (require 'my-semantic-include-kit)
 (require 'rtags-kit)
+
+(setq gdb-many-windows t)
 
 (provide 'cpp-kit)
