@@ -48,7 +48,9 @@
 (require 'python-kit)
 (require 'octave-kit)
 (require 'ede-kit)
-(require 'gud)
+;; (require 'gud)
+
+(volatile-highlights-mode t)
 
 ;; Tramp settings
 ;; Sudo via SSH
