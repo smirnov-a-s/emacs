@@ -33,7 +33,6 @@
 ;; (add-hook 'c++-mode-hook 'my-c-style-hook)
 
 (require 'google-c-style)
-;; (add-hook 'c-mode-common-hook 'google-set-c-style)
 
 (defun my-c-style-hook ()
   (setq tab-width 2)
