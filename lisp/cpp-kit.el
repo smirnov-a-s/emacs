@@ -90,6 +90,4 @@
 (require 'my-semantic-include-kit)
 (require 'rtags-kit)
 
-(setq gdb-many-windows t)
-
 (provide 'cpp-kit)
