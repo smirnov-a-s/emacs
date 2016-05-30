@@ -86,7 +86,7 @@
   )
 (add-hook 'c-mode-common-hook 'my-cpp-hook)
 
-(require 'my-semantic-include-kit)
+;; (require 'my-semantic-include-kit)
 (require 'rtags-kit)
 
 (provide 'cpp-kit)
