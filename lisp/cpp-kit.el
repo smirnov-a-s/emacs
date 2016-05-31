@@ -81,11 +81,6 @@
 (add-hook 'c-mode-common-hook 'my-compile-hook)
 (add-hook 'makefile-mode-hook 'my-compile-hook)
 
-(defun my-cpp-hook ()
-  (local-set-key "\C-ci" 'semantic-ia-show-summary) ; show method summary
-  )
-(add-hook 'c-mode-common-hook 'my-cpp-hook)
-
 ;; (require 'my-semantic-include-kit)
 (require 'rtags-kit)
 

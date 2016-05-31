@@ -14,6 +14,8 @@
   (local-set-key "\C-c\C-r" 'rtags-find-all-references-at-point)
   (local-set-key (kbd "C-c <") 'rtags-location-stack-back)
   (local-set-key (kbd "C-c >") 'rtags-location-stack-forward)
+  (local-set-key "\C-c\C-i" 'rtags-print-symbol-info)
+  (local-set-key "\C-c\C-t" 'rtags-symbol-type)
   )
 (add-hook 'c-mode-common-hook 'my-rtags-hook)
 
