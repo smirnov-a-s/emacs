@@ -6,6 +6,7 @@
 (require 'company)
 (require 'company-rtags)
 (require 'company-c-headers)
+(require 'company-dabbrev-code)
 
 ;; (push 'company-rtags company-backends)
 
@@ -14,5 +15,7 @@
               (set (make-local-variable 'company-backends) '(company-rtags company-c-headers))))
 
 (global-set-key (kbd "M-RET") 'company-complete)
+(global-set-key (kbd "C-c RET") 'company-gtags)
+(global-set-key (kbd "M-/") 'company-dabbrev)
 
 (provide 'company-kit)

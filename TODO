@@ -32,3 +32,5 @@ cd build
 cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DLIBCLANG_LLVM_CONFIG_EXECUTABLE=/usr/local/opt/llvm/bin/llvm-config -DLIBCLANG_CXXFLAGS="-I/usr/local/Cellar/llvm/3.6.2/include -fPIC -fvisibility-inlines-hidden -Wall -W -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -pedantic -Wno-long-long -Wcovered-switch-default -Wnon-virtual-dtor -std=c++11 -DNDEBUG  -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS" -DLIBCLANG_LIBDIR=/usr/local/opt/llvm/lib ..
 
 make
+
+cmake -DCMAKE_BUILD_TYPE=Release -DLIBCLANG_LLVM_CONFIG_EXECUTABLE=/usr/bin/llvm-config-3.6 -DLIBCLANG_CXXFLAGS="-I/usr/lib/llvm-3.6/include  -DNDEBUG -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -g -O2 -fomit-frame-pointer -std=c++11 -fvisibility-inlines-hidden -fno-exceptions -fPIC -ffunction-sections -fdata-sections -Wcast-qual" -DLIBCLANG_LIBDIR=/usr/lib/llvm-3.6/lib ..
