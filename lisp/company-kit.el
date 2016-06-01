@@ -16,6 +16,6 @@
 
 (global-set-key (kbd "M-RET") 'company-complete)
 (global-set-key (kbd "C-c RET") 'company-gtags)
-(global-set-key (kbd "M-/") 'company-dabbrev)
+(global-set-key (kbd "M-/") 'company-dabbrev-code)
 
 (provide 'company-kit)
