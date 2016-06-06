@@ -1,6 +1,6 @@
 (add-hook 'after-init-hook 'global-company-mode)
 
-;; (setq company-async-timeout 50)
+(setq company-async-timeout 5)
 ;; (setq company-idle-delay nil)
 
 (require 'company)
