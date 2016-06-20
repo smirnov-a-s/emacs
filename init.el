@@ -1,5 +1,12 @@
 ;; (setq exec-path (append exec-path '("/usr/local/bin")))
 ;; (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
@@ -17,7 +24,8 @@
 
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (add-to-list 'load-path "~/.emacs.d/vendor")
-(add-to-list 'load-path "~/.emacs.d/vendor/rtags/build/src")
+;; (add-to-list 'load-path "~/.emacs.d/vendor/modern-cpp-font-lock")
+(add-to-list 'load-path "~/.emacs.d/vendor/rtags/src")
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
 (require 'package)
@@ -34,8 +42,6 @@
 (add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
 (el-get 'sync)
 
-;; (color-theme-solarized-dark)
-;; (load-theme 'monokai t)
 (require 'inkpot-theme)
 ;; (require 'packages-kit)
 (require 'essentials-kit)

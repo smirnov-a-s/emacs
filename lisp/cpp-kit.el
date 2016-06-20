@@ -40,8 +40,11 @@
 (add-hook 'c-mode-common-hook 'google-set-c-style)
 (add-hook 'c-mode-common-hook 'my-c-style-hook)
 
+;; (require 'modern-cpp-font-lock)
+;; (modern-c++-font-lock-global-mode t)
+
 ;; CEDET
-(require 'cedet-devel-load)
+;; (require 'cedet-devel-load)
 
 ;; select which submodes we want to activate
 (add-to-list 'semantic-default-submodes 'global-semantic-mru-bookmark-mode)
@@ -51,18 +54,18 @@
 
 ;; Activate semantic
 (semantic-mode 1)
-(require 'semantic/ia)
-(require 'semantic/bovine/gcc)
+;; (require 'semantic/ia)
+;; (require 'semantic/bovine/gcc)
 
 ;; load contrib library
-(add-to-list 'load-path "~/.emacs.d/el-get/cedet/contrib/")
-(require 'eassist)
+;; (add-to-list 'load-path "~/.emacs.d/el-get/cedet/contrib/")
+;; (require 'eassist)
 
 ;; Turn off tag highlighting
 (global-semantic-highlight-func-mode -1)
 
-(semanticdb-enable-gnu-global-databases 'c-mode t)
-(semanticdb-enable-gnu-global-databases 'c++-mode t)
+;; (semanticdb-enable-gnu-global-databases 'c-mode t)
+;; (semanticdb-enable-gnu-global-databases 'c++-mode t)
 
 ;; function args
 (fa-config-default)
