@@ -34,6 +34,8 @@
 (add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
 (el-get 'sync)
 
+;; (color-theme-solarized-dark)
+;; (load-theme 'monokai t)
 (require 'inkpot-theme)
 ;; (require 'packages-kit)
 (require 'essentials-kit)
@@ -45,7 +47,7 @@
 (require 'cpp-kit)
 ;; (require 'auto-complete-kit)
 (require 'company-kit)
-;; (require 'python-kit)
+(require 'python-kit)
 ;; (require 'octave-kit)
 ;; (require 'ede-kit)
 
