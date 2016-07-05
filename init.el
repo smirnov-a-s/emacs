@@ -53,7 +53,7 @@
 (require 'cpp-kit)
 ;; (require 'auto-complete-kit)
 (require 'company-kit)
-;; (require 'python-kit)
+(require 'python-kit)
 ;; (require 'octave-kit)
 ;; (require 'ede-kit)
 

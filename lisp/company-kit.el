@@ -8,8 +8,7 @@
 (require 'company-c-headers)
 (require 'company-dabbrev-code)
 
-;; (push 'company-rtags company-backends)
-
+;; mode local company backends
 (add-hook 'c-mode-common-hook
             (lambda ()
               (set (make-local-variable 'company-backends) '(company-rtags company-c-headers))))
