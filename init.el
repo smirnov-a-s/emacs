@@ -24,7 +24,6 @@
 
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (add-to-list 'load-path "~/.emacs.d/vendor")
-;; (add-to-list 'load-path "~/.emacs.d/vendor/modern-cpp-font-lock")
 (add-to-list 'load-path "~/.emacs.d/vendor/rtags/src")
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
@@ -42,8 +41,6 @@
 (add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
 (el-get 'sync)
 
-;; (add-to-list 'custom-theme-load-path "~/.emacs.d/vendor/monokai-emacs/")
-;; (load-theme 'monokai t)
 
 (require 'inkpot-theme)
 ;; (require 'packages-kit)
