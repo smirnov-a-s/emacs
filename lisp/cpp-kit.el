@@ -40,12 +40,7 @@
 (add-hook 'c-mode-common-hook 'google-set-c-style)
 (add-hook 'c-mode-common-hook 'my-c-style-hook)
 
-;; (require 'modern-cpp-font-lock)
-;; (modern-c++-font-lock-global-mode t)
-
 ;; CEDET
-;; (require 'cedet-devel-load)
-
 ;; select which submodes we want to activate
 (add-to-list 'semantic-default-submodes 'global-semantic-mru-bookmark-mode)
 (add-to-list 'semantic-default-submodes 'global-semanticdb-minor-mode)
@@ -84,7 +79,6 @@
 (add-hook 'c-mode-common-hook 'my-compile-hook)
 (add-hook 'makefile-mode-hook 'my-compile-hook)
 
-;; (require 'my-semantic-include-kit)
 (require 'rtags-kit)
 
 (provide 'cpp-kit)
