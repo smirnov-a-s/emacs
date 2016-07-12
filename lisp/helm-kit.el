@@ -59,5 +59,6 @@
 
 ;; prevent helm from searching in some files
 (setq grep-find-ignored-files (append grep-find-ignored-files '("*.d" "*.o" "GPATH" "GRTAGS" "GTAGS" "Makefile" "*.gz" "*.dia" "*.docx" ".projectile")))
+(setq grep-find-ignored-directories (append grep-find-ignored-directories '("build")))
 
 (provide 'helm-kit)

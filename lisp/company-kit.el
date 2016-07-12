@@ -1,7 +1,7 @@
 (add-hook 'after-init-hook 'global-company-mode)
 
 (setq company-async-timeout 5)
-;; (setq company-idle-delay nil)
+(setq company-idle-delay 3)
 
 (require 'company)
 (require 'company-rtags)
