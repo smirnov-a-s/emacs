@@ -7,14 +7,25 @@
 (require 'company-rtags)
 (require 'company-c-headers)
 (require 'company-dabbrev-code)
+(require 'ycmd)
+(ycmd-setup)
+(require 'company-ycmd)
+(company-ycmd-setup)
+
+(set-variable 'ycmd-server-command '("python" "/home/anton/.emacs.d/vendor/ycmd/ycmd"))
+
+(add-hook 'c++-mode-hook 'ycmd-mode)
 
 ;; mode local company backends
 (add-hook 'c-mode-common-hook
             (lambda ()
               (set (make-local-variable 'company-backends) '(company-rtags company-c-headers))))
 
+(add-to-list 'company-c-headers-path-user "~/boost_1_61_0_build/include")
+
 (global-set-key (kbd "M-RET") 'company-complete)
 (global-set-key (kbd "C-c RET") 'company-gtags)
-(global-set-key (kbd "M-/") 'company-dabbrev-code)
+;; (global-set-key (kbd "M-/") 'company-dabbrev-code)
+(global-set-key (kbd "M-/") 'company-ycmd)
 
 (provide 'company-kit)
