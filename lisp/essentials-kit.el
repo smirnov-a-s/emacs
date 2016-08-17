@@ -76,6 +76,7 @@
 (global-unset-key (kbd "C-z"))
 (global-set-key (kbd "C-x f") 'recentf-ido-find-file)
 (global-set-key (kbd "C-*") 'mc/mark-all-like-this) ;; needs mark-multiple (M-x el-get-install RET multiple-cursors RET)
+(global-set-key (kbd "C-c l") 'mc/edit-lines)
 (global-set-key [f6] 'next-multiframe-window) ;; Set f6 to jump to next frame
 (global-set-key "\C-xp" 'pop-to-mark-command) ;; Pop mark
 

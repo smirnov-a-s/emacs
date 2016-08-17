@@ -1,7 +1,7 @@
 (add-hook 'after-init-hook 'global-company-mode)
 
 (setq company-async-timeout 5)
-(setq company-idle-delay 0.5)
+(setq company-idle-delay 0.2)
 ;; (setq company-idle-delay 3)
 
 (require 'company)
@@ -11,7 +11,7 @@
 (require 'ycmd)
 (ycmd-setup)
 (require 'company-ycmd)
-(company-ycmd-setup)
+;; (company-ycmd-setup)
 
 (set-variable 'ycmd-server-command '("python" "/home/anton/.emacs.d/vendor/ycmd/ycmd"))
 
