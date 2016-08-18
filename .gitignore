@@ -11,5 +11,8 @@ tramp
 eshell
 recentf
 vendor/rtags
+vendor/ycmd
 elpa
 bookmarks
+ido.last
+.mc-lists.el
