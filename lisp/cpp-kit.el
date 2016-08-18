@@ -79,6 +79,11 @@
 (add-hook 'c-mode-common-hook 'my-compile-hook)
 (add-hook 'makefile-mode-hook 'my-compile-hook)
 
+(defun my-semantic-hook ()
+  (local-set-key "\C-c\C-s" 'semantic-ia-show-summary) ; show semantic summary
+  )
+(add-hook 'c-mode-common-hook 'my-semantic-hook)
+
 (require 'rtags-kit)
 
 (provide 'cpp-kit)

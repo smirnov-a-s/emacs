@@ -52,7 +52,7 @@
   (local-set-key [f4] 'helm-projectile-find-other-file)
   (local-set-key "\C-ce" 'helm-semantic-or-imenu) ; list methods in buffer
   ;; (local-set-key "\C-c\C-r" 'helm-gtags-find-rtag) ; find references
-  (local-set-key "\C-c\C-s" 'helm-gtags-find-symbol) ; find symbol
+  ;; (local-set-key "\C-c\C-s" 'helm-gtags-find-symbol) ; find symbol
   )
 (add-hook 'c-mode-common-hook 'my-helm-cpp-hook)
 
