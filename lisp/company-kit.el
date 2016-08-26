@@ -26,7 +26,7 @@
 ;;             (lambda ()
 ;;               (set (make-local-variable 'company-backends) '(company-rtags company-c-headers))))
 
-(add-to-list 'company-c-headers-path-user "~/boost_1_61_0_build/include")
+;; (add-to-list 'company-c-headers-path-user "~/boost_1_61_0_build/include")
 
 ;; (global-set-key (kbd "M-RET") 'company-complete)
 (global-set-key (kbd "M-RET") 'company-rtags)

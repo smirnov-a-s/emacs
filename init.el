@@ -9,8 +9,8 @@
 (add-to-list 'load-path "~/.emacs.d/vendor/rtags/src")
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
-(require 'essentials-kit)
 (require 'inkpot-theme)
+(require 'essentials-kit)
 ;; (require 'packages-kit)
 (require 'helm-kit)
 (require 'apple-kit)
