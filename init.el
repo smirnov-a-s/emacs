@@ -6,7 +6,6 @@
 
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (add-to-list 'load-path "~/.emacs.d/vendor")
-(add-to-list 'load-path "~/.emacs.d/vendor/rtags/src")
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
 (require 'inkpot-theme)
@@ -15,11 +14,9 @@
 (require 'helm-kit)
 (require 'apple-kit)
 (require 'org-kit)
-(require 'debian-kit)
 (require 'russian-kit)
 (require 'cpp-kit)
 (require 'company-kit)
 (require 'python-kit)
-;; (require 'octave-kit)
 
 (server-start)

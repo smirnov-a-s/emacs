@@ -1,3 +1,4 @@
+(add-to-list 'load-path "~/.emacs.d/vendor/rtags/src")
 (require 'rtags)
 
 (setq rtags-path "~/.emacs.d/vendor/rtags/build/bin")
