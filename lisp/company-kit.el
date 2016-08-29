@@ -14,6 +14,7 @@
 ;; (company-ycmd-setup)
 
 (set-variable 'ycmd-server-command '("python" "/home/anton/.emacs.d/vendor/ycmd/ycmd"))
+(set-variable 'ycmd-extra-conf-whitelist '("~/work/*"))
 
 (add-hook 'c++-mode-hook 'ycmd-mode)
 
@@ -26,13 +27,8 @@
 ;;             (lambda ()
 ;;               (set (make-local-variable 'company-backends) '(company-rtags company-c-headers))))
 
-;; (add-to-list 'company-c-headers-path-user "~/boost_1_61_0_build/include")
-
-;; (global-set-key (kbd "M-RET") 'company-complete)
 (global-set-key (kbd "M-RET") 'company-rtags)
 (global-set-key (kbd "C-c RET") 'company-gtags)
-;; (global-set-key (kbd "M-/") 'company-dabbrev-code)
-;; (global-set-key (kbd "M-/") 'company-ycmd)
 (global-set-key (kbd "M-/") 'company-complete)
 
 (provide 'company-kit)

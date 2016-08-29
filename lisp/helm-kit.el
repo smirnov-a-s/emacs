@@ -59,7 +59,7 @@
 (global-set-key "\C-c\C-g" 'helm-projectile-grep) ; grep through project files
 
 ;; prevent helm from searching in some files
-(setq grep-find-ignored-files (append grep-find-ignored-files '("*.d" "*.o" "GPATH" "GRTAGS" "GTAGS" "Makefile" "*.gz" "*.dia" "*.docx" ".projectile" "*.vcxproj" "*.ui" "*.png")))
+(setq grep-find-ignored-files (append grep-find-ignored-files '("*.d" "*.o" "GPATH" "GRTAGS" "GTAGS" "Makefile" "*.gz" "*.dia" "*.docx" ".projectile" "*.vcxproj" "*.ui" "*.png" "*.dox")))
 (setq grep-find-ignored-directories (append grep-find-ignored-directories '("build")))
 
 (setq projectile-indexing-method 'native)
