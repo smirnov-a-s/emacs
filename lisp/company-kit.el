@@ -13,7 +13,7 @@
 (require 'company-ycmd)
 ;; (company-ycmd-setup)
 
-(set-variable 'ycmd-server-command '("python" "/home/anton/.emacs.d/vendor/ycmd/ycmd"))
+(set-variable 'ycmd-server-command '("python" "/Users/asmirnov/.emacs.d/vendor/ycmd/ycmd"))
 (set-variable 'ycmd-extra-conf-whitelist '("~/work/*"))
 
 (add-hook 'c++-mode-hook 'ycmd-mode)
