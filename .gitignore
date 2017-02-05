@@ -16,3 +16,4 @@ elpa
 bookmarks
 ido.last
 .mc-lists.el
+*.elc
