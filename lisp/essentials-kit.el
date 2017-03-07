@@ -41,6 +41,7 @@
 (setq file-name-coding-system 'utf-8)
 ;; set the title bar to show file name if available, buffer name otherwise
 (setq frame-title-format '(buffer-file-name "%f" ("%b")))
+(set-default 'truncate-lines t)
 
 ;; have line numbers and
 (line-number-mode 1)
