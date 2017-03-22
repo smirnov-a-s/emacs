@@ -62,8 +62,6 @@
 ;; (semanticdb-enable-gnu-global-databases 'c-mode t)
 ;; (semanticdb-enable-gnu-global-databases 'c++-mode t)
 
-;; function args
-(fa-config-default)
 (set-default 'semantic-case-fold t)
 
 ;; yasnippet
@@ -84,6 +82,6 @@
   )
 (add-hook 'c-mode-common-hook 'my-semantic-hook)
 
-(require 'rtags-kit)
+;; (require 'rtags-kit)
 
 (provide 'cpp-kit)
