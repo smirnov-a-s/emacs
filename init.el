@@ -7,6 +7,7 @@
 
 (add-hook 'after-init-hook (lambda () (load-theme 'solarized-dark t)))
 
+(require 'format-spec)
 ;; (require 'inkpot-theme)
 (require 'essentials-kit)
 ;; (require 'packages-kit)
