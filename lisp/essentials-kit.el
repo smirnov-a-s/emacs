@@ -7,6 +7,8 @@
 
 ;; (setq exec-path (quote ("/usr/local/bin" "/usr/local/sbin" "/usr/bin" "/bin" "/usr/sbin" "/sbin" "/Applications/Emacs.app/Contents/MacOS/bin")))
 
+(setq default-directory "~/" )
+
 (require 'package)
 (add-to-list 'package-archives
   '("melpa" . "http://stable.melpa.org/packages/") t)
