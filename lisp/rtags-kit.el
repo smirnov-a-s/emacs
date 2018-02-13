@@ -2,6 +2,7 @@
 (require 'rtags)
 
 (setq rtags-path "~/.emacs.d/vendor/rtags/build/bin")
+;; (setq rtags-path "C:/Users/antsmi/.emacs.d/vendor/rtags/build/bin")
 
 (setq rtags-autostart-diagnostics t)
 (rtags-diagnostics)

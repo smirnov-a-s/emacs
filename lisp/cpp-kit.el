@@ -7,31 +7,6 @@
 ;; to fix compilation window splitting verticaly
 (setq split-width-threshold most-positive-fixnum)
 
-;; style
-;; (c-add-style "mycodingstyle"
-;; 	     '((c-basic-offset . 2)
-;; 	       (tab-width . 2)
-;; 	       (c-comment-only-line-offset . 0)
-;; 	       (c-hanging-braces-alist . ((substatement-open before after)))
-;; 	       (c-offsets-alist . ((topmost-intro        . 0)
-;; 				   (topmost-intro-cont   . 0)
-;; 				   ;; (substatement         . 3)
-;; 				   ;; (substatement-open    . 0)
-;; 				   ;; (statement-case-open  . 3)
-;; 				   ;; (statement-cont       . 3)
-;; 				   ;; (access-label         . -3)
-;; 				   ;; (inclass              . 3)
-;; 				   ;; (inline-open          . 3)
-;; 				   (innamespace          . 0)
-;; 				   ))))
-
-;; Set style for C/C++
-;; (defun my-c-style-hook ()
-;;   (c-set-style "mycodingstyle")
-;;   )
-;; (add-hook 'c-mode-hook 'my-c-style-hook)
-;; (add-hook 'c++-mode-hook 'my-c-style-hook)
-
 (require 'google-c-style)
 
 (defun my-c-style-hook ()
@@ -49,18 +24,9 @@
 
 ;; Activate semantic
 (semantic-mode 1)
-;; (require 'semantic/ia)
-;; (require 'semantic/bovine/gcc)
-
-;; load contrib library
-;; (add-to-list 'load-path "~/.emacs.d/el-get/cedet/contrib/")
-;; (require 'eassist)
 
 ;; Turn off tag highlighting
 (global-semantic-highlight-func-mode -1)
-
-;; (semanticdb-enable-gnu-global-databases 'c-mode t)
-;; (semanticdb-enable-gnu-global-databases 'c++-mode t)
 
 (set-default 'semantic-case-fold t)
 
@@ -76,11 +42,6 @@
   )
 (add-hook 'c-mode-common-hook 'my-compile-hook)
 (add-hook 'makefile-mode-hook 'my-compile-hook)
-
-(defun my-semantic-hook ()
-  (local-set-key "\C-c\C-s" 'semantic-ia-show-summary) ; show semantic summary
-  )
-(add-hook 'c-mode-common-hook 'my-semantic-hook)
 
 ;; (require 'rtags-kit)
 

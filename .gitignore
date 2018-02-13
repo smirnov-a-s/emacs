@@ -17,3 +17,5 @@ bookmarks
 ido.last
 .mc-lists.el
 *.elc
+server/
+smex-items

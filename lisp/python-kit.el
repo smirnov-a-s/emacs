@@ -1,3 +1,5 @@
+(setq python-shell-interpreter "c:/Python27/python.exe")
+
 (defun my-python-mode-hook()
   (add-to-list 'company-backends 'company-jedi)
   (local-set-key [f2] 'jedi:goto-definition)
