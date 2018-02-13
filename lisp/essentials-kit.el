@@ -23,17 +23,15 @@
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-;; ?
-(setq default-directory "~/")
 ;; no splash screen, thanks
 (setq inhibit-splash-screen t)
 (setq visible-bell nil)
 (setq ring-bell-function 'ignore)
 ;; If non-nil, `kill-line' with no arg at beg of line kills the whole line.
 (setq kill-whole-line t)
-;; stop creating those backup~ files
+;; stop creating backup~ files
 (setq make-backup-files nil)
-;; stop creating those #autosave# files
+;; stop creating #autosave# files
 (setq auto-save-default nil)
 ;; Ask for confirmation when leaving Emacs
 (setq confirm-kill-emacs 'yes-or-no-p)
@@ -41,7 +39,6 @@
 (setq file-name-coding-system 'utf-8)
 ;; set the title bar to show file name if available, buffer name otherwise
 (setq frame-title-format '(buffer-file-name "%f" ("%b")))
-;; (set-default 'truncate-lines t)
 
 ;; have line numbers and
 (line-number-mode 1)
@@ -61,18 +58,18 @@
 (delete-selection-mode 1)
 ;; Use IDO if installed
 (if (fboundp 'ido-mode) (ido-mode 1))
-;; ?
+;; highlights changes to the buffer caused by commands such as undo, yank/yank-pop, etc
 (volatile-highlights-mode t)
-(electric-indent-mode t)
-(electric-pair-mode t)
+;; (electric-indent-mode t)
+;; (electric-pair-mode t)
 
 ;; Use readable buffer designations when names are the same
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward)
 
 ;; delete trailing whitespaces and require final newline
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
-(setq require-final-newline t)
+;; (add-hook 'before-save-hook 'delete-trailing-whitespace)
+;; (setq require-final-newline t)
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "M-x") 'smex)
@@ -81,10 +78,8 @@
 (global-set-key (kbd "C-x f") 'recentf-ido-find-file)
 (global-set-key (kbd "C-*") 'mc/mark-all-like-this) ;; needs mark-multiple (M-x el-get-install RET multiple-cursors RET)
 (global-set-key (kbd "C-c l") 'mc/edit-lines)
-(global-set-key [f6] 'next-multiframe-window) ;; Set f6 to jump to next frame
 (global-set-key "\C-xp" 'pop-to-mark-command) ;; Pop mark
-
-(define-key global-map (kbd "C-c ;") 'iedit-mode) ;; iedit
+(global-set-key (kbd "C-c ;") 'iedit-mode) ;; iedit
 
 (require 'bar-cursor)
 (bar-cursor-mode)
@@ -95,14 +90,23 @@
     (when file
       (find-file file))))
 
-(add-to-list 'auto-mode-alist '("\\rfc\\[0-9\\]+.txt$" . irfc-mode))
-
 ;; Tramp settings
 ;; Sudo via SSH
 (set-default 'tramp-default-proxies-alist (quote ((".*" "\\`root\\'" "/ssh:%h:"))))
 
 (put 'set-goal-column 'disabled nil)
 
-;; (require 'marks-kit)
+;; increase ibuffer name column width from 18 to 40
+(setq ibuffer-formats
+      '((mark modified read-only " "
+              (name 40 40 :left :elide)
+	      " "
+              (size 9 -1 :right)
+	      " "
+              (mode 16 16 :left :elide)
+	      " " filename-and-process)
+        (mark " "
+	      (name 16 -1)
+	      " " filename)))
 
 (provide 'essentials-kit)
