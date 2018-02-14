@@ -11,9 +11,13 @@
 
 ;; (require 'packages-kit)
 (require 'essentials-kit)
-(if (string-match "apple-darwin" system-configuration)
+
+(if (string-equal system-type "darwin")
     (require 'apple-kit)
-  (set-face-attribute 'default nil :family "Consolas" :height 120))
+  (if (string-equal system-type "windows-nt")
+      (set-face-attribute 'default nil :family "Consolas" :height 120)
+  (set-face-attribute 'default nil :height 120)))
+  
 (require 'company-kit)
 (require 'helm-kit)
 (require 'cpp-kit)
