@@ -31,10 +31,10 @@
 (set-default 'semantic-case-fold t)
 
 ;; yasnippet
-(require 'yasnippet)
-(yas-global-mode 1)
+;; (require 'yasnippet)
+;; (yas-global-mode 1)
 
-(setq yas-snippet-dirs "~/.emacs.d/el-get/yasnippet/snippets/")
+;; (setq yas-snippet-dirs "~/.emacs.d/el-get/yasnippet/snippets/")
 
 ;; customisation of modes
 (defun my-compile-hook ()
