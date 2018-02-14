@@ -1,3 +1,5 @@
+(package-initialize)
+
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (add-to-list 'load-path "~/.emacs.d/vendor")
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
@@ -9,6 +11,13 @@
 
 ;; (require 'packages-kit)
 (require 'essentials-kit)
+
+(if (string-equal system-type "darwin")
+    (require 'apple-kit)
+  (if (string-equal system-type "windows-nt")
+      (set-face-attribute 'default nil :family "Consolas" :height 120)
+  (set-face-attribute 'default nil :height 120)))
+  
 (require 'company-kit)
 (require 'helm-kit)
 (require 'cpp-kit)
