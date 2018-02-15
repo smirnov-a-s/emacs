@@ -56,8 +56,6 @@
 ;; was no unsaved changes in the corresponding buffer, just revert its
 ;; content to reflect what's on-disk.
 (global-auto-revert-mode 1)
-;; Delete selection
-(delete-selection-mode 1)
 ;; Use IDO if installed
 (if (fboundp 'ido-mode) (ido-mode 1))
 ;; highlights changes to the buffer caused by commands such as undo, yank/yank-pop, etc
@@ -88,7 +86,7 @@
 (global-set-key (kbd "C-c l") 'mc/edit-lines)
 (global-set-key "\C-xp" 'pop-to-mark-command) ;; Pop mark
 (global-set-key (kbd "C-c ;") 'iedit-mode) ;; iedit
-(global-set-key "\C-y" 'yank-and-indent)
+;; (global-set-key "\C-y" 'yank-and-indent)
 
 (require 'bar-cursor)
 (bar-cursor-mode)
