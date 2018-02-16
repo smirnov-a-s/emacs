@@ -19,3 +19,5 @@ ido.last
 *.elc
 server/
 smex-items
+*.desktop
+*.desktop.lock
