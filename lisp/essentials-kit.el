@@ -56,8 +56,9 @@
 ;; was no unsaved changes in the corresponding buffer, just revert its
 ;; content to reflect what's on-disk.
 (global-auto-revert-mode 1)
-;; Use IDO if installed
-(if (fboundp 'ido-mode) (ido-mode 1))
+;; use IDO
+(ido-mode 1)
+(setq ido-enable-flex-matching t)
 ;; highlights changes to the buffer caused by commands such as undo, yank/yank-pop, etc
 (volatile-highlights-mode t)
 ;; (electric-indent-mode t)
