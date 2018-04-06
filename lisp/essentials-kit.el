@@ -67,6 +67,7 @@
 (volatile-highlights-mode t)
 ;; (electric-indent-mode t)
 ;; (electric-pair-mode t)
+(setq-default indent-tabs-mode nil)
 
 ;; Use readable buffer designations when names are the same
 (require 'uniquify)
@@ -86,9 +87,9 @@
 (global-set-key "\C-xp" 'pop-to-mark-command) ;; Pop mark
 (global-set-key (kbd "C-c ;") 'iedit-mode) ;; iedit
 
-(define-key dired-mode-map (kbd "a") 'dired-find-file)
-(define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file) ; was dired-find-file
-(define-key dired-mode-map (kbd "^") (lambda () (interactive) (find-alternate-file "..")))  ; was dired-up-directory
+;; (define-key dired-mode-map (kbd "a") 'dired-find-file)
+;; (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file) ; was dired-find-file
+;; (define-key dired-mode-map (kbd "^") (lambda () (interactive) (find-alternate-file "..")))  ; was dired-up-directory
 (put 'dired-find-alternate-file 'disabled nil)
 
 (require 'bar-cursor)
