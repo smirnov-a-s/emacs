@@ -2,30 +2,9 @@
       '(el-get
 	auto-complete-c-headers
 	auto-complete
-	cedet
-	cl-lib
-	clang-complete-async
-	ctable
-	dash
-	deferred
-	el-get
-	epc
-	epl
-	function-args
-	fuzzy
 	google-c-style
-	helm-gtags
-	helm-projectile
-	helm
-	iedit
-	jedi
-	pkg-info
-	popup
 	projectile
-	python-environment
-	swiper
 	yasnippet
-	eassist
 	)
       )
 
