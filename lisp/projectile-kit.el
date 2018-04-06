@@ -1,6 +1,7 @@
 (require 'projectile)
-;; (require 'helm-projectile)
 (projectile-mode)
+
+;; (require 'helm-projectile)
 ;; (helm-projectile-on)
 
 ;; (setq projectile-completion-system 'helm)

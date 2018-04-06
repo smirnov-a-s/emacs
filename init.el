@@ -4,6 +4,7 @@
 (add-to-list 'load-path "~/.emacs.d/vendor")
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 (add-to-list 'load-path "~/.emacs.d/vendor/solarized-emacs")
+(add-to-list 'load-path "~/.emacs.d/vendor/flx")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/vendor/solarized-emacs")
 
 (require 'solarized-kit)
@@ -20,8 +21,13 @@
   
 (require 'company-kit)
 ;; (require 'helm-kit)
+<<<<<<< HEAD
 ;; (require 'projectile-kit)
 ;; (require 'cpp-kit)
+=======
+(require 'projectile-kit)
+(require 'cpp-kit)
+>>>>>>> b1513df7bb90eafbb65b7eaf72a10a8ee57838f3
 ;; (require 'org-kit)
 ;; (require 'python-kit)
 ;; (require 'russian-kit)

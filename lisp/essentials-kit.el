@@ -2,11 +2,6 @@
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
-;; (setq exec-path (append exec-path
-;;                          '("c:/Users/antsmi/.babun/cygwin/bin")))
-
-;; (setq exec-path (quote ("/usr/local/bin" "/usr/local/sbin" "/usr/bin" "/bin" "/usr/sbin" "/sbin" "/Applications/Emacs.app/Contents/MacOS/bin")))
-
 (setq default-directory "~/" )
 
 (require 'package)
@@ -57,8 +52,17 @@
 ;; content to reflect what's on-disk.
 (global-auto-revert-mode 1)
 ;; use IDO
+(require 'flx-ido)
 (ido-mode 1)
+(ido-everywhere 1)
+(flx-ido-mode 1)
+;; disable ido faces to see flx highlights.
 (setq ido-enable-flex-matching t)
+(setq ido-use-faces nil)
+;; use ido vertical
+(ido-vertical-mode 1)
+(setq ido-vertical-define-keys 'C-n-C-p-up-and-down)
+
 ;; highlights changes to the buffer caused by commands such as undo, yank/yank-pop, etc
 (volatile-highlights-mode t)
 ;; (electric-indent-mode t)
