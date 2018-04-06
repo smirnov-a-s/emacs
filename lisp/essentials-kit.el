@@ -117,10 +117,4 @@
 	      (name 16 -1)
 	      " " filename)))
 
-(require 'projectile)
-(projectile-mode)
-(setq projectile-enable-caching t)
-(setq projectile-indexing-method 'native)
-;; (setq projectile-indexing-method 'alien)
-
 (provide 'essentials-kit)

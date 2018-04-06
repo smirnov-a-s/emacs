@@ -19,11 +19,11 @@
     (require 'linux-kit)))
   
 (require 'company-kit)
-(require 'helm-kit)
-(require 'projectile-kit)
-(require 'cpp-kit)
+;; (require 'helm-kit)
+;; (require 'projectile-kit)
+;; (require 'cpp-kit)
 ;; (require 'org-kit)
 ;; (require 'python-kit)
 ;; (require 'russian-kit)
 
-(server-start)
+;; (server-start)
