@@ -21,15 +21,11 @@
   
 (require 'company-kit)
 ;; (require 'helm-kit)
-<<<<<<< HEAD
-;; (require 'projectile-kit)
-;; (require 'cpp-kit)
-=======
 (require 'projectile-kit)
 (require 'cpp-kit)
->>>>>>> b1513df7bb90eafbb65b7eaf72a10a8ee57838f3
 ;; (require 'org-kit)
 ;; (require 'python-kit)
 ;; (require 'russian-kit)
 
-;; (server-start)
+(server-start)
+
