@@ -67,6 +67,7 @@
 (volatile-highlights-mode t)
 ;; (electric-indent-mode t)
 ;; (electric-pair-mode t)
+(setq-default indent-tabs-mode nil)
 
 ;; Use readable buffer designations when names are the same
 (require 'uniquify)
@@ -75,12 +76,6 @@
 ;; delete trailing whitespaces and require final newline
 ;; (add-hook 'before-save-hook 'delete-trailing-whitespace)
 ;; (setq require-final-newline t)
-
-(defun yank-and-indent ()
-  "Yank and then indent the newly formed region according to mode."
-  (interactive)
-  (yank)
-  (call-interactively 'indent-region))
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "M-x") 'smex)
@@ -91,7 +86,11 @@
 (global-set-key (kbd "C-c l") 'mc/edit-lines)
 (global-set-key "\C-xp" 'pop-to-mark-command) ;; Pop mark
 (global-set-key (kbd "C-c ;") 'iedit-mode) ;; iedit
-;; (global-set-key "\C-y" 'yank-and-indent)
+
+;; (define-key dired-mode-map (kbd "a") 'dired-find-file)
+;; (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file) ; was dired-find-file
+;; (define-key dired-mode-map (kbd "^") (lambda () (interactive) (find-alternate-file "..")))  ; was dired-up-directory
+(put 'dired-find-alternate-file 'disabled nil)
 
 (require 'bar-cursor)
 (bar-cursor-mode)
