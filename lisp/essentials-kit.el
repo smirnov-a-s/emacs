@@ -55,6 +55,8 @@
 (require 'flx-ido)
 (ido-mode 1)
 (ido-everywhere 1)
+(require 'ido-completing-read+)
+(ido-ubiquitous-mode 1)
 (flx-ido-mode 1)
 ;; disable ido faces to see flx highlights.
 (setq ido-enable-flex-matching t)
@@ -62,6 +64,7 @@
 ;; use ido vertical
 (ido-vertical-mode 1)
 (setq ido-vertical-define-keys 'C-n-C-p-up-and-down)
+(setq ido-vertical-show-count t)
 
 ;; highlights changes to the buffer caused by commands such as undo, yank/yank-pop, etc
 (volatile-highlights-mode t)
@@ -91,6 +94,7 @@
 ;; (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file) ; was dired-find-file
 ;; (define-key dired-mode-map (kbd "^") (lambda () (interactive) (find-alternate-file "..")))  ; was dired-up-directory
 (put 'dired-find-alternate-file 'disabled nil)
+(setq dired-dwim-target t)
 
 (require 'bar-cursor)
 (bar-cursor-mode)
