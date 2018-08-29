@@ -1,10 +1,28 @@
 (setq my:el-get-packages
       '(el-get
-	auto-complete-c-headers
-	auto-complete
-	google-c-style
-	projectile
+        cl-lib
+        cmake-mode
+        company-mode
+        company-c-headers
+        ctable
+        dash
+        deferred
+        emacs-async
+        epc
+        epl
+        fuzzy
+        google-c-style
+        ido-completing-read-plus
+        ido-vertical-mode
+        iedit
+        memoize
+        multiple-cursors
+        popup
+        projectile
 	yasnippet
+        s
+        smex
+        volatile-highlights
 	)
       )
 
