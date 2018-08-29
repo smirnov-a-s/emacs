@@ -168,4 +168,6 @@
 	  '(lambda ()
 	     (ibuffer-switch-to-saved-filter-groups "filter-groups")))
 
+(require 'xah-find)
+
 (provide 'essentials-kit)
