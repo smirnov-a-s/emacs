@@ -20,4 +20,6 @@
 (setq projectile-indexing-method 'native)
 ;; (setq projectile-indexing-method 'alien)
 
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+
 (provide 'projectile-kit)

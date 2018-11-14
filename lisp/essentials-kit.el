@@ -179,4 +179,6 @@
 (add-hook 'ediff-before-setup-hook #'my-store-pre-ediff-winconfig)
 (add-hook 'ediff-quit-hook #'my-restore-pre-ediff-winconfig)
 
+(setq ns-pop-up-frames nil)
+
 (provide 'essentials-kit)
