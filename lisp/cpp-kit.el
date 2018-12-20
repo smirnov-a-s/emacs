@@ -7,34 +7,30 @@
 ;; to fix compilation window splitting verticaly
 (setq split-width-threshold most-positive-fixnum)
 
-(require 'google-c-style)
+;; (require 'google-c-style)
 
-(defun my-c-style-hook ()
-  (setq tab-width 2)
+(defun my-c-mode-hook ()
+  (setq tab-width 4)
+  (setq c-tab-always-indent t)
+  (setq indent-tabs-mode nil)
   )
-(add-hook 'c-mode-common-hook 'google-set-c-style)
-(add-hook 'c-mode-common-hook 'my-c-style-hook)
+(add-hook 'c-mode-hook 'my-c-mode-hook)
+(add-hook 'c++-mode-hook 'my-c-mode-hook)
 
 ;; CEDET
 ;; select which submodes we want to activate
-(add-to-list 'semantic-default-submodes 'global-semantic-mru-bookmark-mode)
-(add-to-list 'semantic-default-submodes 'global-semanticdb-minor-mode)
-(add-to-list 'semantic-default-submodes 'global-semantic-idle-scheduler-mode)
-(add-to-list 'semantic-default-submodes 'global-semanticdb-minor-mode)
+;; (add-to-list 'semantic-default-submodes 'global-semantic-mru-bookmark-mode)
+;; (add-to-list 'semantic-default-submodes 'global-semanticdb-minor-mode)
+;; (add-to-list 'semantic-default-submodes 'global-semantic-idle-scheduler-mode)
+;; (add-to-list 'semantic-default-submodes 'global-semanticdb-minor-mode)
 
 ;; Activate semantic
 (semantic-mode 1)
 
 ;; Turn off tag highlighting
-(global-semantic-highlight-func-mode -1)
+;; (global-semantic-highlight-func-mode -1)
 
 (set-default 'semantic-case-fold t)
-
-;; yasnippet
-;; (require 'yasnippet)
-;; (yas-global-mode 1)
-
-;; (setq yas-snippet-dirs "~/.emacs.d/el-get/yasnippet/snippets/")
 
 ;; customisation of modes
 (defun my-compile-hook ()

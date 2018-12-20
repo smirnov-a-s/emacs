@@ -25,8 +25,7 @@
 (require 'projectile-kit)
 (require 'cpp-kit)
 ;; (require 'org-kit)
-;; (require 'python-kit)
+(require 'python-kit)
 ;; (require 'russian-kit)
 
 (server-start)
-

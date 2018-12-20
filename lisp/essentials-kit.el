@@ -69,7 +69,7 @@
 ;; highlights changes to the buffer caused by commands such as undo, yank/yank-pop, etc
 (volatile-highlights-mode t)
 ;; (electric-indent-mode t)
-;; (electric-pair-mode t)
+(electric-pair-mode t)
 (setq-default indent-tabs-mode nil)
 
 ;; Use readable buffer designations when names are the same
@@ -179,6 +179,10 @@
 (add-hook 'ediff-before-setup-hook #'my-store-pre-ediff-winconfig)
 (add-hook 'ediff-quit-hook #'my-restore-pre-ediff-winconfig)
 
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
+
 (setq ns-pop-up-frames nil)
+
+(desktop-save-mode 1)
 
 (provide 'essentials-kit)
