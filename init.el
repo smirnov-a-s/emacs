@@ -5,11 +5,13 @@
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 (add-to-list 'load-path "~/.emacs.d/vendor/solarized-emacs")
 (add-to-list 'load-path "~/.emacs.d/vendor/flx")
-(add-to-list 'custom-theme-load-path "~/.emacs.d/vendor/solarized-emacs")
+;; (add-to-list 'custom-theme-load-path "~/.emacs.d/vendor/solarized-emacs")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/vendor/zenburn-emacs")
 (add-to-list 'load-path "~/.emacs.d/vendor/xah-find")
 
-(require 'solarized-kit)
-(add-hook 'after-init-hook (lambda () (load-theme 'solarized-dark t)))
+;; (require 'solarized-kit)
+;; (add-hook 'after-init-hook (lambda () (load-theme 'solarized-dark t)))
+(add-hook 'after-init-hook (lambda () (load-theme 'zenburn t)))
 
 ;; (require 'packages-kit)
 (require 'essentials-kit)

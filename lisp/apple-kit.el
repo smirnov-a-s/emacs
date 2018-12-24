@@ -1,19 +1,8 @@
 (setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
 (setq exec-path (append exec-path '("/usr/local/bin")))
-
 ;; (setq exec-path (quote ("/usr/local/bin" "/usr/local/sbin" "/usr/bin" "/bin" "/usr/sbin" "/sbin" "/Applications/Emacs.app/Contents/MacOS/bin")))
+
 (setq mac-allow-anti-aliasing t)
-;; (set-face-font 'default "-apple-Inconsolata-medium-normal-normal-*-19-*-*-*-m-0-iso10646-1")
-;; (set-face-font 'bold "-apple-Inconsolata-bold-normal-normal-*-19-*-*-*-m-0-iso10646-1")
-
-;; (set-face-attribute 'default nil
-;; 		    :family "Inconsolata LGC"
-;; 		    :foundry "unknown"
-;; 		    :slant 'normal
-;; 		    :weight 'normal
-;; 		    :height 163
-;; 		    :width 'normal)
-
 (set-face-attribute 'default nil :height 140)
 (add-to-list 'default-frame-alist '(ns-appearance . dark))
 
