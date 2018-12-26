@@ -1,3 +1,4 @@
+(require 'company-jedi)
 (require 'python-environment)
 
 (setq jedi:environment-root "jedi")
@@ -13,14 +14,12 @@
   (setq jedi:environment-virtualenv
         (append python-environment-virtualenv '("--python" "/usr/bin/python3"))))
 
-(add-hook 'python-mode-hook 'jedi:setup)
-
 (defun my-python-mode-hook()
   (add-to-list 'company-backends 'company-jedi)
   (local-set-key [f12] 'jedi:goto-definition)
-  (local-set-key (kbd "C-c <") 'jedi:goto-definition-pop-marker)
-  )
-
+  (local-set-key (kbd "C-c <") 'jedi:goto-definition-pop-marker))
 (add-hook 'python-mode-hook 'my-python-mode-hook)
+
+;; (add-hook 'python-mode-hook 'jedi:setup)
 
 (provide 'python-kit)

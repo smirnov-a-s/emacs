@@ -1,4 +1,4 @@
-(package-initialize)
+;; (package-initialize)
 
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (add-to-list 'load-path "~/.emacs.d/vendor")
@@ -11,7 +11,8 @@
 
 ;; (require 'solarized-kit)
 ;; (add-hook 'after-init-hook (lambda () (load-theme 'solarized-dark t)))
-(add-hook 'after-init-hook (lambda () (load-theme 'zenburn t)))
+;; (add-hook 'after-init-hook (lambda () (load-theme 'zenburn t)))
+(load-theme 'zenburn t)
 
 ;; (require 'packages-kit)
 (require 'essentials-kit)
