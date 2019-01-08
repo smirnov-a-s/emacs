@@ -10,9 +10,12 @@
   (setq jedi:server-args
         '("--virtual-env" "/Users/asmirnov/work/alfanum/python-env/env3.6")))
 
+;; (when (featurep 'linux-kit)
+;;   (setq jedi:environment-virtualenv
+;;         (append python-environment-virtualenv '("--python" "/usr/bin/python3"))))
+
 (when (featurep 'linux-kit)
-  (setq jedi:environment-virtualenv
-        (append python-environment-virtualenv '("--python" "/usr/bin/python3"))))
+  (setq py-python-command "/usr/bin/python3"))
 
 (defun my-python-mode-hook()
   (add-to-list 'company-backends 'company-jedi)
