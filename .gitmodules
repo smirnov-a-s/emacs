@@ -9,3 +9,6 @@
 [submodule "vendor/zenburn-emacs"]
 	path = vendor/zenburn-emacs
 	url = https://github.com/bbatsov/zenburn-emacs.git
+[submodule "vendor/ido-occur"]
+	path = vendor/ido-occur
+	url = https://github.com/danil/ido-occur.git

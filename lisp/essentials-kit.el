@@ -65,6 +65,10 @@
 (ido-vertical-mode 1)
 (setq ido-vertical-define-keys 'C-n-C-p-up-and-down)
 (setq ido-vertical-show-count t)
+(require 'ido-occur)
+(global-set-key (kbd "C-c o") 'ido-occur)
+(global-set-key (kbd "C-c C-o") 'ido-occur-at-point)
+(define-key isearch-mode-map (kbd "C-o") 'ido-occur-from-isearch)
 
 ;; highlights changes to the buffer caused by commands such as undo, yank/yank-pop, etc
 (volatile-highlights-mode t)
