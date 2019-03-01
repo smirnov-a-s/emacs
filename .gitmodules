@@ -1,17 +1,15 @@
 [submodule "vendor/flx"]
 	path = vendor/flx
-	url = https://github.com/lewang/flx.git
-        
+	url = https://github.com/lewang/flx.git        
 [submodule "vendor/xah-find"]
 	path = vendor/xah-find
 	url = https://github.com/xahlee/xah-find.git
-
 [submodule "vendor/zenburn-emacs"]
 	path = vendor/zenburn-emacs
 	url = https://github.com/bbatsov/zenburn-emacs.git
 [submodule "vendor/ido-occur"]
 	path = vendor/ido-occur
 	url = https://github.com/danil/ido-occur.git
-[submodule "swiper"]
-	path = swiper
+[submodule "vendor/swiper"]
+	path = vendor/swiper
 	url = https://github.com/abo-abo/swiper.git
