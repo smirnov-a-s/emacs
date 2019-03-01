@@ -207,7 +207,7 @@
 	  '(lambda ()
 	     (ibuffer-switch-to-saved-filter-groups "filter-groups")))
 
-(require 'xah-find)
+;; (require 'xah-find)
 
 ;; ediff restore windows layout after running ediff session
 (defvar my-ediff-last-windows nil)
