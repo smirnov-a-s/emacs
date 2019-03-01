@@ -51,6 +51,7 @@
 ;; was no unsaved changes in the corresponding buffer, just revert its
 ;; content to reflect what's on-disk.
 (global-auto-revert-mode 1)
+
 ;; use IDO
 (require 'flx-ido)
 (ido-mode 1)
@@ -65,10 +66,51 @@
 (ido-vertical-mode 1)
 (setq ido-vertical-define-keys 'C-n-C-p-up-and-down)
 (setq ido-vertical-show-count t)
-(require 'ido-occur)
-(global-set-key (kbd "C-c o") 'ido-occur)
-(global-set-key (kbd "C-c C-o") 'ido-occur-at-point)
-(define-key isearch-mode-map (kbd "C-o") 'ido-occur-from-isearch)
+;; (require 'ido-occur)
+;; (global-set-key (kbd "C-c o") 'ido-occur)
+;; (global-set-key (kbd "C-c C-o") 'ido-occur-at-point)
+;; (define-key isearch-mode-map (kbd "C-o") 'ido-occur-from-isearch)
+;; (eval-after-load 'sh-script '(define-key sh-mode-map "\C-c\C-o" nil))
+
+(defun recentf-ido-find-file ()
+  "Find a recent file using ido."
+  (interactive)
+  (let ((file (ido-completing-read "Choose recent file: " recentf-list nil t)))
+    (when file
+      (find-file file))))
+(global-set-key (kbd "C-x f") 'recentf-ido-find-file)
+
+;; ;; use swiper
+;; (require 'ivy)
+;; (ivy-mode 1)
+
+;; (setq ivy-use-virtual-buffers t)
+;; (setq ivy-count-format "(%d/%d) ")
+;; (setq enable-recursive-minibuffers t)
+
+;; (setq ivy-initial-inputs-alist ())
+
+;; (setq ivy-re-builders-alist
+;;       '((t . ivy--regex-fuzzy)))
+
+;; (global-set-key "\C-s" 'swiper)
+;; (global-set-key (kbd "M-x") 'counsel-M-x)
+
+;; ;; (global-set-key (kbd "C-c C-r") 'ivy-resume)
+;; ;; (global-set-key (kbd "<f6>") 'ivy-resume)
+
+;; ;; (global-set-key (kbd "C-x C-f") 'counsel-find-file)
+;; ;; (global-set-key (kbd "<f1> f") 'counsel-describe-function)
+;; ;; (global-set-key (kbd "<f1> v") 'counsel-describe-variable)
+;; ;; (global-set-key (kbd "<f1> l") 'counsel-find-library)
+;; ;; (global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
+;; ;; (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
+;; ;; (global-set-key (kbd "C-c g") 'counsel-git)
+;; ;; (global-set-key (kbd "C-c j") 'counsel-git-grep)
+;; ;; (global-set-key (kbd "C-c k") 'counsel-ag)
+;; ;; (global-set-key (kbd "C-x l") 'counsel-locate)
+;; ;; (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
+;; ;; (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
 
 ;; highlights changes to the buffer caused by commands such as undo, yank/yank-pop, etc
 (volatile-highlights-mode t)
@@ -88,7 +130,6 @@
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "C-c r") 'revert-buffer)
 (global-unset-key (kbd "C-z"))
-(global-set-key (kbd "C-x f") 'recentf-ido-find-file)
 (global-set-key (kbd "C-*") 'mc/mark-all-like-this) ;; needs mark-multiple (M-x el-get-install RET multiple-cursors RET)
 (global-set-key (kbd "C-c l") 'mc/edit-lines)
 (global-set-key "\C-xp" 'pop-to-mark-command) ;; Pop mark
@@ -102,12 +143,6 @@
 
 (require 'bar-cursor)
 (bar-cursor-mode)
-(defun recentf-ido-find-file ()
-  "Find a recent file using ido."
-  (interactive)
-  (let ((file (ido-completing-read "Choose recent file: " recentf-list nil t)))
-    (when file
-      (find-file file))))
 
 ;; Tramp settings
 ;; Sudo via SSH
@@ -188,5 +223,40 @@
 (setq ns-pop-up-frames nil)
 
 (desktop-save-mode 1)
+
+(defun my-turn-spell-checking-on ()
+  "Turn flyspell-mode on."
+  (flyspell-mode 1)
+  )
+(add-hook 'text-mode-hook 'my-turn-spell-checking-on)
+
+;; http://ergoemacs.org/emacs/modernization_isearch.html
+(require 'subr-x)
+(defun xah-my-search-current-word-at-point ()
+  (interactive)
+  (let ( $p1 $p2 )
+    (if (use-region-p)
+        (progn
+          (setq $p1 (region-beginning))
+          (setq $p2 (region-end)))
+      (save-excursion
+        (skip-chars-backward "-_A-Za-z0-9")
+        (setq $p1 (point))
+        (skip-chars-forward "-_A-Za-z0-9")
+        (setq $p2 (point))))
+    
+    (setq mark-active nil)
+    (when (< $p1 (point))
+      (goto-char $p1))
+
+    (let ((substr (buffer-substring-no-properties $p1 $p2)))
+      (when (not (string-equal "" (string-trim substr)))
+        (isearch-mode t)
+        (isearch-yank-string substr)))
+    ))
+(global-set-key (kbd "<f8>") 'xah-my-search-current-word-at-point)
+
+;; split horizontally
+(setq split-width-threshold most-positive-fixnum)
 
 (provide 'essentials-kit)

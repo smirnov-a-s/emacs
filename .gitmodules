@@ -12,3 +12,6 @@
 [submodule "vendor/ido-occur"]
 	path = vendor/ido-occur
 	url = https://github.com/danil/ido-occur.git
+[submodule "swiper"]
+	path = swiper
+	url = https://github.com/abo-abo/swiper.git

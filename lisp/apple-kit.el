@@ -2,6 +2,7 @@
 (setq exec-path (append exec-path '("/usr/local/bin")))
 ;; (setq exec-path (quote ("/usr/local/bin" "/usr/local/sbin" "/usr/bin" "/bin" "/usr/sbin" "/sbin" "/Applications/Emacs.app/Contents/MacOS/bin")))
 
+(setq dired-use-ls-dired nil)
 (setq mac-allow-anti-aliasing t)
 (set-face-attribute 'default nil :height 140)
 (add-to-list 'default-frame-alist '(ns-appearance . dark))

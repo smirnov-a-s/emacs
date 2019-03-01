@@ -4,9 +4,6 @@
 ;; Autosave at compile
 (setq compilation-ask-about-save nil)
 
-;; to fix compilation window splitting verticaly
-(setq split-width-threshold most-positive-fixnum)
-
 ;; (require 'google-c-style)
 
 (defun my-c-mode-hook ()

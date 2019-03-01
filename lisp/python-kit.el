@@ -8,7 +8,7 @@
         (append python-environment-virtualenv
                 '("--python" "/usr/local/bin/python3")))
   (setq jedi:server-args
-        '("--virtual-env" "/Users/asmirnov/work/alfanum/python-env/env3.6")))
+        '("--virtual-env" "/Users/asmirnov/work/alfanum/python-env/env3.6.2")))
 
 ;; (when (featurep 'linux-kit)
 ;;   (setq jedi:environment-virtualenv
