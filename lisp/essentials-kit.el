@@ -131,7 +131,7 @@
 (global-set-key "\C-xp" 'pop-to-mark-command) ;; Pop mark
 (global-set-key (kbd "C-c ;") 'iedit-mode) ;; iedit
 
-;; (put 'dired-find-alternate-file 'disabled nil)
+(put 'dired-find-alternate-file 'disabled nil)
 (setq dired-dwim-target t)
 (require 'dired-x)
 
