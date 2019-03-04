@@ -66,11 +66,7 @@
 (ido-vertical-mode 1)
 (setq ido-vertical-define-keys 'C-n-C-p-up-and-down)
 (setq ido-vertical-show-count t)
-;; (require 'ido-occur)
-;; (global-set-key (kbd "C-c o") 'ido-occur)
-;; (global-set-key (kbd "C-c C-o") 'ido-occur-at-point)
-;; (define-key isearch-mode-map (kbd "C-o") 'ido-occur-from-isearch)
-;; (eval-after-load 'sh-script '(define-key sh-mode-map "\C-c\C-o" nil))
+(setq ido-auto-merge-work-directories-length -1)
 
 (defun recentf-ido-find-file ()
   "Find a recent file using ido."
@@ -135,11 +131,9 @@
 (global-set-key "\C-xp" 'pop-to-mark-command) ;; Pop mark
 (global-set-key (kbd "C-c ;") 'iedit-mode) ;; iedit
 
-;; (define-key dired-mode-map (kbd "a") 'dired-find-file)
-;; (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file) ; was dired-find-file
-;; (define-key dired-mode-map (kbd "^") (lambda () (interactive) (find-alternate-file "..")))  ; was dired-up-directory
-(put 'dired-find-alternate-file 'disabled nil)
+;; (put 'dired-find-alternate-file 'disabled nil)
 (setq dired-dwim-target t)
+(require 'dired-x)
 
 (require 'bar-cursor)
 (bar-cursor-mode)
@@ -206,8 +200,6 @@
 (add-hook 'ibuffer-mode-hook
 	  '(lambda ()
 	     (ibuffer-switch-to-saved-filter-groups "filter-groups")))
-
-;; (require 'xah-find)
 
 ;; ediff restore windows layout after running ediff session
 (defvar my-ediff-last-windows nil)
