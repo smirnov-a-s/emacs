@@ -17,7 +17,7 @@
 (defun my-python-mode-hook()
   (add-to-list 'company-backends 'company-jedi)
   (local-set-key [f12] 'jedi:goto-definition)
-  (setq jedi:server-command '("~/.emacs.d/.python-environments/jedi/bin/jediepcserver"))
+  (local-set-key (kbd "C-_") 'jedi:goto-definition-pop-marker))
 (add-hook 'python-mode-hook 'my-python-mode-hook)
 
 (provide 'python-kit)
