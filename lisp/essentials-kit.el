@@ -130,6 +130,7 @@
 (global-set-key (kbd "C-c l") 'mc/edit-lines)
 (global-set-key "\C-xp" 'pop-to-mark-command) ;; Pop mark
 (global-set-key (kbd "C-c ;") 'iedit-mode) ;; iedit
+(global-set-key (kbd "<f7>") 'make-directory)
 
 (put 'dired-find-alternate-file 'disabled nil)
 (setq dired-dwim-target t)
@@ -141,6 +142,11 @@
 ;; Tramp settings
 ;; Sudo via SSH
 (set-default 'tramp-default-proxies-alist (quote ((".*" "\\`root\\'" "/ssh:%h:"))))
+
+(setq vc-ignore-dir-regexp
+      (format "\\(%s\\)\\|\\(%s\\)"
+              vc-ignore-dir-regexp
+              tramp-file-name-regexp))
 
 (put 'set-goal-column 'disabled nil)
 

@@ -11,6 +11,7 @@
 (add-hook 'c-mode-common-hook
             (lambda ()
               (set (make-local-variable 'company-backends) '(company-dabbrev-code company-c-headers))))
+(add-hook 'shell-mode-hook (lambda () (company-mode -1)) 'append)
 
 (global-set-key (kbd "M-/") 'company-complete)
 
