@@ -20,4 +20,9 @@
   (local-set-key (kbd "C-_") 'jedi:goto-definition-pop-marker))
 (add-hook 'python-mode-hook 'my-python-mode-hook)
 
+;; (setq flycheck-python-flake8-executable "python3")
+;; (setq flycheck-python-pycompile-executable "python3")
+;; (setq flycheck-python-pylint-executable "python3")
+(setq python-shell-virtualenv-path "/Users/asmirnov/work/alfanum/python-env/env-3.6.2/")
+
 (provide 'python-kit)

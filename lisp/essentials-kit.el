@@ -203,9 +203,11 @@
 
 (setq ibuffer-show-empty-filter-groups nil)
 
-(add-hook 'ibuffer-mode-hook
-	  '(lambda ()
-	     (ibuffer-switch-to-saved-filter-groups "filter-groups")))
+(defun my-ibuffer-mode-hook ()
+  (ibuffer-switch-to-saved-filter-groups "filter-groups")
+  (define-key ibuffer-mode-map (kbd "/ d") 'ibuffer-filter-by-directory)  
+  )
+(add-hook 'ibuffer-mode-hook 'my-ibuffer-mode-hook)
 
 ;; ediff restore windows layout after running ediff session
 (defvar my-ediff-last-windows nil)
