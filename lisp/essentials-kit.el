@@ -134,6 +134,10 @@
 
 (put 'dired-find-alternate-file 'disabled nil)
 (setq dired-dwim-target t)
+(setq dired-auto-revert-buffer t)
+
+(add-hook 'dired-mode-hook (lambda () (setq-local auto-revert-verbose nil)))
+
 (require 'dired-x)
 
 (require 'bar-cursor)
