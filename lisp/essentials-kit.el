@@ -136,7 +136,11 @@
 (setq dired-dwim-target t)
 (setq dired-auto-revert-buffer t)
 
-(add-hook 'dired-mode-hook (lambda () (setq-local auto-revert-verbose nil)))
+(defun my-dired-mode-hook ()
+  (setq-local auto-revert-verbose nil)
+  (dired-hide-details-mode 1)
+  )
+(add-hook 'dired-mode-hook 'my-dired-mode-hook)
 
 (require 'dired-x)
 
