@@ -2,6 +2,8 @@
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
+(add-to-list 'auto-mode-alist '("\\.scp\\'" . conf-space-mode))
+
 (setq default-directory "~/" )
 
 (require 'package)
@@ -200,6 +202,7 @@
 		      (name . "*Completions*")
 		      (name . "*Help*")
 		      (name . "*Warnings*")))
+         ("JS" (mode . js-mode))
 	 ("Lisp" (mode . emacs-lisp-mode))
 	 ("Perl" (mode . perl-mode))
 	 ("Python" (mode . python-mode))
@@ -266,5 +269,12 @@
 
 ;; split horizontally
 (setq split-width-threshold most-positive-fixnum)
+
+(global-set-key (kbd "C-.") #'other-window)
+(global-set-key (kbd "C-,") #'prev-window)
+
+(defun prev-window ()
+  (interactive)
+  (other-window -1))
 
 (provide 'essentials-kit)

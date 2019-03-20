@@ -17,7 +17,7 @@
 (defun my-python-mode-hook()
   (add-to-list 'company-backends 'company-jedi)
   (local-set-key [f12] 'jedi:goto-definition)
-  (local-set-key (kbd "C-_") 'jedi:goto-definition-pop-marker))
+  (local-set-key (kbd "C--") 'jedi:goto-definition-pop-marker))
 (add-hook 'python-mode-hook 'my-python-mode-hook)
 
 ;; (setq flycheck-python-flake8-executable "python3")
