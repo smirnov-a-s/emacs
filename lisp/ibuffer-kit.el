@@ -12,23 +12,6 @@
 	      " " filename)))
 
 ;; ibuffer filter groups (http://martinowen.net/blog/2010/02/03/tips-for-emacs-ibuffer.html)
-;; (setq ibuffer-saved-filter-groups
-;;       '(("home"
-;; 	 ("emacs-config" (or (filename . ".emacs.d")
-;; 			     (filename . "emacs-config")))
-;;          ("martinowen.net" (filename . "martinowen.net"))
-;; 	 ("Org" (or (mode . org-mode)
-;; 		    (filename . "OrgMode")))
-;;          ("code" (filename . "code"))
-;; 	 ("Web Dev" (or (mode . html-mode)
-;; 			(mode . css-mode)))
-;; 	 ("Subversion" (name . "\*svn"))
-;; 	 ("Magit" (name . "\*magit"))
-;; 	 ("ERC" (mode . erc-mode))
-;; 	 ("Help" (or (name . "\*Help\*")
-;; 		     (name . "\*Apropos\*")
-;; 		     (name . "\*info\*"))))))
-
 (setq ibuffer-saved-filter-groups
       '(("filter-groups"
 	 ("Conf" (or (mode . conf-space-mode)
