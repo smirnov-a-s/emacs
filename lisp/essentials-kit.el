@@ -1,11 +1,3 @@
-;; (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
-(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-
-(add-to-list 'auto-mode-alist '("\\.scp\\'" . conf-space-mode))
-
-(setq default-directory "~/" )
-
 (require 'package)
 (add-to-list 'package-archives
   '("melpa" . "http://stable.melpa.org/packages/") t)
@@ -38,7 +30,15 @@
 (setq file-name-coding-system 'utf-8)
 ;; set the title bar to show file name if available, buffer name otherwise
 (setq frame-title-format '(buffer-file-name "%f" ("%b")))
+;; split horizontally
+(setq split-width-threshold most-positive-fixnum)
+(setq-default indent-tabs-mode nil)
+(setq ns-pop-up-frames nil)
+(setq default-directory "~/" )
 
+;; (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 ;; have line numbers and
 (line-number-mode 1)
 ;; column numbers in the mode line
@@ -53,6 +53,21 @@
 ;; was no unsaved changes in the corresponding buffer, just revert its
 ;; content to reflect what's on-disk.
 (global-auto-revert-mode 1)
+;; highlights changes to the buffer caused by commands such as undo, yank/yank-pop, etc
+(volatile-highlights-mode t)
+;; (electric-indent-mode t)
+(electric-pair-mode t)
+(require 'bar-cursor)
+(bar-cursor-mode)
+;; Use readable buffer designations when names are the same
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'post-forward)
+;; delete trailing whitespaces and require final newline
+;; (add-hook 'before-save-hook 'delete-trailing-whitespace)
+;; (setq require-final-newline t)
+(desktop-save-mode 1)
+
+(add-to-list 'auto-mode-alist '("\\.scp\\'" . conf-space-mode))
 
 ;; use IDO
 (require 'flx-ido)
@@ -78,13 +93,7 @@
       (find-file file))))
 (global-set-key (kbd "C-x f") 'recentf-ido-find-file)
 
-;; (defun my-ido-find-file ()
-;;   (interactive)
-;;   ;; (when (not (file-remote-p default-directory)) (ido-reread-directory))  
-;;   (ido-find-file)
-;;   (ido-reread-directory)
-;;   )
-;; (global-set-key (kbd "C-x C-f") 'my-ido-find-file)
+(setq ido-max-dir-file-cache 0)
 
 ;; ;; use swiper
 ;; (require 'ivy)
@@ -118,19 +127,11 @@
 ;; ;; (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
 ;; ;; (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
 
-;; highlights changes to the buffer caused by commands such as undo, yank/yank-pop, etc
-(volatile-highlights-mode t)
-;; (electric-indent-mode t)
-(electric-pair-mode t)
-(setq-default indent-tabs-mode nil)
+(defun prev-window ()
+  (interactive)
+  (other-window -1))
 
-;; Use readable buffer designations when names are the same
-(require 'uniquify)
-(setq uniquify-buffer-name-style 'post-forward)
-
-;; delete trailing whitespaces and require final newline
-;; (add-hook 'before-save-hook 'delete-trailing-whitespace)
-;; (setq require-final-newline t)
+(require 'ibuffer-kit)
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "M-x") 'smex)
@@ -141,26 +142,26 @@
 (global-set-key "\C-xp" 'pop-to-mark-command) ;; Pop mark
 (global-set-key (kbd "C-c ;") 'iedit-mode) ;; iedit
 (global-set-key (kbd "<f7>") 'make-directory)
+(global-set-key (kbd "C-.") #'other-window)
+(global-set-key (kbd "C-,") #'prev-window)
 
+;; Dired
 (put 'dired-find-alternate-file 'disabled nil)
 (setq dired-dwim-target t)
-(setq dired-auto-revert-buffer t)
-
-(defun my-dired-mode-hook ()
-  (setq-local auto-revert-verbose nil)
-  (dired-hide-details-mode 1)
-  )
-(add-hook 'dired-mode-hook 'my-dired-mode-hook)
-
+;; (setq dired-auto-revert-buffer t)
 (setq dired-deletion-confirmer #'y-or-n-p)
 (setq dired-recursive-deletes 'always)
 (setq dired-recursive-copies 'always)
 (setq dired-clean-confirm-killing-deleted-buffers nil)
 
-(require 'dired-x)
+(defun my-dired-mode-hook ()
+  (dired-hide-details-mode 1)
+  (setq-local auto-revert-verbose nil)
+  (auto-revert-mode 1)
+  )
+(add-hook 'dired-mode-hook 'my-dired-mode-hook)
 
-(require 'bar-cursor)
-(bar-cursor-mode)
+(require 'dired-x)
 
 ;; Tramp settings
 ;; Sudo via SSH
@@ -173,66 +174,6 @@
 
 (put 'set-goal-column 'disabled nil)
 
-;; increase ibuffer name column width from 18 to 40
-(setq ibuffer-formats
-      '((mark modified read-only " "
-              (name 40 40 :left :elide)
-	      " "
-              (size 9 -1 :right)
-	      " "
-              (mode 16 16 :left :elide)
-	      " " filename-and-process)
-        (mark " "
-	      (name 16 -1)
-	      " " filename)))
-
-;; ibuffer filter groups (http://martinowen.net/blog/2010/02/03/tips-for-emacs-ibuffer.html)
-;; (setq ibuffer-saved-filter-groups
-;;       '(("home"
-;; 	 ("emacs-config" (or (filename . ".emacs.d")
-;; 			     (filename . "emacs-config")))
-;;          ("martinowen.net" (filename . "martinowen.net"))
-;; 	 ("Org" (or (mode . org-mode)
-;; 		    (filename . "OrgMode")))
-;;          ("code" (filename . "code"))
-;; 	 ("Web Dev" (or (mode . html-mode)
-;; 			(mode . css-mode)))
-;; 	 ("Subversion" (name . "\*svn"))
-;; 	 ("Magit" (name . "\*magit"))
-;; 	 ("ERC" (mode . erc-mode))
-;; 	 ("Help" (or (name . "\*Help\*")
-;; 		     (name . "\*Apropos\*")
-;; 		     (name . "\*info\*"))))))
-
-(setq ibuffer-saved-filter-groups
-      '(("filter-groups"
-	 ("Conf" (or (mode . conf-space-mode)
-		     (mode . conf-colon-mode)
-		     (mode . conf-unix-mode)))
-	 ("Dired" (mode . dired-mode))
-	 ("Emacs" (or (name . "*scratch*")
-		      (name . "*Messages*")
-		      (name . "*Completions*")
-		      (name . "*Help*")
-		      (name . "*Warnings*")))
-         ("JS" (mode . js-mode))
-	 ("Lisp" (mode . emacs-lisp-mode))
-	 ("Perl" (mode . perl-mode))
-	 ("Python" (mode . python-mode))
-	 ("Search" (or (name . "*Occur*")
-		       (name . "*xref*")))
-	 ("Shell" (mode . sh-mode))
-	 ("Text" (mode . text-mode))
-	 )))
-
-(setq ibuffer-show-empty-filter-groups nil)
-
-(defun my-ibuffer-mode-hook ()
-  (ibuffer-switch-to-saved-filter-groups "filter-groups")
-  (define-key ibuffer-mode-map (kbd "/ d") 'ibuffer-filter-by-directory)
-  )
-(add-hook 'ibuffer-mode-hook 'my-ibuffer-mode-hook)
-
 ;; ediff restore windows layout after running ediff session
 (defvar my-ediff-last-windows nil)
 (defun my-store-pre-ediff-winconfig ()
@@ -243,10 +184,6 @@
 (add-hook 'ediff-quit-hook #'my-restore-pre-ediff-winconfig)
 
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
-
-(setq ns-pop-up-frames nil)
-
-(desktop-save-mode 1)
 
 (defun my-turn-spell-checking-on ()
   "Turn flyspell-mode on."
@@ -286,15 +223,5 @@
         (isearch-yank-string substr)))
     ))
 (global-set-key (kbd "<f8>") 'xah-my-search-current-word-at-point)
-
-;; split horizontally
-(setq split-width-threshold most-positive-fixnum)
-
-(global-set-key (kbd "C-.") #'other-window)
-(global-set-key (kbd "C-,") #'prev-window)
-
-(defun prev-window ()
-  (interactive)
-  (other-window -1))
 
 (provide 'essentials-kit)
