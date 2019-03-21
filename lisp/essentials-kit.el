@@ -78,6 +78,14 @@
       (find-file file))))
 (global-set-key (kbd "C-x f") 'recentf-ido-find-file)
 
+;; (defun my-ido-find-file ()
+;;   (interactive)
+;;   ;; (when (not (file-remote-p default-directory)) (ido-reread-directory))  
+;;   (ido-find-file)
+;;   (ido-reread-directory)
+;;   )
+;; (global-set-key (kbd "C-x C-f") 'my-ido-find-file)
+
 ;; ;; use swiper
 ;; (require 'ivy)
 ;; (ivy-mode 1)
@@ -143,6 +151,11 @@
   (dired-hide-details-mode 1)
   )
 (add-hook 'dired-mode-hook 'my-dired-mode-hook)
+
+(setq dired-deletion-confirmer #'y-or-n-p)
+(setq dired-recursive-deletes 'always)
+(setq dired-recursive-copies 'always)
+(setq dired-clean-confirm-killing-deleted-buffers nil)
 
 (require 'dired-x)
 
@@ -216,7 +229,7 @@
 
 (defun my-ibuffer-mode-hook ()
   (ibuffer-switch-to-saved-filter-groups "filter-groups")
-  (define-key ibuffer-mode-map (kbd "/ d") 'ibuffer-filter-by-directory)  
+  (define-key ibuffer-mode-map (kbd "/ d") 'ibuffer-filter-by-directory)
   )
 (add-hook 'ibuffer-mode-hook 'my-ibuffer-mode-hook)
 
@@ -241,6 +254,13 @@
   )
 (add-hook 'text-mode-hook 'my-turn-spell-checking-on)
 
+(eval-after-load "flyspell"
+  '(progn
+     (define-key flyspell-mode-map (kbd "C-.") nil)
+     (define-key flyspell-mode-map (kbd "C-,") nil)
+     )
+  )
+
 ;; http://ergoemacs.org/emacs/modernization_isearch.html
 (require 'subr-x)
 (defun xah-my-search-current-word-at-point ()
@@ -255,7 +275,7 @@
         (setq $p1 (point))
         (skip-chars-forward "-_A-Za-z0-9")
         (setq $p2 (point))))
-    
+
     (setq mark-active nil)
     (when (< $p1 (point))
       (goto-char $p1))
