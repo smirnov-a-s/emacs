@@ -66,7 +66,6 @@
 ;; delete trailing whitespaces and require final newline
 ;; (add-hook 'before-save-hook 'delete-trailing-whitespace)
 ;; (setq require-final-newline t)
-(desktop-save-mode 1)
 
 (add-to-list 'auto-mode-alist '("\\.scp\\'" . conf-space-mode))
 
