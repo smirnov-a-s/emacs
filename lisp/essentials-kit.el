@@ -34,6 +34,7 @@
 (setq split-width-threshold most-positive-fixnum)
 (setq-default indent-tabs-mode nil)
 (setq ns-pop-up-frames nil)
+(setq calendar-week-start-day 1)
 (setq default-directory "~/" )
 
 ;; (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
@@ -84,6 +85,7 @@
 (setq ido-vertical-define-keys 'C-n-C-p-up-and-down)
 (setq ido-vertical-show-count t)
 (setq ido-auto-merge-work-directories-length -1)
+(setq ido-max-dir-file-cache 0)
 
 (defun recentf-ido-find-file ()
   "Find a recent file using ido."
@@ -92,8 +94,6 @@
     (when file
       (find-file file))))
 (global-set-key (kbd "C-x f") 'recentf-ido-find-file)
-
-(setq ido-max-dir-file-cache 0)
 
 ;; ;; use swiper
 ;; (require 'ivy)
@@ -131,6 +131,17 @@
   (interactive)
   (other-window -1))
 
+;; https://stackoverflow.com/questions/2416655/file-path-to-clipboard-in-emacs
+(defun copy-file-name-to-clipboard ()
+  "Copy the current buffer file name to the clipboard."
+  (interactive)
+  (let ((filename (if (equal major-mode 'dired-mode)
+                      default-directory
+                    (buffer-file-name))))
+    (when filename
+      (kill-new filename)
+      (message "Copied buffer file name '%s' to the clipboard." filename))))
+
 (require 'ibuffer-kit)
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
@@ -142,13 +153,14 @@
 (global-set-key "\C-xp" 'pop-to-mark-command) ;; Pop mark
 (global-set-key (kbd "C-c ;") 'iedit-mode) ;; iedit
 (global-set-key (kbd "<f7>") 'make-directory)
+(global-set-key (kbd "<f9>") 'copy-file-name-to-clipboard)
 (global-set-key (kbd "C-.") #'other-window)
 (global-set-key (kbd "C-,") #'prev-window)
 
 ;; Dired
 (put 'dired-find-alternate-file 'disabled nil)
 (setq dired-dwim-target t)
-;; (setq dired-auto-revert-buffer t)
+(setq dired-auto-revert-buffer t)
 (setq dired-deletion-confirmer #'y-or-n-p)
 (setq dired-recursive-deletes 'always)
 (setq dired-recursive-copies 'always)
