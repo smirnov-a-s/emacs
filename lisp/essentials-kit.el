@@ -155,6 +155,8 @@
 (global-set-key (kbd "<f9>") 'copy-file-name-to-clipboard)
 (global-set-key (kbd "C-.") #'other-window)
 (global-set-key (kbd "C-,") #'prev-window)
+(define-key dired-mode-map (kbd "/") 'dired-narrow)
+;; (define-key dired-mode-map (kbd "i") 'dired-subtree-toggle)
 
 ;; Dired
 (put 'dired-find-alternate-file 'disabled nil)
