@@ -213,7 +213,7 @@
 
 ;; http://ergoemacs.org/emacs/modernization_isearch.html
 (require 'subr-x)
-(defun xah-my-search-current-word-at-point ()
+(defun my-xah-search-current-word-at-point ()
   (interactive)
   (let ( $p1 $p2 )
     (if (use-region-p)
@@ -235,6 +235,6 @@
         (isearch-mode t)
         (isearch-yank-string substr)))
     ))
-(global-set-key (kbd "<f8>") 'xah-my-search-current-word-at-point)
+(global-set-key (kbd "<f8>") 'my-xah-search-current-word-at-point)
 
 (provide 'essentials-kit)
