@@ -62,7 +62,8 @@
 (bar-cursor-mode)
 ;; Use readable buffer designations when names are the same
 (require 'uniquify)
-(setq uniquify-buffer-name-style 'post-forward)
+;; (setq uniquify-buffer-name-style 'post-forward)
+(setq uniquify-buffer-name-style 'forward)
 ;; delete trailing whitespaces and require final newline
 ;; (add-hook 'before-save-hook 'delete-trailing-whitespace)
 ;; (setq require-final-newline t)
