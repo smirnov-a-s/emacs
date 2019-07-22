@@ -35,6 +35,7 @@
 (setq-default indent-tabs-mode nil)
 (setq ns-pop-up-frames nil)
 (setq calendar-week-start-day 1)
+(setq-default bidi-display-reordering nil)
 (setq default-directory "~/" )
 
 ;; (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
@@ -44,6 +45,7 @@
 (line-number-mode 1)
 ;; column numbers in the mode line
 (column-number-mode 1)
+(global-display-line-numbers-mode 1)
 ;; delete selected block when start typing
 (delete-selection-mode 1)
 ;; show matching parentheses and other characters
@@ -210,6 +212,7 @@
   '(progn
      (define-key flyspell-mode-map (kbd "C-.") nil)
      (define-key flyspell-mode-map (kbd "C-,") nil)
+     (define-key flyspell-mouse-map [mouse-3] 'flyspell-correct-word)
      )
   )
 

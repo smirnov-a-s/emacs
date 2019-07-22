@@ -10,6 +10,7 @@
   (setq tab-width 4)
   (setq c-tab-always-indent t)
   (setq indent-tabs-mode nil)
+  (setq-default c-basic-offset 4)
   )
 (add-hook 'c-mode-hook 'my-c-mode-hook)
 (add-hook 'c++-mode-hook 'my-c-mode-hook)
