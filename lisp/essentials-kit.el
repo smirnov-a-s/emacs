@@ -175,6 +175,7 @@
   (dired-hide-details-mode 1)
   (setq-local auto-revert-verbose nil)
   (auto-revert-mode 1)
+  (hl-line-mode)
   )
 (add-hook 'dired-mode-hook 'my-dired-mode-hook)
 

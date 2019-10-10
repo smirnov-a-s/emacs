@@ -39,6 +39,7 @@
   (ibuffer-switch-to-saved-filter-groups "filter-groups")
   (define-key ibuffer-mode-map (kbd "/ d") 'ibuffer-filter-by-directory)
   (setq ibuffer-sorting-mode 'recency)
+  (hl-line-mode)
   )
 (add-hook 'ibuffer-mode-hook 'my-ibuffer-mode-hook)
 
