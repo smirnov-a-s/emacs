@@ -33,6 +33,7 @@
 ;; split horizontally
 (setq split-width-threshold most-positive-fixnum)
 (setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
 (setq ns-pop-up-frames nil)
 (setq calendar-week-start-day 1)
 (setq-default bidi-display-reordering nil)
@@ -143,6 +144,11 @@
     (when filename
       (kill-new filename)
       (message "Copied buffer file name '%s' to the clipboard." filename))))
+
+(defun untab-and-delete-trailing-spaces()
+  (interactive)
+  (delete-trailing-whitespace (point-min) (point-max))
+  (untabify (point-min) (point-max)))
 
 (require 'ibuffer-kit)
 
