@@ -6,7 +6,7 @@
 (setq mac-allow-anti-aliasing t)
 (set-face-attribute 'default nil :height 140)
 (add-to-list 'default-frame-alist '(ns-appearance . dark))
-(desktop-save-mode 1)
+;; (desktop-save-mode 1)
 
 (global-set-key [(backtab)] 'hippie-expand)
 (global-set-key [s-right] 'move-end-of-line)

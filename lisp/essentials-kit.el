@@ -165,8 +165,7 @@
 (global-set-key (kbd "C-.") #'other-window)
 (global-set-key (kbd "C-,") #'prev-window)
 (global-set-key (kbd "C-c s") 'window-swap-states)
-(define-key dired-mode-map (kbd "/") 'dired-narrow)
-;; (define-key dired-mode-map (kbd "i") 'dired-subtree-toggle)
+;; (define-key dired-mode-map (kbd "/") 'dired-narrow)
 
 ;; Dired
 (put 'dired-find-alternate-file 'disabled nil)
@@ -182,6 +181,7 @@
   (setq-local auto-revert-verbose nil)
   (auto-revert-mode 1)
   (hl-line-mode)
+  (define-key dired-mode-map (kbd "<tab>") 'dired-subtree-toggle)
   )
 (add-hook 'dired-mode-hook 'my-dired-mode-hook)
 
@@ -248,5 +248,7 @@
         (isearch-yank-string substr)))
     ))
 (global-set-key (kbd "<f8>") 'my-xah-search-current-word-at-point)
+
+(kbd "C-s")
 
 (provide 'essentials-kit)

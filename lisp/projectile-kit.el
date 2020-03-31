@@ -14,6 +14,8 @@
 
 ;; to avoid tramp hangs
 (defadvice projectile-project-root (around ignore-remote first activate)
-    (unless (file-remote-p default-directory) ad-do-it))
+  (unless (file-remote-p default-directory) ad-do-it))
+
+(append '(".vscode") projectile-globally-ignored-directories)
 
 (provide 'projectile-kit)
