@@ -1,7 +1,3 @@
-(require 'package)
-(add-to-list 'package-archives
-  '("melpa" . "http://stable.melpa.org/packages/") t)
-
 (unless (require 'el-get nil 'noerror)
   (with-current-buffer
       (url-retrieve-synchronously
@@ -12,9 +8,9 @@
 (add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
 (el-get 'sync)
 
-(defalias 'yes-or-no-p 'y-or-n-p)
+(load-theme 'dracula t)
 
-;; no splash screen, thanks
+(defalias 'yes-or-no-p 'y-or-n-p)
 (setq inhibit-splash-screen t)
 (setq visible-bell nil)
 (setq ring-bell-function 'ignore)
@@ -30,6 +26,20 @@
 (setq file-name-coding-system 'utf-8)
 ;; set the title bar to show file name if available, buffer name otherwise
 (setq frame-title-format '(buffer-file-name "%f" ("%b")))
+
+;; when minibuffer is selected, keep showing the buffer filename
+(defun set-frame-title-format-to-buffer-name ()
+  (setq frame-title-format
+        (buffer-file-name
+         (window-buffer
+          (minibuffer-selected-window)))))
+
+(defun restore-frame-title-format ()
+  (setq frame-title-format '(buffer-file-name "%f" ("%b"))))
+
+(add-hook 'minibuffer-setup-hook 'set-frame-title-format-to-buffer-name)
+(add-hook 'minibuffer-exit-hook 'restore-frame-title-format)
+
 ;; split horizontally
 (setq split-width-threshold most-positive-fixnum)
 (setq-default indent-tabs-mode nil)
@@ -39,14 +49,12 @@
 (setq-default bidi-display-reordering nil)
 (setq default-directory "~/" )
 
-;; (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
-(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+(winner-mode 1)
 ;; have line numbers and
 (line-number-mode 1)
 ;; column numbers in the mode line
 (column-number-mode 1)
-(global-display-line-numbers-mode 1)
+;; (global-display-line-numbers-mode 1)
 ;; delete selected block when start typing
 (delete-selection-mode 1)
 ;; show matching parentheses and other characters
@@ -96,54 +104,23 @@
   (let ((file (ido-completing-read "Choose recent file: " recentf-list nil t)))
     (when file
       (find-file file))))
-(global-set-key (kbd "C-x f") 'recentf-ido-find-file)
-
-;; ;; use swiper
-;; (require 'ivy)
-;; (ivy-mode 1)
-
-;; (setq ivy-use-virtual-buffers t)
-;; (setq ivy-count-format "(%d/%d) ")
-;; (setq enable-recursive-minibuffers t)
-
-;; (setq ivy-initial-inputs-alist ())
-
-;; (setq ivy-re-builders-alist
-;;       '((t . ivy--regex-fuzzy)))
-
-;; (global-set-key "\C-s" 'swiper)
-;; (global-set-key (kbd "M-x") 'counsel-M-x)
-
-;; ;; (global-set-key (kbd "C-c C-r") 'ivy-resume)
-;; ;; (global-set-key (kbd "<f6>") 'ivy-resume)
-
-;; ;; (global-set-key (kbd "C-x C-f") 'counsel-find-file)
-;; ;; (global-set-key (kbd "<f1> f") 'counsel-describe-function)
-;; ;; (global-set-key (kbd "<f1> v") 'counsel-describe-variable)
-;; ;; (global-set-key (kbd "<f1> l") 'counsel-find-library)
-;; ;; (global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
-;; ;; (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
-;; ;; (global-set-key (kbd "C-c g") 'counsel-git)
-;; ;; (global-set-key (kbd "C-c j") 'counsel-git-grep)
-;; ;; (global-set-key (kbd "C-c k") 'counsel-ag)
-;; ;; (global-set-key (kbd "C-x l") 'counsel-locate)
-;; ;; (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
-;; ;; (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
 
 (defun prev-window ()
   (interactive)
   (other-window -1))
 
-;; https://stackoverflow.com/questions/2416655/file-path-to-clipboard-in-emacs
-(defun copy-file-name-to-clipboard ()
-  "Copy the current buffer file name to the clipboard."
-  (interactive)
+(defun copy-file-name-to-clipboard (&optional arg)
+  "Copy the current buffer full file name to the clipboard."
+  (interactive "P")
   (let ((filename (if (equal major-mode 'dired-mode)
                       default-directory
                     (buffer-file-name))))
     (when filename
-      (kill-new filename)
-      (message "Copied buffer file name '%s' to the clipboard." filename))))
+      (kill-new (if (equal current-prefix-arg nil)
+                    filename
+                  (setq filename (file-name-nondirectory filename))))                 
+      (message "Copied buffer file name '%s' to clipboard." filename))))
+
 
 (defun untab-and-delete-trailing-spaces()
   (interactive)
@@ -151,21 +128,6 @@
   (untabify (point-min) (point-max)))
 
 (require 'ibuffer-kit)
-
-(global-set-key (kbd "C-x C-b") 'ibuffer)
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "C-c r") 'revert-buffer)
-(global-unset-key (kbd "C-z"))
-(global-set-key (kbd "C-*") 'mc/mark-all-like-this) ;; needs mark-multiple (M-x el-get-install RET multiple-cursors RET)
-(global-set-key (kbd "C-c l") 'mc/edit-lines)
-(global-set-key "\C-xp" 'pop-to-mark-command) ;; Pop mark
-(global-set-key (kbd "C-c ;") 'iedit-mode) ;; iedit
-(global-set-key (kbd "<f7>") 'make-directory)
-(global-set-key (kbd "<f9>") 'copy-file-name-to-clipboard)
-(global-set-key (kbd "C-.") #'other-window)
-(global-set-key (kbd "C-,") #'prev-window)
-(global-set-key (kbd "C-c s") 'window-swap-states)
-;; (define-key dired-mode-map (kbd "/") 'dired-narrow)
 
 ;; Dired
 (put 'dired-find-alternate-file 'disabled nil)
@@ -175,6 +137,24 @@
 (setq dired-recursive-deletes 'always)
 (setq dired-recursive-copies 'always)
 (setq dired-clean-confirm-killing-deleted-buffers nil)
+(setq dired-subtree-use-backgrounds nil)
+(setq dired-listing-switches "-Alh")
+
+(defun xah-dired-sort ()
+  "Sort dired dir listing in different ways.
+Prompt for a choice.
+URL `http://ergoemacs.org/emacs/dired_sort.html'
+Version 2018-12-23"
+  (interactive)
+  (let ($sort-by $arg)
+    (setq $sort-by (ido-completing-read "Sort by:" '( "date" "size" "name" "dir" )))
+    (cond
+     ((equal $sort-by "name") (setq $arg "-Alh "))
+     ((equal $sort-by "date") (setq $arg "-Alh -t"))
+     ((equal $sort-by "size") (setq $arg "-Alh -S"))
+     ((equal $sort-by "dir") (setq $arg "-Alh --group-directories-first"))
+     (t (error "logic error 09535" )))
+    (dired-sort-other $arg )))
 
 (defun my-dired-mode-hook ()
   (dired-hide-details-mode 1)
@@ -182,7 +162,7 @@
   (auto-revert-mode 1)
   (hl-line-mode)
   (define-key dired-mode-map (kbd "<tab>") 'dired-subtree-toggle)
-  )
+  (define-key dired-mode-map (kbd "s") 'xah-dired-sort))
 (add-hook 'dired-mode-hook 'my-dired-mode-hook)
 
 (require 'dired-x)
@@ -211,17 +191,14 @@
 
 (defun my-turn-spell-checking-on ()
   "Turn flyspell-mode on."
-  (flyspell-mode 1)
-  )
+  (flyspell-mode 1))
 (add-hook 'text-mode-hook 'my-turn-spell-checking-on)
 
 (eval-after-load "flyspell"
   '(progn
      (define-key flyspell-mode-map (kbd "C-.") nil)
      (define-key flyspell-mode-map (kbd "C-,") nil)
-     (define-key flyspell-mouse-map [mouse-3] 'flyspell-correct-word)
-     )
-  )
+     (define-key flyspell-mouse-map [mouse-3] 'flyspell-correct-word)))
 
 ;; http://ergoemacs.org/emacs/modernization_isearch.html
 (require 'subr-x)
@@ -245,10 +222,84 @@
     (let ((substr (buffer-substring-no-properties $p1 $p2)))
       (when (not (string-equal "" (string-trim substr)))
         (isearch-mode t)
-        (isearch-yank-string substr)))
-    ))
-(global-set-key (kbd "<f8>") 'my-xah-search-current-word-at-point)
+        (isearch-yank-string substr)))))
 
-(kbd "C-s")
+(defun my-isearch-forward-from-region ()
+  "Runs isearch-forward from active region."
+  (interactive)
+  (if (use-region-p)
+      (let ((substr (buffer-substring-no-properties (region-beginning) (region-end))))
+        (when (not (string-equal "" (string-trim substr)))
+          (goto-char (region-beginning))
+          (deactivate-mark)
+          (isearch-mode t)
+          (isearch-yank-string substr)))
+    (call-interactively #'isearch-forward)))
+
+(defun my-isearch-backward-from-region ()
+  "Runs isearch-forward from active region."
+  (interactive)
+  (if (use-region-p)
+      (let ((substr (buffer-substring-no-properties (region-beginning) (region-end))))
+        (when (not (string-equal "" (string-trim substr)))
+          (goto-char (region-beginning))
+          (deactivate-mark)
+          (isearch-mode nil)
+          (isearch-yank-string substr)))
+    (call-interactively #'isearch-backward)))
+
+(defun my-occur-from-region ()
+  "Runs isearch-forward from active region."
+  (interactive)
+  (if (use-region-p)
+      (let ((substr (buffer-substring-no-properties (region-beginning) (region-end))))
+        (when (not (string-equal "" (string-trim substr)))
+          (occur substr)))
+    (call-interactively #'occur)))
+
+(defun my-highlight-region (arg)
+  (interactive "P")
+  (if (not arg)
+      (call-interactively #'highlight-regexp)
+    (progn (setq current-prefix-arg nil) (call-interactively #'unhighlight-regexp))))
+
+;; tabs
+;; (require 'centaur-tabs)
+;; (centaur-tabs-mode t)
+;; (global-set-key (kbd "C-<prior>")  'centaur-tabs-backward)
+;; (global-set-key (kbd "C-<next>") 'centaur-tabs-forward)
+;; ;; (centaur-tabs-headline-match)
+;; (setq centaur-tabs-style "bar")
+;; ;; (setq centaur-tabs-height 32)
+;; (setq centaur-tabs-set-bar 'left)
+;; (setq centaur-tabs-set-modified-marker t)
+;; (setq centaur-tabs-modified-marker "*")
+;; ;; (add-hook 'dired-mode-hook 'centaur-tabs-local-mode)
+;; (add-hook 'compilation-mode-hook 'centaur-tabs-local-mode)
+
+(add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
+
+;; bindings
+(global-set-key (kbd "<f8>") 'my-xah-search-current-word-at-point)
+(global-set-key (kbd "C-x f") 'recentf-ido-find-file)
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "C-c r") 'revert-buffer)
+(global-unset-key (kbd "C-z"))
+(global-set-key (kbd "C-*") 'mc/mark-all-like-this) ;; needs mark-multiple (M-x el-get-install RET multiple-cursors RET)
+(global-set-key (kbd "C-c l") 'mc/edit-lines)
+(global-set-key "\C-xp" 'pop-to-mark-command) ;; pop mark
+(global-set-key (kbd "C-c ;") 'iedit-mode) ;; iedit
+(global-set-key (kbd "<f7>") 'make-directory)
+(global-set-key (kbd "<f9>") 'copy-file-name-to-clipboard)
+(global-set-key (kbd "C-.") #'other-window)
+(global-set-key (kbd "C-,") #'prev-window)
+(global-set-key (kbd "C-c s") 'window-swap-states)
+;; (define-key dired-mode-map (kbd "/") 'dired-narrow)
+;; (global-set-key (kbd "M-<f8>") 'highlight-symbol) ;; highlight word at point
+(global-set-key (kbd "C-x C-h") 'my-highlight-region)
+(global-set-key (kbd "C-s") 'my-isearch-forward-from-region)
+(global-set-key (kbd "C-r") 'my-isearch-backward-from-region)
+(global-set-key (kbd "M-s o") 'my-occur-from-region)
 
 (provide 'essentials-kit)

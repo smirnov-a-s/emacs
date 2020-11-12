@@ -8,15 +8,17 @@
 (require 'company-c-headers)
 (require 'company-dabbrev-code)
 
+;; (add-hook 'c-mode-common-hook
+;;             (lambda ()
+;;               (set (make-local-variable 'company-backends) '(company-dabbrev-code company-c-headers))))
+
 (add-hook 'c-mode-common-hook
             (lambda ()
-              (set (make-local-variable 'company-backends) '(company-dabbrev-code company-c-headers))))
+              (set (make-local-variable 'company-backends) '(company-clang company-c-headers))))
+
+(setq company-clang-use-compile-flags-txt 1)
 
 (add-hook 'shell-mode-hook (lambda () (company-mode -1)) 'append)
-
-;; (add-hook 'sh-mode-hook
-;;           (lambda ()
-;;             (set (make-local-variable 'company-backends) '(company-dabbrev-code))))
 
 (global-set-key (kbd "M-/") 'company-complete)
 

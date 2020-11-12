@@ -4,7 +4,9 @@
 
 (setq dired-use-ls-dired nil)
 (setq mac-allow-anti-aliasing t)
-(set-face-attribute 'default nil :height 140)
+(setq frame-resize-pixelwise 1)
+(setq insert-directory-program "gls")
+(set-face-attribute 'default nil :family "Inconsolata LGC" :height 140)
 (add-to-list 'default-frame-alist '(ns-appearance . dark))
 ;; (desktop-save-mode 1)
 
@@ -13,5 +15,7 @@
 (global-set-key [s-left] 'move-beginning-of-line)
 (global-set-key [end] 'move-end-of-line)
 (global-set-key [home] 'move-beginning-of-line)
+
+(toggle-frame-maximized)
 
 (provide 'apple-kit)

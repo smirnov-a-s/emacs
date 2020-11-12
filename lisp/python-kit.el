@@ -6,6 +6,10 @@
 (define-key elpy-mode-map (kbd "M-<left>") nil)
 (define-key elpy-mode-map (kbd "M-<right>") nil)
 
+;; unset elpy-nav-move-line-or-region-up/down
+(define-key elpy-mode-map (kbd "M-<up>") nil)
+(define-key elpy-mode-map (kbd "M-<down>") nil)
+
 (define-key elpy-mode-map (kbd "<tab>") 'elpy-nav-indent-shift-right)
 (define-key elpy-mode-map (kbd "<backtab>") 'elpy-nav-indent-shift-left)
 

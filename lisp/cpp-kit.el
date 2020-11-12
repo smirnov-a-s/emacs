@@ -10,9 +10,8 @@
   (setq tab-width 4)
   (setq c-tab-always-indent t)
   (setq indent-tabs-mode nil)
-  (setq-default c-basic-offset 4)
-  )
-(add-hook 'c-mode-hook 'my-c-mode-hook)
+  (setq c-basic-offset 4))
+(add-hook 'c-mode-common-hook 'my-c-mode-hook)
 (add-hook 'c++-mode-hook 'my-c-mode-hook)
 
 ;; CEDET
@@ -32,8 +31,7 @@
 
 ;; customisation of modes
 (defun my-compile-hook ()
-  (local-set-key [f5] 'compile)
-  )
+  (local-set-key [f5] 'compile))
 (add-hook 'c-mode-common-hook 'my-compile-hook)
 (add-hook 'makefile-mode-hook 'my-compile-hook)
 
