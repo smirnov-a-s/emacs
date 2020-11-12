@@ -1,4 +1,0 @@
-* dumb jump locks for some reason (turn off dumb jump in bash mode?)
-* f9 - copy full filename
-* C-f9 - copy basename
-* copy filename at point when in dired (full + basename)
