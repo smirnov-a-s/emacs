@@ -26,3 +26,4 @@ elpy/
 .dap-breakpoints
 network-security.data
 TODO.txt
+lisp/my-tests.el
