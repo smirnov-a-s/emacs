@@ -1,34 +1,5 @@
-(setq my:el-get-packages
-      '(el-get
-        cl-lib
-        cmake-mode
-        company-mode
-        company-c-headers
-        ctable
-        dash
-        deferred
-        emacs-async
-        epc
-        epl
-        fuzzy
-        google-c-style
-        ido-completing-read-plus
-        ido-vertical-mode
-        iedit
-        memoize
-        multiple-cursors
-        popup
-        projectile
-	yasnippet
-        s
-        smex
-        volatile-highlights
-	)
-      )
+(setq my-packages
+      '(ample-regexps anaphora cl-lib cmake-mode color-theme company-c-headers company-jedi company-mode ctable dash deferred dired-hacks dumb-jump egg el-get elpy emacs-async epc epl f find-file-in-project flx flycheck fuzzy fuzzy-match ghub google-c-style graphql highlight highlight-indentation highlight-symbol ht hydra ibuffer-vc idle-highlight-mode ido-completing-read-plus ido-vertical-mode iedit jedi-core json-rpc let-alist list-utils magit magit-popup markdown-mode mc memoize multiple-cursors package pkg-info popup posframe powerline projectile python-environment pythonic pyvenv request s seq smex spinner transient treepy use-package volatile-highlights with-editor yasnippet))
 
-(setq my:el-get-packages
-      (append my:el-get-packages
-	      (loop for src in el-get-sources collect (el-get-source-name src))))
-(el-get 'sync my:el-get-packages)
+(el-get 'sync my-packages)
 
-(provide 'packages-kit)
