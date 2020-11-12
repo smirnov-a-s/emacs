@@ -23,3 +23,6 @@ smex-items
 *.desktop.lock
 tips.txt
 elpy/
+.dap-breakpoints
+network-security.data
+TODO.txt
