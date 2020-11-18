@@ -27,3 +27,5 @@ elpy/
 network-security.data
 TODO.txt
 lisp/my-tests.el
+transient
+.lsp-session-v1

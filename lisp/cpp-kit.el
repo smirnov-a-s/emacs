@@ -10,7 +10,9 @@
   (setq tab-width 4)
   (setq c-tab-always-indent t)
   (setq indent-tabs-mode nil)
-  (setq c-basic-offset 4))
+  (setq c-basic-offset 4)
+  (yas-minor-mode)
+  )
 (add-hook 'c-mode-common-hook 'my-c-mode-hook)
 (add-hook 'c++-mode-hook 'my-c-mode-hook)
 
@@ -36,5 +38,6 @@
 (add-hook 'makefile-mode-hook 'my-compile-hook)
 
 ;; (require 'rtags-kit)
+(require 'lsp-mode-kit)
 
 (provide 'cpp-kit)
