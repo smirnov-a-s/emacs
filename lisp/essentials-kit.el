@@ -161,7 +161,7 @@ Version 2018-12-23"
   (setq-local auto-revert-verbose nil)
   (auto-revert-mode 1)
   (hl-line-mode)
-  (define-key dired-mode-map (kbd "<tab>") 'dired-subtree-toggle)
+  (define-key dired-mode-map (kbd "TAB") 'dired-subtree-toggle)
   (define-key dired-mode-map (kbd "s") 'xah-dired-sort))
 (add-hook 'dired-mode-hook 'my-dired-mode-hook)
 
