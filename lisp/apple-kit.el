@@ -1,5 +1,5 @@
-(setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
-(setq exec-path (append exec-path '("/usr/local/bin")))
+(setenv "PATH" (concat "/usr/local/bin:" "/usr/local/opt/llvm/bin:" (getenv "PATH")))
+(setq exec-path (append exec-path '("/usr/local/bin" "/usr/local/opt/llvm/bin")))
 ;; (setq exec-path (quote ("/usr/local/bin" "/usr/local/sbin" "/usr/bin" "/bin" "/usr/sbin" "/sbin" "/Applications/Emacs.app/Contents/MacOS/bin")))
 
 (setq dired-use-ls-dired nil)
