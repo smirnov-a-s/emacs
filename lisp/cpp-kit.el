@@ -38,6 +38,5 @@
 (add-hook 'makefile-mode-hook 'my-compile-hook)
 
 ;; (require 'rtags-kit)
-(require 'lsp-mode-kit)
 
 (provide 'cpp-kit)

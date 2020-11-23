@@ -1,7 +1,9 @@
+(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+
 (unless (require 'el-get nil 'noerror)
   (with-current-buffer
       (url-retrieve-synchronously
-       "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
+       "https://raw.githubusercontent.com/dimitri/el-get/master/el-get-install.el")
     (goto-char (point-max))
     (eval-print-last-sexp)))
 
@@ -199,6 +201,9 @@ Version 2018-12-23"
      (define-key flyspell-mode-map (kbd "C-.") nil)
      (define-key flyspell-mode-map (kbd "C-,") nil)
      (define-key flyspell-mouse-map [mouse-3] 'flyspell-correct-word)))
+
+;; flycheck
+(setq flycheck-display-errors-function nil)
 
 ;; http://ergoemacs.org/emacs/modernization_isearch.html
 (require 'subr-x)
