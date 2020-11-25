@@ -84,9 +84,9 @@
   (untabify (point-min) (point-max)))
 
 (defun my-delete-trailing-whitespace()
-  (when (member major-mode '(emacs-lisp-mode python-mode))
+  (when (member major-mode '(emacs-lisp-mode python-mode sh-mode))
     (setq require-final-newline t)
-    (untab-and-delete-trailing-spaces)))
+    (delete-trailing-whitespace)))
 (add-hook 'before-save-hook 'my-delete-trailing-whitespace)
 
 (add-to-list 'auto-mode-alist '("\\.scp\\'" . conf-space-mode))
@@ -287,6 +287,7 @@ Version 2018-12-23"
 ;; (add-hook 'compilation-mode-hook 'centaur-tabs-local-mode)
 
 (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
+(setq dumb-jump-prefer-searcher 'rg)
 
 ;; bindings
 (global-set-key (kbd "<f8>") 'my-xah-search-current-word-at-point)
