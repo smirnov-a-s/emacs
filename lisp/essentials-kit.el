@@ -78,8 +78,16 @@
 ;; (setq uniquify-buffer-name-style 'post-forward)
 (setq uniquify-buffer-name-style 'forward)
 ;; delete trailing whitespaces and require final newline
-;; (add-hook 'before-save-hook 'delete-trailing-whitespace)
-;; (setq require-final-newline t)
+(defun untab-and-delete-trailing-spaces()
+  (interactive)
+  (delete-trailing-whitespace (point-min) (point-max))
+  (untabify (point-min) (point-max)))
+
+(defun my-delete-trailing-whitespace()
+  (when (member major-mode '(emacs-lisp-mode python-mode))
+    (setq require-final-newline t)
+    (untab-and-delete-trailing-spaces)))
+(add-hook 'before-save-hook 'my-delete-trailing-whitespace)
 
 (add-to-list 'auto-mode-alist '("\\.scp\\'" . conf-space-mode))
 
@@ -120,14 +128,8 @@
     (when filename
       (kill-new (if (equal current-prefix-arg nil)
                     filename
-                  (setq filename (file-name-nondirectory filename))))                 
+                  (setq filename (file-name-nondirectory filename))))
       (message "Copied buffer file name '%s' to clipboard." filename))))
-
-
-(defun untab-and-delete-trailing-spaces()
-  (interactive)
-  (delete-trailing-whitespace (point-min) (point-max))
-  (untabify (point-min) (point-max)))
 
 (require 'ibuffer-kit)
 
@@ -204,6 +206,8 @@ Version 2018-12-23"
 
 ;; flycheck
 (setq flycheck-display-errors-function nil)
+(with-eval-after-load 'flycheck
+  (flycheck-pos-tip-mode))
 
 ;; http://ergoemacs.org/emacs/modernization_isearch.html
 (require 'subr-x)
