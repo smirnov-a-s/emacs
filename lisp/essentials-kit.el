@@ -246,7 +246,7 @@ Version 2018-12-23"
     (call-interactively #'isearch-forward)))
 
 (defun my-isearch-backward-from-region ()
-  "Runs isearch-forward from active region."
+  "Runs isearch-backward from active region."
   (interactive)
   (if (use-region-p)
       (let ((substr (buffer-substring-no-properties (region-beginning) (region-end))))
@@ -263,7 +263,8 @@ Version 2018-12-23"
   (if (use-region-p)
       (let ((substr (buffer-substring-no-properties (region-beginning) (region-end))))
         (when (not (string-equal "" (string-trim substr)))
-          (occur substr)))
+          (occur substr)
+          (deactivate-mark)))
     (call-interactively #'occur)))
 
 (defun my-highlight-region (arg)
