@@ -10,7 +10,9 @@
 (add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
 (el-get 'sync)
 
-(load-theme 'dracula t)
+(if (display-graphic-p)
+    (load-theme 'dracula t)
+  (load-theme 'wombat t))
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 (setq inhibit-splash-screen t)
@@ -84,7 +86,7 @@
   (untabify (point-min) (point-max)))
 
 (defun my-delete-trailing-whitespace()
-  (when (member major-mode '(emacs-lisp-mode python-mode sh-mode))
+  (when (member major-mode '(emacs-lisp-mode python-mode sh-mode js-mode))
     (setq require-final-newline t)
     (delete-trailing-whitespace)))
 (add-hook 'before-save-hook 'my-delete-trailing-whitespace)
