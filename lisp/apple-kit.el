@@ -1,6 +1,13 @@
-(setenv "PATH" (concat "/usr/local/bin:" "/usr/local/opt/llvm/bin:" (getenv "PATH")))
-(setq exec-path (append exec-path '("/usr/local/bin" "/usr/local/opt/llvm/bin")))
+;; (setenv "PATH" (concat "/usr/local/bin:" "/usr/local/opt/llvm/bin:" (getenv "PATH")))
 ;; (setq exec-path (quote ("/usr/local/bin" "/usr/local/sbin" "/usr/bin" "/bin" "/usr/sbin" "/sbin" "/Applications/Emacs.app/Contents/MacOS/bin")))
+
+(setenv "PATH"
+        (concat
+         "/usr/local/bin:"
+         "/usr/local/opt/llvm/bin:"
+         (getenv "PATH")))
+
+(setq exec-path (append exec-path '("/usr/local/bin" "/usr/local/opt/llvm/bin")))
 
 (setq dired-use-ls-dired nil)
 (setq mac-allow-anti-aliasing t)

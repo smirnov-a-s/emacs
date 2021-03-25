@@ -1,14 +1,15 @@
-(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+;; El-get init moved to early-init
+;; (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
-(unless (require 'el-get nil 'noerror)
-  (with-current-buffer
-      (url-retrieve-synchronously
-       "https://raw.githubusercontent.com/dimitri/el-get/master/el-get-install.el")
-    (goto-char (point-max))
-    (eval-print-last-sexp)))
+;; (unless (require 'el-get nil 'noerror)
+;;   (with-current-buffer
+;;       (url-retrieve-synchronously
+;;        "https://raw.githubusercontent.com/dimitri/el-get/master/el-get-install.el")
+;;     (goto-char (point-max))
+;;     (eval-print-last-sexp)))
 
-(add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
-(el-get 'sync)
+;; (add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
+;; (el-get 'sync)
 
 (if (display-graphic-p)
     (load-theme 'dracula t)
@@ -71,7 +72,7 @@
 (global-auto-revert-mode 1)
 ;; highlights changes to the buffer caused by commands such as undo, yank/yank-pop, etc
 (volatile-highlights-mode t)
-;; (electric-indent-mode t)
+(electric-indent-mode -1)
 (electric-pair-mode t)
 (require 'bar-cursor)
 (bar-cursor-mode)
@@ -168,7 +169,9 @@ Version 2018-12-23"
   (auto-revert-mode 1)
   (hl-line-mode)
   (define-key dired-mode-map (kbd "TAB") 'dired-subtree-toggle)
-  (define-key dired-mode-map (kbd "s") 'xah-dired-sort))
+  (define-key dired-mode-map (kbd "s") 'xah-dired-sort)
+  (define-key dired-mode-map (kbd "<s-down>") 'dired-find-file)
+  (define-key dired-mode-map (kbd "<s-up>") 'dired-up-directory))
 (add-hook 'dired-mode-hook 'my-dired-mode-hook)
 
 (require 'dired-x)

@@ -2,8 +2,8 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
-(require 'package)
-(package-initialize)
+;; (require 'package)
+;; (package-initialize)
 (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 
 (add-to-list 'load-path "~/.emacs.d/lisp")
@@ -26,6 +26,7 @@
 ;; (require 'org-kit)
 (require 'python-kit)
 (require 'lsp-kit)
-;; (require 'russian-kit)
+(require 'asm-kit)
+(require 'russian-kit)
 
 (server-start)
