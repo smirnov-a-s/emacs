@@ -14,6 +14,7 @@
   (setq indent-tabs-mode nil)
   (setq c-basic-offset 4)
   (c-set-offset 'arglist-intro '+)
+  (c-set-offset 'arglist-close 'c-lineup-close-paren)
   ;; (google-set-c-style)
   ;; (google-make-newline-indent)
   (yas-minor-mode)

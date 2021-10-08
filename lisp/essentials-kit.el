@@ -11,9 +11,11 @@
 ;; (add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
 ;; (el-get 'sync)
 
-(if (display-graphic-p)
-    (load-theme 'dracula t)
-  (load-theme 'wombat t))
+;; (if (display-graphic-p)
+;;     (load-theme 'dracula t)
+;;   (load-theme 'wombat t))
+
+(load-theme 'zenburn t)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 (setq inhibit-splash-screen t)
@@ -90,7 +92,7 @@
   (when (member major-mode '(emacs-lisp-mode python-mode sh-mode js-mode))
     (setq require-final-newline t)
     (delete-trailing-whitespace)))
-(add-hook 'before-save-hook 'my-delete-trailing-whitespace)
+;; (add-hook 'before-save-hook 'my-delete-trailing-whitespace)
 
 (add-to-list 'auto-mode-alist '("\\.scp\\'" . conf-space-mode))
 
@@ -244,7 +246,7 @@ Version 2018-12-23"
   (if (use-region-p)
       (let ((substr (buffer-substring-no-properties (region-beginning) (region-end))))
         (when (not (string-equal "" (string-trim substr)))
-          (goto-char (region-beginning))
+          (goto-char (region-end))
           (deactivate-mark)
           (isearch-mode t)
           (isearch-yank-string substr)))

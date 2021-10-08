@@ -11,6 +11,7 @@
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 (add-to-list 'load-path "~/.emacs.d/vendor/flx")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/vendor/emacs")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/vendor/zenburn-emacs")
 
 (require 'essentials-kit)
 
@@ -20,6 +21,7 @@
       (require 'windows-kit)
     (require 'linux-kit)))
 
+;; (require 'ivy-kit)
 (require 'company-kit)
 (require 'projectile-kit)
 (require 'cpp-kit)

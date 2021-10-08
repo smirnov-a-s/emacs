@@ -3,11 +3,12 @@
 
 (setenv "PATH"
         (concat
+         "/usr/local/opt/texinfo/bin:"
          "/usr/local/bin:"
          "/usr/local/opt/llvm/bin:"
          (getenv "PATH")))
 
-(setq exec-path (append exec-path '("/usr/local/bin" "/usr/local/opt/llvm/bin")))
+(setq exec-path (append exec-path '("/usr/local/opt/texinfo/bin:" "/usr/local/bin" "/usr/local/opt/llvm/bin")))
 
 (setq dired-use-ls-dired nil)
 (setq mac-allow-anti-aliasing t)

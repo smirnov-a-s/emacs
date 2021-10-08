@@ -5,10 +5,13 @@
 ;; (helm-projectile-on)
 
 ;; (setq projectile-completion-system 'helm)
+(setq projectile-completion-system 'ivy)
 (setq projectile-enable-caching t)
 
-(setq projectile-indexing-method 'native)
-;; (setq projectile-indexing-method 'alien)
+;; (setq projectile-indexing-method 'native)
+(setq projectile-indexing-method 'alien)
+
+(setq projectile-switch-project-action #'projectile-dired)
 
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 
