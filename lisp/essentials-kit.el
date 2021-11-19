@@ -16,6 +16,8 @@
 ;;   (load-theme 'wombat t))
 
 (load-theme 'zenburn t)
+;; (load-theme 'dracula t)
+;; (load-theme 'wombat t)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 (setq inhibit-splash-screen t)
@@ -74,7 +76,7 @@
 (global-auto-revert-mode 1)
 ;; highlights changes to the buffer caused by commands such as undo, yank/yank-pop, etc
 (volatile-highlights-mode t)
-(electric-indent-mode -1)
+(electric-indent-mode 1)
 (electric-pair-mode t)
 (require 'bar-cursor)
 (bar-cursor-mode)
@@ -280,20 +282,6 @@ Version 2018-12-23"
       (call-interactively #'highlight-regexp)
     (progn (setq current-prefix-arg nil) (call-interactively #'unhighlight-regexp))))
 
-;; tabs
-;; (require 'centaur-tabs)
-;; (centaur-tabs-mode t)
-;; (global-set-key (kbd "C-<prior>")  'centaur-tabs-backward)
-;; (global-set-key (kbd "C-<next>") 'centaur-tabs-forward)
-;; ;; (centaur-tabs-headline-match)
-;; (setq centaur-tabs-style "bar")
-;; ;; (setq centaur-tabs-height 32)
-;; (setq centaur-tabs-set-bar 'left)
-;; (setq centaur-tabs-set-modified-marker t)
-;; (setq centaur-tabs-modified-marker "*")
-;; ;; (add-hook 'dired-mode-hook 'centaur-tabs-local-mode)
-;; (add-hook 'compilation-mode-hook 'centaur-tabs-local-mode)
-
 (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
 (setq dumb-jump-prefer-searcher 'rg)
 
@@ -304,8 +292,13 @@ Version 2018-12-23"
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "C-c r") 'revert-buffer)
 (global-unset-key (kbd "C-z"))
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-*") 'mc/mark-all-like-this) ;; needs mark-multiple (M-x el-get-install RET multiple-cursors RET)
 (global-set-key (kbd "C-c l") 'mc/edit-lines)
+(global-set-key (kbd "C-c a") 'set-rectangular-region-anchor)
+(global-set-key (kbd "C-=") 'er/expand-region)
+(global-set-key (kbd "C--") 'er/contract-region)
 (global-set-key "\C-xp" 'pop-to-mark-command) ;; pop mark
 (global-set-key (kbd "C-c ;") 'iedit-mode) ;; iedit
 (global-set-key (kbd "<f7>") 'make-directory)
@@ -314,10 +307,10 @@ Version 2018-12-23"
 (global-set-key (kbd "C-,") #'prev-window)
 (global-set-key (kbd "C-c s") 'window-swap-states)
 ;; (define-key dired-mode-map (kbd "/") 'dired-narrow)
-;; (global-set-key (kbd "M-<f8>") 'highlight-symbol) ;; highlight word at point
 (global-set-key (kbd "C-x C-h") 'my-highlight-region)
 (global-set-key (kbd "C-s") 'my-isearch-forward-from-region)
 (global-set-key (kbd "C-r") 'my-isearch-backward-from-region)
 (global-set-key (kbd "M-s o") 'my-occur-from-region)
+(global-set-key (kbd "M-o") 'ace-window)
 
 (provide 'essentials-kit)
