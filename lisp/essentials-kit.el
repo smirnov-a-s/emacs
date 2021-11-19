@@ -285,13 +285,20 @@ Version 2018-12-23"
 (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
 (setq dumb-jump-prefer-searcher 'rg)
 
+(add-hook 'suspend-hook
+          (lambda () (or (y-or-n-p "Really suspend? ")
+                         (error "Suspend canceled"))))
+
+(add-hook 'suspend-resume-hook (lambda () (message "Resumed!")
+                                 (sit-for 2)))
+
 ;; bindings
+;; (global-unset-key (kbd "C-z"))
 (global-set-key (kbd "<f8>") 'my-xah-search-current-word-at-point)
 (global-set-key (kbd "C-x f") 'recentf-ido-find-file)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "C-c r") 'revert-buffer)
-(global-unset-key (kbd "C-z"))
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-*") 'mc/mark-all-like-this) ;; needs mark-multiple (M-x el-get-install RET multiple-cursors RET)
