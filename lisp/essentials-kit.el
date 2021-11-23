@@ -292,6 +292,16 @@ Version 2018-12-23"
 (add-hook 'suspend-resume-hook (lambda () (message "Resumed!")
                                  (sit-for 2)))
 
+(defun find-file-ace-window ()
+  "Use ace window to select a window for opening a file from dired."
+  (interactive)
+  (let ((file (dired-get-file-for-visit)))
+    (if (> (length (aw-window-list)) 1)
+        (aw-select "" (lambda (window)
+                        (aw-switch-to-window window)
+                        (find-file file)))
+      (find-file-other-window file))))
+
 ;; bindings
 ;; (global-unset-key (kbd "C-z"))
 (global-set-key (kbd "<f8>") 'my-xah-search-current-word-at-point)
@@ -319,5 +329,7 @@ Version 2018-12-23"
 (global-set-key (kbd "C-r") 'my-isearch-backward-from-region)
 (global-set-key (kbd "M-s o") 'my-occur-from-region)
 (global-set-key (kbd "M-o") 'ace-window)
+
+(define-key dired-mode-map "o" 'find-file-ace-window)
 
 (provide 'essentials-kit)
